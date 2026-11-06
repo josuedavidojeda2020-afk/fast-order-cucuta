@@ -1,0 +1,3116 @@
+{
+  "id": "FOC-01",
+  "usuarioLogin": "alcarbon",
+  "claveAcceso": "1234",
+  "claveCajero": "2222",
+  "claveCocina": "3333",
+  "nombre": "Al Carbón Parrilla & Burgers",
+  "barrio": "Cúcuta • Sede Principal",
+  "propietario": "Administración Al Carbón",
+  "whatsappLinea": "314 888 9999",
+  "especialidad": "Asados al Carbón, Hamburguesas & Comida Rápida",
+  "icono": "🔥",
+  "suscripcionMensual": 40000,
+  "estadoSuscripcion": "Activa",
+  "motorizados": [
+    "En local (Sin motorizado)",
+    "Domiciliario 1 - Camilo R. (Moto KLM-45D)",
+    "Domiciliario 2 - Jhonatan P. (Moto XYZ-98F)",
+    "Domiciliario 3 - Brayan G. (Domicilios Al Carbón)"
+  ],
+  "catalogo": [
+    {
+      "id": "p1",
+      "nombre": "Hamburguesa Especial Al Carbón",
+      "categoria": "Hamburguesas",
+      "precio": 18000,
+      "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+      "descripcion": "Carne 150g asada al carbón, tocineta ahumada, queso costeño, cebolla, ripio y salsas de la casa.",
+      "ingredientes": [
+        "Tocineta ahumada",
+        "Queso costeño",
+        "Cebolla",
+        "Ripio de papa",
+        "Salsas de la casa"
+      ],
+      "adiciones": [
+        {
+          "id": "add_carne",
+          "nombre": "Adición Carne",
+          "precio": 6000
+        },
+        {
+          "id": "add_queso",
+          "nombre": "Extra Queso",
+          "precio": 3000
+        },
+        {
+          "id": "add_tocineta",
+          "nombre": "Adición Tocineta",
+          "precio": 4000
+        },
+        {
+          "id": "add_papa",
+          "nombre": "Porción Papas",
+          "precio": 5000
+        }
+      ],
+      "tiempo": "10-12 min",
+      "icono": "fa-fire",
+      "receta": {
+        "carne": 1,
+        "pan": 1,
+        "queso": 0.04,
+        "tocineta": 1,
+        "ripio": 0.02,
+        "salsa": 0.025,
+        "cebolla": 0.02
+      }
+    },
+    {
+      "id": "p2",
+      "nombre": "Hamburguesa Clásica Al Carbón",
+      "categoria": "Hamburguesas",
+      "precio": 14000,
+      "imagen": "IMAGENES PARA PEDIR/CLASICA.jpg",
+      "descripcion": "Carne de res al carbón 120g, queso fundido, tomate, lechuga, cebolla y salsa tradicional.",
+      "ingredientes": [
+        "Queso fundido",
+        "Tomate",
+        "Lechuga",
+        "Cebolla",
+        "Salsa tradicional"
+      ],
+      "adiciones": [
+        {
+          "id": "add_carne",
+          "nombre": "Adición Carne",
+          "precio": 6000
+        },
+        {
+          "id": "add_queso",
+          "nombre": "Extra Queso",
+          "precio": 3000
+        },
+        {
+          "id": "add_tocineta",
+          "nombre": "Adición Tocineta",
+          "precio": 4000
+        },
+        {
+          "id": "add_papa",
+          "nombre": "Porción Papas",
+          "precio": 5000
+        }
+      ],
+      "tiempo": "8-10 min",
+      "icono": "fa-fire",
+      "receta": {
+        "carne": 1,
+        "pan": 1,
+        "queso": 0.03,
+        "salsa": 0.02,
+        "cebolla": 0.015
+      }
+    },
+    {
+      "id": "p3",
+      "nombre": "Hamburguesa Doble Carne Al Carbón",
+      "categoria": "Hamburguesas",
+      "precio": 24000,
+      "imagen": "IMAGENES PARA PEDIR/DOBLE-CARNE.jpg",
+      "descripcion": "Doble corte de res 300g al carbón, doble queso, tocineta crocante, cebolla asada, ripio y salsas.",
+      "ingredientes": [
+        "Doble queso",
+        "Tocineta crocante",
+        "Cebolla asada",
+        "Ripio de papa",
+        "Salsas"
+      ],
+      "adiciones": [
+        {
+          "id": "add_carne",
+          "nombre": "Adición Carne",
+          "precio": 6000
+        },
+        {
+          "id": "add_queso",
+          "nombre": "Extra Queso",
+          "precio": 3000
+        },
+        {
+          "id": "add_tocineta",
+          "nombre": "Adición Tocineta",
+          "precio": 4000
+        },
+        {
+          "id": "add_papa",
+          "nombre": "Porción Papas",
+          "precio": 5000
+        }
+      ],
+      "tiempo": "14 min",
+      "icono": "fa-fire",
+      "receta": {
+        "carne": 2,
+        "pan": 1,
+        "queso": 0.06,
+        "tocineta": 2,
+        "ripio": 0.03,
+        "salsa": 0.03,
+        "cebolla": 0.025
+      }
+    },
+    {
+      "id": "p4",
+      "nombre": "Perro Caliente con Tocineta",
+      "categoria": "Perros",
+      "precio": 15000,
+      "imagen": "IMAGENES PARA PEDIR/PERRO-CALIENTE-TOCINETA.jpg",
+      "descripcion": "Salchicha premium asada envuelta en tocineta, queso gratinado, cebolla, ripio y salsa tártara.",
+      "ingredientes": [
+        "Tocineta",
+        "Queso gratinado",
+        "Cebolla",
+        "Ripio de papa",
+        "Salsa tártara"
+      ],
+      "adiciones": [
+        {
+          "id": "add_salchicha",
+          "nombre": "Salchicha Extra",
+          "precio": 4000
+        },
+        {
+          "id": "add_queso",
+          "nombre": "Extra Queso",
+          "precio": 3000
+        },
+        {
+          "id": "add_tocineta",
+          "nombre": "Adición Tocineta",
+          "precio": 4000
+        },
+        {
+          "id": "add_papa",
+          "nombre": "Porción Papas",
+          "precio": 5000
+        }
+      ],
+      "tiempo": "8-10 min",
+      "icono": "fa-clock",
+      "receta": {
+        "salchicha": 1,
+        "panPerro": 1,
+        "queso": 0.04,
+        "tocineta": 2,
+        "ripio": 0.03,
+        "salsa": 0.025,
+        "cebolla": 0.015
+      }
+    },
+    {
+      "id": "p5",
+      "nombre": "Perro Caliente Tradicional",
+      "categoria": "Perros",
+      "precio": 12000,
+      "imagen": "IMAGENES PARA PEDIR/PERRO-CALIENTE-TOCINETA.jpg",
+      "descripcion": "Salchicha manguera, queso costeño rallado, cebolla picada, repollo, ripio de papa y salsas.",
+      "ingredientes": [
+        "Queso costeño rallado",
+        "Cebolla",
+        "Repollo",
+        "Ripio de papa",
+        "Salsas"
+      ],
+      "adiciones": [
+        {
+          "id": "add_salchicha",
+          "nombre": "Salchicha Extra",
+          "precio": 4000
+        },
+        {
+          "id": "add_queso",
+          "nombre": "Extra Queso",
+          "precio": 3000
+        },
+        {
+          "id": "add_tocineta",
+          "nombre": "Adición Tocineta",
+          "precio": 4000
+        },
+        {
+          "id": "add_papa",
+          "nombre": "Porción Papas",
+          "precio": 5000
+        }
+      ],
+      "tiempo": "6-8 min",
+      "icono": "fa-clock",
+      "receta": {
+        "salchicha": 1,
+        "panPerro": 1,
+        "queso": 0.04,
+        "cebolla": 0.02,
+        "salsa": 0.025,
+        "ripio": 0.02
+      }
+    },
+    {
+      "id": "p6",
+      "nombre": "Salchipapa Casera Al Carbón",
+      "categoria": "Salchipapas",
+      "precio": 16000,
+      "imagen": "IMAGENES PARA PEDIR/SALCHIPAPA CASERA.jpg",
+      "descripcion": "Papas a la francesa crocantes, salchicha ranchera, queso costeño y salsa tártara.",
+      "ingredientes": [
+        "Queso costeño",
+        "Salsa tártara"
+      ],
+      "adiciones": [
+        {
+          "id": "add_salchicha",
+          "nombre": "Salchicha Extra",
+          "precio": 4000
+        },
+        {
+          "id": "add_queso",
+          "nombre": "Extra Queso",
+          "precio": 3000
+        },
+        {
+          "id": "add_tocineta",
+          "nombre": "Adición Tocineta",
+          "precio": 4000
+        },
+        {
+          "id": "add_papa",
+          "nombre": "Porción Papas",
+          "precio": 5000
+        }
+      ],
+      "tiempo": "10 min",
+      "icono": "fa-clock",
+      "receta": {
+        "papa": 0.25,
+        "salchicha": 2,
+        "queso": 0.04,
+        "salsa": 0.025
+      }
+    },
+    {
+      "id": "p7",
+      "nombre": "Salchipapa Familiar Especial",
+      "categoria": "Salchipapas",
+      "precio": 26000,
+      "imagen": "IMAGENES PARA PEDIR/SALCHIPAPA FAMILIAR.jpg",
+      "descripcion": "Papas fritas crocantes, 3 salchichas, carne al carbón picada, queso fundido, ripio y salsas.",
+      "ingredientes": [
+        "Carne al carbón picada",
+        "Queso fundido",
+        "Ripio de papa",
+        "Salsas"
+      ],
+      "adiciones": [
+        {
+          "id": "add_salchicha",
+          "nombre": "Salchicha Extra",
+          "precio": 4000
+        },
+        {
+          "id": "add_queso",
+          "nombre": "Extra Queso",
+          "precio": 3000
+        },
+        {
+          "id": "add_tocineta",
+          "nombre": "Adición Tocineta",
+          "precio": 4000
+        },
+        {
+          "id": "add_papa",
+          "nombre": "Porción Papas",
+          "precio": 5000
+        }
+      ],
+      "tiempo": "15 min",
+      "icono": "fa-clock",
+      "receta": {
+        "papa": 0.4,
+        "salchicha": 3,
+        "carne": 1,
+        "queso": 0.08,
+        "salsa": 0.04,
+        "ripio": 0.02
+      }
+    },
+    {
+      "id": "p8",
+      "nombre": "Salchipapa Mixta Al Carbón",
+      "categoria": "Salchipapas",
+      "precio": 29000,
+      "imagen": "IMAGENES PARA PEDIR/SALCHIPAPA-MIXTA.jpg",
+      "descripcion": "Papa francesa y criolla, trozos de carne y pechuga al carbón, tocineta, doble queso y salsas.",
+      "ingredientes": [
+        "Papa criolla",
+        "Carne al carbón",
+        "Pechuga al carbón",
+        "Tocineta",
+        "Doble queso",
+        "Salsas"
+      ],
+      "adiciones": [
+        {
+          "id": "add_salchicha",
+          "nombre": "Salchicha Extra",
+          "precio": 4000
+        },
+        {
+          "id": "add_queso",
+          "nombre": "Extra Queso",
+          "precio": 3000
+        },
+        {
+          "id": "add_tocineta",
+          "nombre": "Adición Tocineta",
+          "precio": 4000
+        },
+        {
+          "id": "add_papa",
+          "nombre": "Porción Papas",
+          "precio": 5000
+        }
+      ],
+      "tiempo": "16 min",
+      "icono": "fa-fire",
+      "receta": {
+        "papa": 0.45,
+        "salchicha": 3,
+        "carne": 2,
+        "tocineta": 2,
+        "queso": 0.09,
+        "salsa": 0.045
+      }
+    },
+    {
+      "id": "p9",
+      "nombre": "Gaseosa Postobón Manzana 400ml",
+      "categoria": "Bebidas",
+      "precio": 4000,
+      "imagen": "IMAGENES PARA PEDIR/postobon 400ml.jpg",
+      "descripcion": "Botella personal 400ml bien helada.",
+      "ingredientes": [],
+      "adiciones": [],
+      "tiempo": "Fría",
+      "icono": "fa-snowflake",
+      "receta": {
+        "bebidas": 1
+      }
+    },
+    {
+      "id": "p10",
+      "nombre": "Coca-Cola Original 400ml",
+      "categoria": "Bebidas",
+      "precio": 5000,
+      "imagen": "IMAGENES PARA PEDIR/COCA COLA 400ml.png",
+      "descripcion": "Botella personal 400ml helada.",
+      "ingredientes": [],
+      "adiciones": [],
+      "tiempo": "Fría",
+      "icono": "fa-snowflake",
+      "receta": {
+        "bebidas": 1
+      }
+    },
+    {
+      "id": "p11",
+      "nombre": "Jugo Natural de Maracuyá",
+      "categoria": "Bebidas",
+      "precio": 6000,
+      "imagen": "IMAGENES PARA PEDIR/JUGO-DE-MARACUYA.jpg",
+      "descripcion": "Vaso 16oz preparado con fruta natural.",
+      "ingredientes": [
+        "Hielo",
+        "Azúcar"
+      ],
+      "adiciones": [],
+      "tiempo": "Natural",
+      "icono": "fa-glass-water",
+      "receta": {
+        "bebidas": 1
+      }
+    }
+  ],
+  "insumos": [
+    {
+      "id": "carne",
+      "nombre": "Carne de Res / Parrilla (150g)",
+      "unidad": "Porciones",
+      "stockActual": 4,
+      "umbralMinimo": 15,
+      "costoUnitario": 3800
+    },
+    {
+      "id": "pan",
+      "nombre": "Pan Brioche Artesanal",
+      "unidad": "Unidades",
+      "stockActual": 7,
+      "umbralMinimo": 18,
+      "costoUnitario": 1200
+    },
+    {
+      "id": "queso",
+      "nombre": "Queso Costeño / Mozzarella",
+      "unidad": "Kg",
+      "stockActual": 0,
+      "umbralMinimo": 2,
+      "costoUnitario": 18000
+    },
+    {
+      "id": "salchicha",
+      "nombre": "Salchicha Manguera / Ranchera",
+      "unidad": "Unidades",
+      "stockActual": 28,
+      "umbralMinimo": 15,
+      "costoUnitario": 1500
+    },
+    {
+      "id": "panPerro",
+      "nombre": "Pan Suave para Perro",
+      "unidad": "Unidades",
+      "stockActual": 23,
+      "umbralMinimo": 12,
+      "costoUnitario": 900
+    },
+    {
+      "id": "tocineta",
+      "nombre": "Tocineta Ahumada Tajada",
+      "unidad": "Lonjas",
+      "stockActual": 2,
+      "umbralMinimo": 15,
+      "costoUnitario": 950
+    },
+    {
+      "id": "papa",
+      "nombre": "Papa a la Francesa / Criolla",
+      "unidad": "Kg",
+      "stockActual": 7.8,
+      "umbralMinimo": 3,
+      "costoUnitario": 7500
+    },
+    {
+      "id": "ripio",
+      "nombre": "Ripio de Papa Crocante",
+      "unidad": "Kg",
+      "stockActual": 1.7,
+      "umbralMinimo": 0.8,
+      "costoUnitario": 9000
+    },
+    {
+      "id": "cebolla",
+      "nombre": "Cebolla Fresca Picada",
+      "unidad": "Kg",
+      "stockActual": 1.45,
+      "umbralMinimo": 0.5,
+      "costoUnitario": 5500
+    },
+    {
+      "id": "salsa",
+      "nombre": "Salsas de la Casa (Tártara/Ajo)",
+      "unidad": "Litros",
+      "stockActual": 2.29,
+      "umbralMinimo": 1,
+      "costoUnitario": 11000
+    },
+    {
+      "id": "bebidas",
+      "nombre": "Bebidas Refrigeradas (Gaseosa/Jugo)",
+      "unidad": "Unidades",
+      "stockActual": 29,
+      "umbralMinimo": 10,
+      "costoUnitario": 2600
+    }
+  ],
+  "pedidos": [
+    {
+      "id": "#WA-4630",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-11-05T00:20:53.992Z",
+      "fechaPreparacion": "2026-11-05T00:26:12.848Z",
+      "fechaDespacho": "2026-11-05T00:26:13.529Z",
+      "clienteNombre": "Jesús",
+      "telefono": "200566449950844",
+      "direccionDomicilio": "Barrio la libertad de cerda",
+      "motorizado": "Domiciliario 1 - Camilo R. (Moto KLM-45D)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "LINE-1793838016116-iq2s",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [
+            {
+              "id": "sin_tocineta_ahumada",
+              "tipo": "sin_ingrediente",
+              "descripcion": "🚫 Sin Tocineta ahumada",
+              "costoExtra": 0,
+              "precioExtra": 0,
+              "icono": "🚫"
+            },
+            {
+              "id": "add_carne",
+              "tipo": "extra",
+              "descripcion": "➕ Adición Carne",
+              "costoExtra": 6000,
+              "precioExtra": 6000,
+              "icono": "➕"
+            }
+          ],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 24000
+    },
+    {
+      "id": "#ORD-126",
+      "negocioId": "FOC-01",
+      "canal": "caja",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-11-04T23:58:35.768Z",
+      "fechaPreparacion": "2026-11-04T23:58:47.674Z",
+      "fechaDespacho": "2026-11-04T23:58:48.947Z",
+      "clienteNombre": "Mesa 2",
+      "telefono": "",
+      "direccionDomicilio": "",
+      "motorizado": "En local (Sin motorizado)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "item_1793836707080_a7no",
+          "productoId": "p5",
+          "nombreProducto": "Perro Caliente Tradicional",
+          "cantidad": 1,
+          "precioUnitario": 12000,
+          "imagen": "IMAGENES PARA PEDIR/PERRO-CALIENTE-TOCINETA.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 12000
+    },
+    {
+      "id": "#ORD-125",
+      "negocioId": "FOC-01",
+      "canal": "caja",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-11-04T23:58:21.049Z",
+      "fechaPreparacion": "2026-11-04T23:58:46.129Z",
+      "fechaDespacho": "2026-11-04T23:58:47.225Z",
+      "clienteNombre": "Mesa 1",
+      "telefono": "",
+      "direccionDomicilio": "",
+      "motorizado": "En local (Sin motorizado)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "item_1793836697552_gy90",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 18000
+    },
+    {
+      "id": "#ORD-124",
+      "negocioId": "FOC-01",
+      "canal": "caja",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-11-04T23:50:28.608Z",
+      "fechaPreparacion": "2026-11-04T23:50:33.749Z",
+      "fechaDespacho": "2026-11-04T23:50:35.059Z",
+      "clienteNombre": "Mesa 3",
+      "telefono": "",
+      "direccionDomicilio": "",
+      "motorizado": "En local (Sin motorizado)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "item_1793836217048_mv4x",
+          "productoId": "p10",
+          "nombreProducto": "Coca-Cola Original 400ml",
+          "cantidad": 4,
+          "precioUnitario": 5000,
+          "imagen": "IMAGENES PARA PEDIR/COCA COLA 400ml.png",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 20000
+    },
+    {
+      "id": "#ORD-123",
+      "negocioId": "FOC-01",
+      "canal": "caja",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-11-04T23:49:58.872Z",
+      "fechaPreparacion": "2026-11-04T23:50:34.192Z",
+      "fechaDespacho": "2026-11-04T23:50:35.371Z",
+      "clienteNombre": "Mesa 2",
+      "telefono": "",
+      "direccionDomicilio": "",
+      "motorizado": "En local (Sin motorizado)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "item_1793836189128_qgw8",
+          "productoId": "p3",
+          "nombreProducto": "Hamburguesa Doble Carne Al Carbón",
+          "cantidad": 2,
+          "precioUnitario": 24000,
+          "imagen": "IMAGENES PARA PEDIR/DOBLE-CARNE.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 48000
+    },
+    {
+      "id": "#ORD-122",
+      "negocioId": "FOC-01",
+      "canal": "caja",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-11-04T23:49:28.112Z",
+      "fechaPreparacion": "2026-11-04T23:50:34.520Z",
+      "fechaDespacho": "2026-11-04T23:50:35.646Z",
+      "clienteNombre": "Mesa 1",
+      "telefono": "",
+      "direccionDomicilio": "",
+      "motorizado": "En local (Sin motorizado)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "item_1793836165840_n6hc",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 18000
+    },
+    {
+      "id": "#ORD-121",
+      "negocioId": "FOC-01",
+      "canal": "caja",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-11-03T01:28:24.698Z",
+      "fechaPreparacion": "2026-11-03T01:28:33.684Z",
+      "fechaDespacho": "2026-11-03T01:28:34.531Z",
+      "clienteNombre": "Mesa 1",
+      "telefono": "",
+      "direccionDomicilio": "cliente pesado",
+      "motorizado": "En local (Sin motorizado)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "item_1793669283319_s77i",
+          "productoId": "p6",
+          "nombreProducto": "Salchipapa Casera Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 16000,
+          "imagen": "IMAGENES PARA PEDIR/SALCHIPAPA CASERA.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 16000
+    },
+    {
+      "id": "#ORD-120",
+      "negocioId": "FOC-01",
+      "canal": "caja",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-11-03T01:05:51.260Z",
+      "fechaPreparacion": "2026-11-03T01:05:58.532Z",
+      "fechaDespacho": "2026-11-03T01:06:00.837Z",
+      "clienteNombre": "Mesa 1",
+      "telefono": "",
+      "direccionDomicilio": "Consumo en local",
+      "motorizado": "En local (Sin motorizado)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "item_1793667928404_xchz",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [],
+          "notas": ""
+        },
+        {
+          "id": "item_1793667932228_rbtc",
+          "productoId": "p7",
+          "nombreProducto": "Salchipapa Familiar Especial",
+          "cantidad": 1,
+          "precioUnitario": 26000,
+          "imagen": "IMAGENES PARA PEDIR/SALCHIPAPA FAMILIAR.jpg",
+          "modificaciones": [],
+          "notas": ""
+        },
+        {
+          "id": "item_1793667935186_maxl",
+          "productoId": "p10",
+          "nombreProducto": "Coca-Cola Original 400ml",
+          "cantidad": 1,
+          "precioUnitario": 5000,
+          "imagen": "IMAGENES PARA PEDIR/COCA COLA 400ml.png",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 49000
+    },
+    {
+      "id": "#WA-1657",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-11-03T00:57:52.566Z",
+      "fechaPreparacion": "2026-11-03T00:58:04.563Z",
+      "fechaDespacho": "2026-11-03T00:58:05.714Z",
+      "clienteNombre": "Josue",
+      "telefono": "136584439541937",
+      "direccionDomicilio": "Atalaya",
+      "motorizado": "Domiciliario 1 - Camilo R. (Moto KLM-45D)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "LINE-1793667464877-ige6",
+          "productoId": "p7",
+          "nombreProducto": "Salchipapa Familiar Especial",
+          "cantidad": 1,
+          "precioUnitario": 26000,
+          "imagen": "IMAGENES PARA PEDIR/SALCHIPAPA FAMILIAR.jpg",
+          "modificaciones": [],
+          "notas": ""
+        },
+        {
+          "id": "LINE-1793667464877-jo3c",
+          "productoId": "p7",
+          "nombreProducto": "Salchipapa Familiar Especial",
+          "cantidad": 1,
+          "precioUnitario": 26000,
+          "imagen": "IMAGENES PARA PEDIR/SALCHIPAPA FAMILIAR.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 52000
+    },
+    {
+      "id": "#WA-1535",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-30T12:06:41.505Z",
+      "fechaPreparacion": "2026-10-30T12:07:17.393Z",
+      "fechaDespacho": "2026-10-30T12:07:18.725Z",
+      "clienteNombre": "Maria Jose",
+      "telefono": "262667449188371",
+      "direccionDomicilio": "Victoria",
+      "motorizado": "Domiciliario 1 - Camilo R. (Moto KLM-45D)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "LINE-1793361987628-yxcx",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [
+            {
+              "id": "sin_cebolla",
+              "tipo": "sin_ingrediente",
+              "descripcion": "🚫 Sin Cebolla",
+              "costoExtra": 0,
+              "precioExtra": 0,
+              "icono": "🚫"
+            },
+            {
+              "id": "add_tocineta",
+              "tipo": "extra",
+              "descripcion": "➕ Adición Tocineta Ahumada",
+              "costoExtra": 4000,
+              "precioExtra": 4000,
+              "icono": "➕"
+            }
+          ],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 22000
+    },
+    {
+      "id": "#WA-8462",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-30T11:51:49.368Z",
+      "fechaPreparacion": "2026-11-02T16:39:41.127Z",
+      "fechaDespacho": "2026-11-02T16:39:41.976Z",
+      "clienteNombre": "Felipe Peñaloza",
+      "telefono": "35111441543398",
+      "direccionDomicilio": "Calle 14 av 3",
+      "motorizado": "Domiciliario 1 - Camilo R. (Moto KLM-45D)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "LINE-1793361055180-a4p7",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 18000
+    },
+    {
+      "id": "#WA-6696",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-30T11:49:12.218Z",
+      "fechaPreparacion": "2026-10-30T11:49:20.227Z",
+      "fechaDespacho": "2026-10-30T11:49:21.238Z",
+      "clienteNombre": "Josue",
+      "telefono": "136584439541937",
+      "direccionDomicilio": "Recoger en el local (Para llevar)",
+      "motorizado": "Domiciliario 1 - Camilo R. (Moto KLM-45D)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "LINE-1793360935782-ljku",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [],
+          "notas": ""
+        },
+        {
+          "id": "LINE-1793360939621-vp93",
+          "productoId": "p10",
+          "nombreProducto": "Coca-Cola Original 400ml",
+          "cantidad": 1,
+          "precioUnitario": 5000,
+          "imagen": "IMAGENES PARA PEDIR/COCA COLA 400ml.png",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 23000
+    },
+    {
+      "id": "#ORD-119",
+      "negocioId": "FOC-01",
+      "canal": "caja",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-30T11:44:15.111Z",
+      "fechaPreparacion": "2026-10-30T11:44:20.422Z",
+      "fechaDespacho": "2026-10-30T11:44:21.569Z",
+      "clienteNombre": "Mesa 1",
+      "telefono": "",
+      "direccionDomicilio": "Consumo en local",
+      "motorizado": "En local (Sin motorizado)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "item_1793360611658_mkwm",
+          "productoId": "p2",
+          "nombreProducto": "Hamburguesa Clásica Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 14000,
+          "imagen": "IMAGENES PARA PEDIR/CLASICA.jpg",
+          "modificaciones": [],
+          "notas": ""
+        },
+        {
+          "id": "item_1793360628559_8zw8",
+          "productoId": "p2",
+          "nombreProducto": "Hamburguesa Clásica Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 14000,
+          "imagen": "IMAGENES PARA PEDIR/CLASICA.jpg",
+          "modificaciones": [],
+          "notas": ""
+        },
+        {
+          "id": "item_1793360639648_mid3",
+          "productoId": "p7",
+          "nombreProducto": "Salchipapa Familiar Especial",
+          "cantidad": 1,
+          "precioUnitario": 26000,
+          "imagen": "IMAGENES PARA PEDIR/SALCHIPAPA FAMILIAR.jpg",
+          "modificaciones": [],
+          "notas": ""
+        },
+        {
+          "id": "item_1793360640644_j824",
+          "productoId": "p9",
+          "nombreProducto": "Gaseosa Postobón Manzana 400ml",
+          "cantidad": 1,
+          "precioUnitario": 4000,
+          "imagen": "IMAGENES PARA PEDIR/postobon 400ml.jpg",
+          "modificaciones": [],
+          "notas": ""
+        },
+        {
+          "id": "item_1793360642481_vsjt",
+          "productoId": "p3",
+          "nombreProducto": "Hamburguesa Doble Carne Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 24000,
+          "imagen": "IMAGENES PARA PEDIR/DOBLE-CARNE.jpg",
+          "modificaciones": [],
+          "notas": ""
+        },
+        {
+          "id": "item_1793360643284_m7mu",
+          "productoId": "p2",
+          "nombreProducto": "Hamburguesa Clásica Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 14000,
+          "imagen": "IMAGENES PARA PEDIR/CLASICA.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 96000
+    },
+    {
+      "id": "#WA-8078",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-30T03:17:53.783Z",
+      "fechaPreparacion": "2026-10-30T03:19:44.759Z",
+      "fechaDespacho": "2026-10-30T03:19:46.857Z",
+      "clienteNombre": "Josue",
+      "telefono": "13658443954193",
+      "direccionDomicilio": "Recoger en el local (Para llevar)",
+      "motorizado": "Domiciliario 1 - Camilo R. (Moto KLM-45D)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "LINE-1793330245127-8m49",
+          "productoId": "p7",
+          "nombreProducto": "Salchipapa Familiar Especial",
+          "cantidad": 1,
+          "precioUnitario": 26000,
+          "imagen": "IMAGENES PARA PEDIR/SALCHIPAPA FAMILIAR.jpg",
+          "modificaciones": [],
+          "notas": ""
+        },
+        {
+          "id": "LINE-1793330247796-5ixc",
+          "productoId": "p10",
+          "nombreProducto": "Coca-Cola Original 400ml",
+          "cantidad": 1,
+          "precioUnitario": 5000,
+          "imagen": "IMAGENES PARA PEDIR/COCA COLA 400ml.png",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 31000
+    },
+    {
+      "id": "#WA-2991",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-30T02:56:37.896Z",
+      "fechaPreparacion": "2026-10-30T02:57:00.000Z",
+      "fechaDespacho": "2026-10-30T02:57:30.000Z",
+      "clienteNombre": "Josue",
+      "telefono": "3157343213",
+      "direccionDomicilio": "Recoger en el local (Para llevar)",
+      "motorizado": "Domiciliario 1 - Camilo R. (Moto KLM-45D)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "LINE-1793328964038-sirq",
+          "productoId": "p4",
+          "nombreProducto": "Perro Caliente con Tocineta",
+          "cantidad": 1,
+          "precioUnitario": 15000,
+          "imagen": "IMAGENES PARA PEDIR/PERRO-CALIENTE-TOCINETA.jpg",
+          "modificaciones": [],
+          "notas": ""
+        },
+        {
+          "id": "LINE-1793328967250-hk2p",
+          "productoId": "p9",
+          "nombreProducto": "Gaseosa Postobón Manzana 400ml",
+          "cantidad": 1,
+          "precioUnitario": 4000,
+          "imagen": "IMAGENES PARA PEDIR/postobon 400ml.jpg",
+          "modificaciones": [],
+          "notas": ""
+        },
+        {
+          "id": "LINE-1793328970673-lvwo",
+          "productoId": "p11",
+          "nombreProducto": "Jugo Natural de Maracuyá",
+          "cantidad": 1,
+          "precioUnitario": 6000,
+          "imagen": "IMAGENES PARA PEDIR/JUGO-DE-MARACUYA.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 25000
+    },
+    {
+      "id": "#WA-1888",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-30T02:24:33.663Z",
+      "fechaPreparacion": "2026-10-30T02:25:10.000Z",
+      "fechaDespacho": "2026-10-30T02:26:00.000Z",
+      "clienteNombre": "Josue",
+      "telefono": "3157343213",
+      "direccionDomicilio": "Recoger en el local (Para llevar)",
+      "motorizado": "Domiciliario 1 - Camilo R. (Moto KLM-45D)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "LINE-1793327046855-51z7",
+          "productoId": "p3",
+          "nombreProducto": "Hamburguesa Doble Carne Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 24000,
+          "imagen": "IMAGENES PARA PEDIR/DOBLE-CARNE.jpg",
+          "modificaciones": [],
+          "notas": ""
+        },
+        {
+          "id": "LINE-1793327051392-21tp",
+          "productoId": "p10",
+          "nombreProducto": "Coca-Cola Original 400ml",
+          "cantidad": 1,
+          "precioUnitario": 5000,
+          "imagen": "IMAGENES PARA PEDIR/COCA COLA 400ml.png",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 29000
+    },
+    {
+      "id": "#WA-8557",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-30T01:55:23.866Z",
+      "fechaPreparacion": "2026-10-30T01:56:00.000Z",
+      "fechaDespacho": "2026-10-30T01:57:00.000Z",
+      "clienteNombre": "Josue",
+      "telefono": "3157343213",
+      "direccionDomicilio": "Caobos",
+      "motorizado": "Domiciliario 1 - Camilo R. (Moto KLM-45D)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "LINE-1793325302508-ubjr",
+          "productoId": "p3",
+          "nombreProducto": "Hamburguesa Doble Carne Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 24000,
+          "imagen": "IMAGENES PARA PEDIR/DOBLE-CARNE.jpg",
+          "modificaciones": [],
+          "notas": ""
+        },
+        {
+          "id": "LINE-1793325309125-5lzh",
+          "productoId": "p9",
+          "nombreProducto": "Gaseosa Postobón Manzana 400ml",
+          "cantidad": 1,
+          "precioUnitario": 4000,
+          "imagen": "IMAGENES PARA PEDIR/postobon 400ml.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 28000
+    },
+    {
+      "id": "#WA-4761",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-30T00:47:02.385Z",
+      "fechaPreparacion": "2026-10-30T00:47:07.415Z",
+      "fechaDespacho": "2026-10-30T00:47:21.424Z",
+      "clienteNombre": "Josue",
+      "telefono": "136584439541937",
+      "direccionDomicilio": "Atalaya",
+      "motorizado": "Domiciliario 1 - Camilo R. (Moto KLM-45D)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "LINE-1793321193469-u1nt",
+          "productoId": "p8",
+          "nombreProducto": "Salchipapa Mixta Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 29000,
+          "imagen": "IMAGENES PARA PEDIR/SALCHIPAPA-MIXTA.jpg",
+          "modificaciones": [],
+          "notas": ""
+        },
+        {
+          "id": "LINE-1793321202007-7mcr",
+          "productoId": "p10",
+          "nombreProducto": "Coca-Cola Original 400ml",
+          "cantidad": 1,
+          "precioUnitario": 5000,
+          "imagen": "IMAGENES PARA PEDIR/COCA COLA 400ml.png",
+          "modificaciones": [],
+          "notas": ""
+        },
+        {
+          "id": "LINE-1793321202007-uvy6",
+          "productoId": "p10",
+          "nombreProducto": "Coca-Cola Original 400ml",
+          "cantidad": 1,
+          "precioUnitario": 5000,
+          "imagen": "IMAGENES PARA PEDIR/COCA COLA 400ml.png",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 39000
+    },
+    {
+      "id": "#WA-2620",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-30T00:36:09.333Z",
+      "fechaPreparacion": "2026-10-30T00:37:13.376Z",
+      "fechaDespacho": "2026-10-30T00:37:14.730Z",
+      "clienteNombre": "Neila Vivas",
+      "telefono": "97620328472805",
+      "direccionDomicilio": "Barrio libertad",
+      "motorizado": "Domiciliario 1 - Camilo R. (Moto KLM-45D)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "LINE-1793320518149-iat6",
+          "productoId": "p6",
+          "nombreProducto": "Salchipapa Casera Al Carb��������n",
+          "cantidad": 1,
+          "precioUnitario": 16000,
+          "imagen": "IMAGENES PARA PEDIR/SALCHIPAPA CASERA.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 16000
+    },
+    {
+      "id": "#ORD-118",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-30T00:18:48.576Z",
+      "fechaPreparacion": "2026-10-30T00:18:54.688Z",
+      "fechaDespacho": "2026-10-30T00:18:56.065Z",
+      "clienteNombre": "neila",
+      "telefono": "314 888 9999",
+      "direccionDomicilio": "libertad",
+      "motorizado": "Domiciliario 1 - Camilo R. (Moto KLM-45D)",
+      "metodoPago": "Nequi / Transferencia",
+      "items": [
+        {
+          "id": "item_1793319528575_5dxs",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 18000
+    },
+    {
+      "id": "#WA-1209",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-30T00:17:37.213Z",
+      "fechaPreparacion": "2026-10-30T00:18:55.146Z",
+      "fechaDespacho": "2026-10-30T00:18:56.387Z",
+      "clienteNombre": "Neila Vivas",
+      "telefono": "97620328472805",
+      "direccionDomicilio": "Libertad",
+      "motorizado": "Domiciliario 1 - Camilo R. (Moto KLM-45D)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "LINE-1793319446234-wrtu",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 18000
+    },
+    {
+      "id": "#WA-6937",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-30T00:04:36.102Z",
+      "fechaPreparacion": "2026-10-30T00:18:15.798Z",
+      "fechaDespacho": "2026-10-30T00:18:18.797Z",
+      "clienteNombre": "Jesús",
+      "telefono": "200566449950844",
+      "direccionDomicilio": "Libertad",
+      "motorizado": "Domiciliario 1 - Camilo R. (Moto KLM-45D)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "item_1793318676102_vrdm",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 18000
+    },
+    {
+      "id": "#ORD-116",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-30T00:00:03.393Z",
+      "fechaPreparacion": "2026-10-30T00:00:22.727Z",
+      "fechaDespacho": "2026-10-30T00:00:32.020Z",
+      "clienteNombre": "Cliente WhatsApp (314 888 9999)",
+      "telefono": "314 888 9999",
+      "direccionDomicilio": "Dirección: Barrio Caobos Calle 15 #4-20",
+      "motorizado": "Domiciliario 1 - Camilo R. (Moto KLM-45D)",
+      "metodoPago": "Nequi / Transferencia",
+      "items": [
+        {
+          "id": "item_1793318403392_px5f",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [
+            {
+              "id": "mod_sin_cebolla",
+              "tipo": "sin_ingrediente",
+              "descripcion": "Sin Cebolla",
+              "costoExtra": 0,
+              "icono": "🚫",
+              "ajusteInsumo": {
+                "insumoId": "cebolla",
+                "delta": "omitir"
+              }
+            },
+            {
+              "id": "mod_sin_ripio",
+              "tipo": "sin_ingrediente",
+              "descripcion": "Sin Ripio",
+              "costoExtra": 0,
+              "icono": "🚫",
+              "ajusteInsumo": {
+                "insumoId": "ripio",
+                "delta": "omitir"
+              }
+            },
+            {
+              "id": "mod_salsa_aparte",
+              "tipo": "aparte",
+              "descripcion": "Salsas Aparte",
+              "costoExtra": 0,
+              "icono": "🥣",
+              "ajusteInsumo": null
+            }
+          ],
+          "notas": ""
+        },
+        {
+          "id": "item_1793318403392_xu8s",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [],
+          "notas": ""
+        },
+        {
+          "id": "item_1793318403392_x2x9",
+          "productoId": "p4",
+          "nombreProducto": "Perro Caliente con Tocineta",
+          "cantidad": 1,
+          "precioUnitario": 15000,
+          "imagen": "IMAGENES PARA PEDIR/PERRO-CALIENTE-TOCINETA.jpg",
+          "modificaciones": [
+            {
+              "id": "mod_sin_cebolla",
+              "tipo": "sin_ingrediente",
+              "descripcion": "Sin Cebolla",
+              "costoExtra": 0,
+              "icono": "🚫",
+              "ajusteInsumo": {
+                "insumoId": "cebolla",
+                "delta": "omitir"
+              }
+            },
+            {
+              "id": "mod_sin_ripio",
+              "tipo": "sin_ingrediente",
+              "descripcion": "Sin Ripio",
+              "costoExtra": 0,
+              "icono": "🚫",
+              "ajusteInsumo": {
+                "insumoId": "ripio",
+                "delta": "omitir"
+              }
+            },
+            {
+              "id": "mod_salsa_aparte",
+              "tipo": "aparte",
+              "descripcion": "Salsas Aparte",
+              "costoExtra": 0,
+              "icono": "🥣",
+              "ajusteInsumo": null
+            }
+          ],
+          "notas": ""
+        },
+        {
+          "id": "item_1793318403392_wi7f",
+          "productoId": "p5",
+          "nombreProducto": "Perro Caliente Tradicional",
+          "cantidad": 1,
+          "precioUnitario": 12000,
+          "imagen": "IMAGENES PARA PEDIR/PERRO-CALIENTE-TOCINETA.jpg",
+          "modificaciones": [
+            {
+              "id": "mod_sin_cebolla",
+              "tipo": "sin_ingrediente",
+              "descripcion": "Sin Cebolla",
+              "costoExtra": 0,
+              "icono": "🚫",
+              "ajusteInsumo": {
+                "insumoId": "cebolla",
+                "delta": "omitir"
+              }
+            },
+            {
+              "id": "mod_sin_ripio",
+              "tipo": "sin_ingrediente",
+              "descripcion": "Sin Ripio",
+              "costoExtra": 0,
+              "icono": "🚫",
+              "ajusteInsumo": {
+                "insumoId": "ripio",
+                "delta": "omitir"
+              }
+            },
+            {
+              "id": "mod_salsa_aparte",
+              "tipo": "aparte",
+              "descripcion": "Salsas Aparte",
+              "costoExtra": 0,
+              "icono": "🥣",
+              "ajusteInsumo": null
+            }
+          ],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 63000
+    },
+    {
+      "id": "#WA-8170",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-29T23:59:43.799Z",
+      "fechaPreparacion": "2026-10-30T00:18:16.333Z",
+      "fechaDespacho": "2026-10-30T00:18:19.304Z",
+      "clienteNombre": "Josue",
+      "telefono": "3157343213",
+      "direccionDomicilio": "Libertad",
+      "motorizado": "Carlos Gómez (Moto AKT NKD - Cúcuta)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "item_1793318383799_ky7o",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 18000
+    },
+    {
+      "id": "#ORD-115",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-29T23:47:30.105Z",
+      "fechaPreparacion": "2026-10-29T23:47:38.246Z",
+      "fechaDespacho": "2026-10-29T23:47:39.191Z",
+      "clienteNombre": "Cliente WhatsApp (314 888 9999)",
+      "telefono": "314 888 9999",
+      "direccionDomicilio": "Dirección: Barrio Caobos Calle 15 #4-20",
+      "motorizado": "Domiciliario 1 - Camilo R. (Moto KLM-45D)",
+      "metodoPago": "Nequi / Transferencia",
+      "items": [
+        {
+          "id": "item_1793317650103_7m6n",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [
+            {
+              "id": "mod_sin_cebolla",
+              "tipo": "sin_ingrediente",
+              "descripcion": "Sin Cebolla",
+              "costoExtra": 0,
+              "icono": "🚫",
+              "ajusteInsumo": {
+                "insumoId": "cebolla",
+                "delta": "omitir"
+              }
+            },
+            {
+              "id": "mod_sin_ripio",
+              "tipo": "sin_ingrediente",
+              "descripcion": "Sin Ripio",
+              "costoExtra": 0,
+              "icono": "🚫",
+              "ajusteInsumo": {
+                "insumoId": "ripio",
+                "delta": "omitir"
+              }
+            },
+            {
+              "id": "mod_salsa_aparte",
+              "tipo": "aparte",
+              "descripcion": "Salsas Aparte",
+              "costoExtra": 0,
+              "icono": "🥣",
+              "ajusteInsumo": null
+            }
+          ],
+          "notas": ""
+        },
+        {
+          "id": "item_1793317650103_qvy2",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [],
+          "notas": ""
+        },
+        {
+          "id": "item_1793317650104_wsgg",
+          "productoId": "p4",
+          "nombreProducto": "Perro Caliente con Tocineta",
+          "cantidad": 1,
+          "precioUnitario": 15000,
+          "imagen": "IMAGENES PARA PEDIR/PERRO-CALIENTE-TOCINETA.jpg",
+          "modificaciones": [
+            {
+              "id": "mod_sin_cebolla",
+              "tipo": "sin_ingrediente",
+              "descripcion": "Sin Cebolla",
+              "costoExtra": 0,
+              "icono": "🚫",
+              "ajusteInsumo": {
+                "insumoId": "cebolla",
+                "delta": "omitir"
+              }
+            },
+            {
+              "id": "mod_sin_ripio",
+              "tipo": "sin_ingrediente",
+              "descripcion": "Sin Ripio",
+              "costoExtra": 0,
+              "icono": "🚫",
+              "ajusteInsumo": {
+                "insumoId": "ripio",
+                "delta": "omitir"
+              }
+            },
+            {
+              "id": "mod_salsa_aparte",
+              "tipo": "aparte",
+              "descripcion": "Salsas Aparte",
+              "costoExtra": 0,
+              "icono": "🥣",
+              "ajusteInsumo": null
+            }
+          ],
+          "notas": ""
+        },
+        {
+          "id": "item_1793317650104_cuea",
+          "productoId": "p5",
+          "nombreProducto": "Perro Caliente Tradicional",
+          "cantidad": 1,
+          "precioUnitario": 12000,
+          "imagen": "IMAGENES PARA PEDIR/PERRO-CALIENTE-TOCINETA.jpg",
+          "modificaciones": [
+            {
+              "id": "mod_sin_cebolla",
+              "tipo": "sin_ingrediente",
+              "descripcion": "Sin Cebolla",
+              "costoExtra": 0,
+              "icono": "🚫",
+              "ajusteInsumo": {
+                "insumoId": "cebolla",
+                "delta": "omitir"
+              }
+            },
+            {
+              "id": "mod_sin_ripio",
+              "tipo": "sin_ingrediente",
+              "descripcion": "Sin Ripio",
+              "costoExtra": 0,
+              "icono": "🚫",
+              "ajusteInsumo": {
+                "insumoId": "ripio",
+                "delta": "omitir"
+              }
+            },
+            {
+              "id": "mod_salsa_aparte",
+              "tipo": "aparte",
+              "descripcion": "Salsas Aparte",
+              "costoExtra": 0,
+              "icono": "🥣",
+              "ajusteInsumo": null
+            }
+          ],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 63000
+    },
+    {
+      "id": "#WA-7824",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-29T23:47:10.272Z",
+      "fechaPreparacion": "2026-10-30T00:18:16.771Z",
+      "fechaDespacho": "2026-10-30T00:18:19.701Z",
+      "clienteNombre": "Josue",
+      "telefono": "136584439541937",
+      "direccionDomicilio": "calletano",
+      "motorizado": "Carlos Gómez (Moto AKT NKD - Cúcuta)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "item_1793317630273_cnf4",
+          "productoId": "p6",
+          "nombreProducto": "Salchipapa Casera Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 16000,
+          "imagen": "IMAGENES PARA PEDIR/SALCHIPAPA CASERA.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 16000
+    },
+    {
+      "id": "#WA-4551",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-29T23:44:19.927Z",
+      "fechaPreparacion": "2026-10-30T00:18:17.763Z",
+      "fechaDespacho": "2026-10-30T00:18:21.389Z",
+      "clienteNombre": "Josue",
+      "telefono": "136584439541937",
+      "direccionDomicilio": "Barrio libertad",
+      "motorizado": "Carlos Gómez (Moto AKT NKD - Cúcuta)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "item_1793317459927_qmzx",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [],
+          "notas": ""
+        },
+        {
+          "id": "item_1793317459927_p4h9",
+          "productoId": "p3",
+          "nombreProducto": "Hamburguesa Doble Carne Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 24000,
+          "imagen": "IMAGENES PARA PEDIR/DOBLE-CARNE.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 42000
+    },
+    {
+      "id": "#ORD-114",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-29T20:20:10.416Z",
+      "fechaPreparacion": "2026-10-29T23:44:45.822Z",
+      "fechaDespacho": "2026-10-29T23:44:51.993Z",
+      "clienteNombre": "Josue",
+      "telefono": "136584439541937",
+      "direccionDomicilio": "Domicilio recibido por WhatsApp",
+      "motorizado": "Domiciliario 1 - Camilo R. (Moto KLM-45D)",
+      "metodoPago": "Nequi / Transferencia",
+      "items": [
+        {
+          "id": "item_1793305210416_nuk4",
+          "productoId": "p4",
+          "nombreProducto": "Perro Caliente con Tocineta",
+          "cantidad": 1,
+          "precioUnitario": 15000,
+          "imagen": "IMAGENES PARA PEDIR/PERRO-CALIENTE-TOCINETA.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 15000
+    },
+    {
+      "id": "#ORD-113",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-29T20:19:15.819Z",
+      "fechaPreparacion": "2026-10-29T23:44:51.086Z",
+      "fechaDespacho": "2026-10-29T23:44:52.612Z",
+      "clienteNombre": "Josue",
+      "telefono": "136584439541937",
+      "direccionDomicilio": "Domicilio recibido por WhatsApp",
+      "motorizado": "Domiciliario 1 - Camilo R. (Moto KLM-45D)",
+      "metodoPago": "Nequi / Transferencia",
+      "items": [
+        {
+          "id": "item_1793305155819_aw7m",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 2,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 36000
+    },
+    {
+      "id": "#ORD-112",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-29T19:08:48.012Z",
+      "fechaPreparacion": "2026-10-29T19:08:51.988Z",
+      "fechaDespacho": "2026-10-29T19:08:52.965Z",
+      "clienteNombre": "WhatsApp (314 888 9999)",
+      "telefono": "314 888 9999",
+      "direccionDomicilio": "Domicilio WhatsApp",
+      "motorizado": "Domiciliario 1 - Camilo R. (Moto KLM-45D)",
+      "metodoPago": "Nequi / Transferencia",
+      "items": [
+        {
+          "id": "item_1793300928012_3xkr",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 2,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [
+            {
+              "id": "mod_sin_cebolla",
+              "tipo": "sin_ingrediente",
+              "descripcion": "Sin Cebolla",
+              "costoExtra": 0,
+              "icono": "🚫",
+              "ajusteInsumo": {
+                "insumoId": "cebolla",
+                "delta": "omitir"
+              }
+            },
+            {
+              "id": "mod_sin_queso",
+              "tipo": "sin_ingrediente",
+              "descripcion": "Sin Queso",
+              "costoExtra": 0,
+              "icono": "🚫",
+              "ajusteInsumo": {
+                "insumoId": "queso",
+                "delta": "omitir"
+              }
+            }
+          ],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 36000
+    },
+    {
+      "id": "#ORD-111",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-29T19:08:40.427Z",
+      "fechaPreparacion": "2026-10-29T19:08:53.509Z",
+      "fechaDespacho": "2026-10-29T19:08:54.139Z",
+      "clienteNombre": "WhatsApp (314 888 9999)",
+      "telefono": "314 888 9999",
+      "direccionDomicilio": "Domicilio WhatsApp",
+      "motorizado": "Domiciliario 1 - Camilo R. (Moto KLM-45D)",
+      "metodoPago": "Nequi / Transferencia",
+      "items": [
+        {
+          "id": "item_1793300920427_u6s0",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 2,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [
+            {
+              "id": "mod_sin_cebolla",
+              "tipo": "sin_ingrediente",
+              "descripcion": "Sin Cebolla",
+              "costoExtra": 0,
+              "icono": "🚫",
+              "ajusteInsumo": {
+                "insumoId": "cebolla",
+                "delta": "omitir"
+              }
+            },
+            {
+              "id": "mod_sin_queso",
+              "tipo": "sin_ingrediente",
+              "descripcion": "Sin Queso",
+              "costoExtra": 0,
+              "icono": "🚫",
+              "ajusteInsumo": {
+                "insumoId": "queso",
+                "delta": "omitir"
+              }
+            }
+          ],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 36000
+    },
+    {
+      "id": "#ORD-110",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-29T19:08:25.349Z",
+      "fechaPreparacion": "2026-10-29T19:08:33.900Z",
+      "fechaDespacho": "2026-10-29T19:08:34.889Z",
+      "clienteNombre": "WhatsApp (314 888 9999)",
+      "telefono": "314 888 9999",
+      "direccionDomicilio": "Domicilio WhatsApp",
+      "motorizado": "Domiciliario 1 - Camilo R. (Moto KLM-45D)",
+      "metodoPago": "Nequi / Transferencia",
+      "items": [
+        {
+          "id": "item_1793300905349_3njp",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 2,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [
+            {
+              "id": "mod_sin_cebolla",
+              "tipo": "sin_ingrediente",
+              "descripcion": "Sin Cebolla",
+              "costoExtra": 0,
+              "icono": "🚫",
+              "ajusteInsumo": {
+                "insumoId": "cebolla",
+                "delta": "omitir"
+              }
+            },
+            {
+              "id": "mod_sin_ripio",
+              "tipo": "sin_ingrediente",
+              "descripcion": "Sin Ripio",
+              "costoExtra": 0,
+              "icono": "🚫",
+              "ajusteInsumo": {
+                "insumoId": "ripio",
+                "delta": "omitir"
+              }
+            },
+            {
+              "id": "mod_sin_queso",
+              "tipo": "sin_ingrediente",
+              "descripcion": "Sin Queso",
+              "costoExtra": 0,
+              "icono": "🚫",
+              "ajusteInsumo": {
+                "insumoId": "queso",
+                "delta": "omitir"
+              }
+            }
+          ],
+          "notas": ""
+        },
+        {
+          "id": "item_1793300905349_0fvs",
+          "productoId": "p4",
+          "nombreProducto": "Perro Caliente con Tocineta",
+          "cantidad": 1,
+          "precioUnitario": 15000,
+          "imagen": "IMAGENES PARA PEDIR/PERRO-CALIENTE-TOCINETA.jpg",
+          "modificaciones": [
+            {
+              "id": "mod_sin_cebolla",
+              "tipo": "sin_ingrediente",
+              "descripcion": "Sin Cebolla",
+              "costoExtra": 0,
+              "icono": "🚫",
+              "ajusteInsumo": {
+                "insumoId": "cebolla",
+                "delta": "omitir"
+              }
+            },
+            {
+              "id": "mod_sin_ripio",
+              "tipo": "sin_ingrediente",
+              "descripcion": "Sin Ripio",
+              "costoExtra": 0,
+              "icono": "🚫",
+              "ajusteInsumo": {
+                "insumoId": "ripio",
+                "delta": "omitir"
+              }
+            },
+            {
+              "id": "mod_sin_queso",
+              "tipo": "sin_ingrediente",
+              "descripcion": "Sin Queso",
+              "costoExtra": 0,
+              "icono": "🚫",
+              "ajusteInsumo": {
+                "insumoId": "queso",
+                "delta": "omitir"
+              }
+            }
+          ],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 51000
+    },
+    {
+      "id": "#ORD-109",
+      "negocioId": "FOC-01",
+      "canal": "caja",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-27T19:43:15.524Z",
+      "fechaPreparacion": "2026-10-27T19:43:49.411Z",
+      "fechaDespacho": "2026-10-29T19:08:01.005Z",
+      "clienteNombre": "Mesa 1",
+      "telefono": "",
+      "direccionDomicilio": "Consumo en local",
+      "motorizado": "En local (Sin motorizado)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "item_1793130162871_nb0c",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 18000
+    },
+    {
+      "id": "#ORD-108",
+      "negocioId": "FOC-01",
+      "canal": "caja",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-27T13:34:18.391Z",
+      "fechaPreparacion": "2026-10-27T13:34:31.758Z",
+      "fechaDespacho": "2026-10-27T13:34:42.277Z",
+      "clienteNombre": "Mesa 1",
+      "telefono": "",
+      "direccionDomicilio": "Consumo en local",
+      "motorizado": "En local (Sin motorizado)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "item_1793108050230_339s",
+          "productoId": "p5",
+          "nombreProducto": "Perro Caliente Tradicional",
+          "cantidad": 1,
+          "precioUnitario": 12000,
+          "imagen": "IMAGENES PARA PEDIR/PERRO-CALIENTE-TOCINETA.jpg",
+          "modificaciones": [],
+          "notas": ""
+        },
+        {
+          "id": "item_1793108053644_ybp0",
+          "productoId": "p9",
+          "nombreProducto": "Gaseosa Postobón Manzana 400ml",
+          "cantidad": 1,
+          "precioUnitario": 4000,
+          "imagen": "IMAGENES PARA PEDIR/postobon 400ml.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 16000
+    },
+    {
+      "id": "#ORD-107",
+      "negocioId": "FOC-01",
+      "canal": "caja",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-27T13:33:53.938Z",
+      "fechaPreparacion": "2026-10-29T19:08:01.589Z",
+      "fechaDespacho": "2026-10-29T19:08:02.188Z",
+      "clienteNombre": "Mesa 1",
+      "telefono": "",
+      "direccionDomicilio": "Consumo en local",
+      "motorizado": "En local (Sin motorizado)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "item_1793108032634_0czj",
+          "productoId": "p8",
+          "nombreProducto": "Salchipapa Mixta Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 29000,
+          "imagen": "IMAGENES PARA PEDIR/SALCHIPAPA-MIXTA.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 29000
+    },
+    {
+      "id": "#ORD-106",
+      "negocioId": "FOC-01",
+      "canal": "caja",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-27T13:33:32.094Z",
+      "fechaPreparacion": "2026-10-29T19:08:02.665Z",
+      "fechaDespacho": "2026-10-29T19:08:03.708Z",
+      "clienteNombre": "Mesa 1",
+      "telefono": "",
+      "direccionDomicilio": "Consumo en local",
+      "motorizado": "En local (Sin motorizado)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "item_1793107940878_4vq5",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [],
+          "notas": ""
+        },
+        {
+          "id": "item_1793108006077_npr5",
+          "productoId": "p6",
+          "nombreProducto": "Salchipapa Casera Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 16000,
+          "imagen": "IMAGENES PARA PEDIR/SALCHIPAPA CASERA.jpg",
+          "modificaciones": [],
+          "notas": ""
+        },
+        {
+          "id": "item_1793108006643_lije",
+          "productoId": "p5",
+          "nombreProducto": "Perro Caliente Tradicional",
+          "cantidad": 1,
+          "precioUnitario": 12000,
+          "imagen": "IMAGENES PARA PEDIR/PERRO-CALIENTE-TOCINETA.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 46000
+    },
+    {
+      "id": "#ORD-105",
+      "negocioId": "FOC-01",
+      "canal": "caja",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-26T18:24:05.451Z",
+      "fechaPreparacion": "2026-10-26T18:24:22.806Z",
+      "fechaDespacho": "2026-10-26T18:24:35.294Z",
+      "clienteNombre": "Mesa 2",
+      "telefono": "",
+      "direccionDomicilio": "Consumo en local",
+      "motorizado": "En local (Sin motorizado)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "item_1793039022899_dphb",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [],
+          "notas": ""
+        },
+        {
+          "id": "item_1793039029489_te67",
+          "productoId": "p4",
+          "nombreProducto": "Perro Caliente con Tocineta",
+          "cantidad": 1,
+          "precioUnitario": 15000,
+          "imagen": "IMAGENES PARA PEDIR/PERRO-CALIENTE-TOCINETA.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 33000
+    },
+    {
+      "id": "#ORD-104",
+      "negocioId": "FOC-01",
+      "canal": "caja",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-26T18:16:23.860Z",
+      "fechaPreparacion": "2026-10-26T18:16:32.637Z",
+      "fechaDespacho": "2026-10-26T18:16:42.221Z",
+      "clienteNombre": "Mesa 5",
+      "telefono": "",
+      "direccionDomicilio": "Consumo en local",
+      "motorizado": "En local (Sin motorizado)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "item_1793038549813_7lal",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [],
+          "notas": ""
+        },
+        {
+          "id": "item_1793038553181_sjbg",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [
+            {
+              "id": "mod_extra_papa",
+              "tipo": "extra",
+              "descripcion": "+Porción Papas",
+              "costoExtra": 5000,
+              "icono": "🍟",
+              "ajusteInsumo": {
+                "insumoId": "papa",
+                "delta": 0.2
+              }
+            }
+          ],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 41000
+    },
+    {
+      "id": "#ORD-103",
+      "negocioId": "FOC-01",
+      "canal": "caja",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-26T18:05:37.339Z",
+      "fechaPreparacion": "2026-10-26T18:11:04.745Z",
+      "fechaDespacho": "2026-10-26T18:11:05.902Z",
+      "clienteNombre": "Mesa 4",
+      "telefono": "",
+      "direccionDomicilio": "Consumo en Mesa 4",
+      "motorizado": "En local (Sin motorizado)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "item_1793038117341_1ora",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [
+            {
+              "id": "mod_sin_cebolla",
+              "tipo": "sin_ingrediente",
+              "descripcion": "Sin Cebolla",
+              "costoExtra": 0,
+              "icono": "🚫"
+            }
+          ],
+          "notas": ""
+        },
+        {
+          "id": "item_1793038117342_ub3k",
+          "productoId": "p11",
+          "nombreProducto": "Jugo Natural de Maracuyá",
+          "cantidad": 1,
+          "precioUnitario": 6000,
+          "imagen": "IMAGENES PARA PEDIR/JUGO-DE-MARACUYA.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 24000
+    },
+    {
+      "id": "#ORD-102",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-26T18:00:37.339Z",
+      "fechaPreparacion": "2026-10-26T18:03:37.339Z",
+      "fechaDespacho": "2026-10-26T18:11:03.277Z",
+      "clienteNombre": "Carlos Mendoza",
+      "telefono": "312 456 7890",
+      "direccionDomicilio": "Barrio Los Pinos Calle 14 #5-20",
+      "motorizado": "Domiciliario 1 - Camilo R. (Moto KLM-45D)",
+      "metodoPago": "Nequi / Transferencia",
+      "items": [
+        {
+          "id": "item_1793038117342_m0m9",
+          "productoId": "p3",
+          "nombreProducto": "Hamburguesa Doble Carne Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 24000,
+          "imagen": "IMAGENES PARA PEDIR/DOBLE-CARNE.jpg",
+          "modificaciones": [
+            {
+              "id": "mod_extra_queso",
+              "tipo": "extra",
+              "descripcion": "+Extra Queso",
+              "costoExtra": 3000,
+              "icono": "🧀"
+            }
+          ],
+          "notas": ""
+        },
+        {
+          "id": "item_1793038117342_027p",
+          "productoId": "p8",
+          "nombreProducto": "Salchipapa Mixta Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 29000,
+          "imagen": "IMAGENES PARA PEDIR/SALCHIPAPA-MIXTA.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 56000
+    },
+    {
+      "id": "#ORD-101",
+      "negocioId": "FOC-01",
+      "canal": "caja",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-10-26T17:44:37.339Z",
+      "fechaPreparacion": "2026-10-26T17:47:37.339Z",
+      "fechaDespacho": "2026-10-26T17:56:37.339Z",
+      "clienteNombre": "Mostrador - Andrea S.",
+      "telefono": "315 987 6543",
+      "direccionDomicilio": "Para llevar en mostrador",
+      "motorizado": "En local (Sin motorizado)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "item_1793038117342_m66u",
+          "productoId": "p2",
+          "nombreProducto": "Hamburguesa Clásica Al Carbón",
+          "cantidad": 2,
+          "precioUnitario": 14000,
+          "imagen": "IMAGENES PARA PEDIR/CLASICA.jpg",
+          "modificaciones": [
+            {
+              "id": "mod_para_llevar",
+              "tipo": "aparte",
+              "descripcion": "Empaque Llevar",
+              "costoExtra": 1000,
+              "icono": "🛍️"
+            }
+          ],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 30000
+    }
+  ],
+  "movimientos": [
+    {
+      "id": "MOV-1793836715768-765",
+      "negocioId": "FOC-01",
+      "insumoId": "ripio",
+      "insumoNombre": "Ripio de Papa Crocante",
+      "tipo": "consumo",
+      "cantidad": 0.02,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Perro Caliente Tradicional (#ORD-126)",
+      "fecha": "2026-11-04T23:58:35.768Z"
+    },
+    {
+      "id": "MOV-1793836715768-992",
+      "negocioId": "FOC-01",
+      "insumoId": "salsa",
+      "insumoNombre": "Salsas de la Casa (Tártara/Ajo)",
+      "tipo": "consumo",
+      "cantidad": 0.025,
+      "unidad": "Litros",
+      "motivo": "Venta 1x Perro Caliente Tradicional (#ORD-126)",
+      "fecha": "2026-11-04T23:58:35.768Z"
+    },
+    {
+      "id": "MOV-1793836715768-635",
+      "negocioId": "FOC-01",
+      "insumoId": "cebolla",
+      "insumoNombre": "Cebolla Fresca Picada",
+      "tipo": "consumo",
+      "cantidad": 0.02,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Perro Caliente Tradicional (#ORD-126)",
+      "fecha": "2026-11-04T23:58:35.768Z"
+    },
+    {
+      "id": "MOV-1793836715768-773",
+      "negocioId": "FOC-01",
+      "insumoId": "queso",
+      "insumoNombre": "Queso Costeño / Mozzarella",
+      "tipo": "consumo",
+      "cantidad": 0.04,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Perro Caliente Tradicional (#ORD-126)",
+      "fecha": "2026-11-04T23:58:35.768Z"
+    },
+    {
+      "id": "MOV-1793836715768-855",
+      "negocioId": "FOC-01",
+      "insumoId": "panPerro",
+      "insumoNombre": "Pan Suave para Perro",
+      "tipo": "consumo",
+      "cantidad": 1,
+      "unidad": "Unidades",
+      "motivo": "Venta 1x Perro Caliente Tradicional (#ORD-126)",
+      "fecha": "2026-11-04T23:58:35.768Z"
+    },
+    {
+      "id": "MOV-1793836715768-148",
+      "negocioId": "FOC-01",
+      "insumoId": "salchicha",
+      "insumoNombre": "Salchicha Manguera / Ranchera",
+      "tipo": "consumo",
+      "cantidad": 1,
+      "unidad": "Unidades",
+      "motivo": "Venta 1x Perro Caliente Tradicional (#ORD-126)",
+      "fecha": "2026-11-04T23:58:35.768Z"
+    },
+    {
+      "id": "MOV-1793836701050-3",
+      "negocioId": "FOC-01",
+      "insumoId": "cebolla",
+      "insumoNombre": "Cebolla Fresca Picada",
+      "tipo": "consumo",
+      "cantidad": 0.02,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Hamburguesa Especial Al Carbón (#ORD-125)",
+      "fecha": "2026-11-04T23:58:21.050Z"
+    },
+    {
+      "id": "MOV-1793836701050-534",
+      "negocioId": "FOC-01",
+      "insumoId": "salsa",
+      "insumoNombre": "Salsas de la Casa (Tártara/Ajo)",
+      "tipo": "consumo",
+      "cantidad": 0.025,
+      "unidad": "Litros",
+      "motivo": "Venta 1x Hamburguesa Especial Al Carbón (#ORD-125)",
+      "fecha": "2026-11-04T23:58:21.050Z"
+    },
+    {
+      "id": "MOV-1793836701050-762",
+      "negocioId": "FOC-01",
+      "insumoId": "ripio",
+      "insumoNombre": "Ripio de Papa Crocante",
+      "tipo": "consumo",
+      "cantidad": 0.02,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Hamburguesa Especial Al Carbón (#ORD-125)",
+      "fecha": "2026-11-04T23:58:21.050Z"
+    },
+    {
+      "id": "MOV-1793836701050-421",
+      "negocioId": "FOC-01",
+      "insumoId": "tocineta",
+      "insumoNombre": "Tocineta Ahumada Tajada",
+      "tipo": "consumo",
+      "cantidad": 1,
+      "unidad": "Lonjas",
+      "motivo": "Venta 1x Hamburguesa Especial Al Carbón (#ORD-125)",
+      "fecha": "2026-11-04T23:58:21.050Z"
+    },
+    {
+      "id": "MOV-1793836701050-891",
+      "negocioId": "FOC-01",
+      "insumoId": "queso",
+      "insumoNombre": "Queso Costeño / Mozzarella",
+      "tipo": "consumo",
+      "cantidad": 0.04,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Hamburguesa Especial Al Carbón (#ORD-125)",
+      "fecha": "2026-11-04T23:58:21.050Z"
+    },
+    {
+      "id": "MOV-1793836701050-570",
+      "negocioId": "FOC-01",
+      "insumoId": "pan",
+      "insumoNombre": "Pan Brioche Artesanal",
+      "tipo": "consumo",
+      "cantidad": 1,
+      "unidad": "Unidades",
+      "motivo": "Venta 1x Hamburguesa Especial Al Carbón (#ORD-125)",
+      "fecha": "2026-11-04T23:58:21.050Z"
+    },
+    {
+      "id": "MOV-1793836701049-883",
+      "negocioId": "FOC-01",
+      "insumoId": "carne",
+      "insumoNombre": "Carne de Res / Parrilla (150g)",
+      "tipo": "consumo",
+      "cantidad": 1,
+      "unidad": "Porciones",
+      "motivo": "Venta 1x Hamburguesa Especial Al Carbón (#ORD-125)",
+      "fecha": "2026-11-04T23:58:21.049Z"
+    },
+    {
+      "id": "MOV-1793836228608-198",
+      "negocioId": "FOC-01",
+      "insumoId": "bebidas",
+      "insumoNombre": "Bebidas Refrigeradas (Gaseosa/Jugo)",
+      "tipo": "consumo",
+      "cantidad": 4,
+      "unidad": "Unidades",
+      "motivo": "Venta 4x Coca-Cola Original 400ml (#ORD-124)",
+      "fecha": "2026-11-04T23:50:28.608Z"
+    },
+    {
+      "id": "MOV-1793836198872-662",
+      "negocioId": "FOC-01",
+      "insumoId": "cebolla",
+      "insumoNombre": "Cebolla Fresca Picada",
+      "tipo": "consumo",
+      "cantidad": 0.05,
+      "unidad": "Kg",
+      "motivo": "Venta 2x Hamburguesa Doble Carne Al Carbón (#ORD-123)",
+      "fecha": "2026-11-04T23:49:58.872Z"
+    },
+    {
+      "id": "MOV-1793836198872-280",
+      "negocioId": "FOC-01",
+      "insumoId": "salsa",
+      "insumoNombre": "Salsas de la Casa (Tártara/Ajo)",
+      "tipo": "consumo",
+      "cantidad": 0.06,
+      "unidad": "Litros",
+      "motivo": "Venta 2x Hamburguesa Doble Carne Al Carbón (#ORD-123)",
+      "fecha": "2026-11-04T23:49:58.872Z"
+    },
+    {
+      "id": "MOV-1793836198872-682",
+      "negocioId": "FOC-01",
+      "insumoId": "ripio",
+      "insumoNombre": "Ripio de Papa Crocante",
+      "tipo": "consumo",
+      "cantidad": 0.06,
+      "unidad": "Kg",
+      "motivo": "Venta 2x Hamburguesa Doble Carne Al Carbón (#ORD-123)",
+      "fecha": "2026-11-04T23:49:58.872Z"
+    },
+    {
+      "id": "MOV-1793836198872-523",
+      "negocioId": "FOC-01",
+      "insumoId": "tocineta",
+      "insumoNombre": "Tocineta Ahumada Tajada",
+      "tipo": "consumo",
+      "cantidad": 4,
+      "unidad": "Lonjas",
+      "motivo": "Venta 2x Hamburguesa Doble Carne Al Carbón (#ORD-123)",
+      "fecha": "2026-11-04T23:49:58.872Z"
+    },
+    {
+      "id": "MOV-1793836198872-551",
+      "negocioId": "FOC-01",
+      "insumoId": "queso",
+      "insumoNombre": "Queso Costeño / Mozzarella",
+      "tipo": "consumo",
+      "cantidad": 0.12,
+      "unidad": "Kg",
+      "motivo": "Venta 2x Hamburguesa Doble Carne Al Carbón (#ORD-123)",
+      "fecha": "2026-11-04T23:49:58.872Z"
+    },
+    {
+      "id": "MOV-1793836198872-107",
+      "negocioId": "FOC-01",
+      "insumoId": "pan",
+      "insumoNombre": "Pan Brioche Artesanal",
+      "tipo": "consumo",
+      "cantidad": 2,
+      "unidad": "Unidades",
+      "motivo": "Venta 2x Hamburguesa Doble Carne Al Carbón (#ORD-123)",
+      "fecha": "2026-11-04T23:49:58.872Z"
+    },
+    {
+      "id": "MOV-1793836198872-868",
+      "negocioId": "FOC-01",
+      "insumoId": "carne",
+      "insumoNombre": "Carne de Res / Parrilla (150g)",
+      "tipo": "consumo",
+      "cantidad": 4,
+      "unidad": "Porciones",
+      "motivo": "Venta 2x Hamburguesa Doble Carne Al Carbón (#ORD-123)",
+      "fecha": "2026-11-04T23:49:58.872Z"
+    },
+    {
+      "id": "MOV-1793836168112-277",
+      "negocioId": "FOC-01",
+      "insumoId": "cebolla",
+      "insumoNombre": "Cebolla Fresca Picada",
+      "tipo": "consumo",
+      "cantidad": 0.02,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Hamburguesa Especial Al Carbón (#ORD-122)",
+      "fecha": "2026-11-04T23:49:28.112Z"
+    },
+    {
+      "id": "MOV-1793836168112-805",
+      "negocioId": "FOC-01",
+      "insumoId": "salsa",
+      "insumoNombre": "Salsas de la Casa (Tártara/Ajo)",
+      "tipo": "consumo",
+      "cantidad": 0.025,
+      "unidad": "Litros",
+      "motivo": "Venta 1x Hamburguesa Especial Al Carbón (#ORD-122)",
+      "fecha": "2026-11-04T23:49:28.112Z"
+    },
+    {
+      "id": "MOV-1793836168112-970",
+      "negocioId": "FOC-01",
+      "insumoId": "ripio",
+      "insumoNombre": "Ripio de Papa Crocante",
+      "tipo": "consumo",
+      "cantidad": 0.02,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Hamburguesa Especial Al Carbón (#ORD-122)",
+      "fecha": "2026-11-04T23:49:28.112Z"
+    },
+    {
+      "id": "MOV-1793836168112-29",
+      "negocioId": "FOC-01",
+      "insumoId": "tocineta",
+      "insumoNombre": "Tocineta Ahumada Tajada",
+      "tipo": "consumo",
+      "cantidad": 1,
+      "unidad": "Lonjas",
+      "motivo": "Venta 1x Hamburguesa Especial Al Carbón (#ORD-122)",
+      "fecha": "2026-11-04T23:49:28.112Z"
+    },
+    {
+      "id": "MOV-1793836168112-126",
+      "negocioId": "FOC-01",
+      "insumoId": "queso",
+      "insumoNombre": "Queso Costeño / Mozzarella",
+      "tipo": "consumo",
+      "cantidad": 0.04,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Hamburguesa Especial Al Carbón (#ORD-122)",
+      "fecha": "2026-11-04T23:49:28.112Z"
+    },
+    {
+      "id": "MOV-1793836168112-240",
+      "negocioId": "FOC-01",
+      "insumoId": "pan",
+      "insumoNombre": "Pan Brioche Artesanal",
+      "tipo": "consumo",
+      "cantidad": 1,
+      "unidad": "Unidades",
+      "motivo": "Venta 1x Hamburguesa Especial Al Carbón (#ORD-122)",
+      "fecha": "2026-11-04T23:49:28.112Z"
+    },
+    {
+      "id": "MOV-1793836168112-696",
+      "negocioId": "FOC-01",
+      "insumoId": "carne",
+      "insumoNombre": "Carne de Res / Parrilla (150g)",
+      "tipo": "consumo",
+      "cantidad": 1,
+      "unidad": "Porciones",
+      "motivo": "Venta 1x Hamburguesa Especial Al Carbón (#ORD-122)",
+      "fecha": "2026-11-04T23:49:28.112Z"
+    },
+    {
+      "id": "MOV-1793669304699-997",
+      "negocioId": "FOC-01",
+      "insumoId": "salsa",
+      "insumoNombre": "Salsas de la Casa (Tártara/Ajo)",
+      "tipo": "consumo",
+      "cantidad": 0.025,
+      "unidad": "Litros",
+      "motivo": "Venta 1x Salchipapa Casera Al Carbón (#ORD-121)",
+      "fecha": "2026-11-03T01:28:24.699Z"
+    },
+    {
+      "id": "MOV-1793669304699-774",
+      "negocioId": "FOC-01",
+      "insumoId": "queso",
+      "insumoNombre": "Queso Costeño / Mozzarella",
+      "tipo": "consumo",
+      "cantidad": 0.04,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Salchipapa Casera Al Carbón (#ORD-121)",
+      "fecha": "2026-11-03T01:28:24.699Z"
+    },
+    {
+      "id": "MOV-1793669304699-52",
+      "negocioId": "FOC-01",
+      "insumoId": "salchicha",
+      "insumoNombre": "Salchicha Manguera / Ranchera",
+      "tipo": "consumo",
+      "cantidad": 2,
+      "unidad": "Unidades",
+      "motivo": "Venta 1x Salchipapa Casera Al Carbón (#ORD-121)",
+      "fecha": "2026-11-03T01:28:24.699Z"
+    },
+    {
+      "id": "MOV-1793669304698-457",
+      "negocioId": "FOC-01",
+      "insumoId": "papa",
+      "insumoNombre": "Papa a la Francesa / Criolla",
+      "tipo": "consumo",
+      "cantidad": 0.25,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Salchipapa Casera Al Carbón (#ORD-121)",
+      "fecha": "2026-11-03T01:28:24.698Z"
+    },
+    {
+      "id": "MOV-1793667951260-484",
+      "negocioId": "FOC-01",
+      "insumoId": "bebidas",
+      "insumoNombre": "Bebidas Refrigeradas (Gaseosa/Jugo)",
+      "tipo": "consumo",
+      "cantidad": 1,
+      "unidad": "Unidades",
+      "motivo": "Venta 1x Coca-Cola Original 400ml (#ORD-120)",
+      "fecha": "2026-11-03T01:05:51.260Z"
+    },
+    {
+      "id": "MOV-1793667951260-798",
+      "negocioId": "FOC-01",
+      "insumoId": "ripio",
+      "insumoNombre": "Ripio de Papa Crocante",
+      "tipo": "consumo",
+      "cantidad": 0.02,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Salchipapa Familiar Especial (#ORD-120)",
+      "fecha": "2026-11-03T01:05:51.260Z"
+    },
+    {
+      "id": "MOV-1793667951260-373",
+      "negocioId": "FOC-01",
+      "insumoId": "salsa",
+      "insumoNombre": "Salsas de la Casa (Tártara/Ajo)",
+      "tipo": "consumo",
+      "cantidad": 0.04,
+      "unidad": "Litros",
+      "motivo": "Venta 1x Salchipapa Familiar Especial (#ORD-120)",
+      "fecha": "2026-11-03T01:05:51.260Z"
+    },
+    {
+      "id": "MOV-1793667951260-815",
+      "negocioId": "FOC-01",
+      "insumoId": "queso",
+      "insumoNombre": "Queso Costeño / Mozzarella",
+      "tipo": "consumo",
+      "cantidad": 0.08,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Salchipapa Familiar Especial (#ORD-120)",
+      "fecha": "2026-11-03T01:05:51.260Z"
+    },
+    {
+      "id": "MOV-1793667951260-952",
+      "negocioId": "FOC-01",
+      "insumoId": "carne",
+      "insumoNombre": "Carne de Res / Parrilla (150g)",
+      "tipo": "consumo",
+      "cantidad": 1,
+      "unidad": "Porciones",
+      "motivo": "Venta 1x Salchipapa Familiar Especial (#ORD-120)",
+      "fecha": "2026-11-03T01:05:51.260Z"
+    },
+    {
+      "id": "MOV-1793667951260-359",
+      "negocioId": "FOC-01",
+      "insumoId": "salchicha",
+      "insumoNombre": "Salchicha Manguera / Ranchera",
+      "tipo": "consumo",
+      "cantidad": 3,
+      "unidad": "Unidades",
+      "motivo": "Venta 1x Salchipapa Familiar Especial (#ORD-120)",
+      "fecha": "2026-11-03T01:05:51.260Z"
+    },
+    {
+      "id": "MOV-1793667951260-809",
+      "negocioId": "FOC-01",
+      "insumoId": "papa",
+      "insumoNombre": "Papa a la Francesa / Criolla",
+      "tipo": "consumo",
+      "cantidad": 0.4,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Salchipapa Familiar Especial (#ORD-120)",
+      "fecha": "2026-11-03T01:05:51.260Z"
+    },
+    {
+      "id": "MOV-1793667951260-69",
+      "negocioId": "FOC-01",
+      "insumoId": "cebolla",
+      "insumoNombre": "Cebolla Fresca Picada",
+      "tipo": "consumo",
+      "cantidad": 0.02,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Hamburguesa Especial Al Carbón (#ORD-120)",
+      "fecha": "2026-11-03T01:05:51.260Z"
+    },
+    {
+      "id": "MOV-1793667951260-816",
+      "negocioId": "FOC-01",
+      "insumoId": "salsa",
+      "insumoNombre": "Salsas de la Casa (Tártara/Ajo)",
+      "tipo": "consumo",
+      "cantidad": 0.025,
+      "unidad": "Litros",
+      "motivo": "Venta 1x Hamburguesa Especial Al Carbón (#ORD-120)",
+      "fecha": "2026-11-03T01:05:51.260Z"
+    },
+    {
+      "id": "MOV-1793667951260-568",
+      "negocioId": "FOC-01",
+      "insumoId": "ripio",
+      "insumoNombre": "Ripio de Papa Crocante",
+      "tipo": "consumo",
+      "cantidad": 0.02,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Hamburguesa Especial Al Carbón (#ORD-120)",
+      "fecha": "2026-11-03T01:05:51.260Z"
+    },
+    {
+      "id": "MOV-1793667951260-668",
+      "negocioId": "FOC-01",
+      "insumoId": "tocineta",
+      "insumoNombre": "Tocineta Ahumada Tajada",
+      "tipo": "consumo",
+      "cantidad": 1,
+      "unidad": "Lonjas",
+      "motivo": "Venta 1x Hamburguesa Especial Al Carbón (#ORD-120)",
+      "fecha": "2026-11-03T01:05:51.260Z"
+    },
+    {
+      "id": "MOV-1793667951260-453",
+      "negocioId": "FOC-01",
+      "insumoId": "queso",
+      "insumoNombre": "Queso Costeño / Mozzarella",
+      "tipo": "consumo",
+      "cantidad": 0.04,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Hamburguesa Especial Al Carbón (#ORD-120)",
+      "fecha": "2026-11-03T01:05:51.260Z"
+    },
+    {
+      "id": "MOV-1793667951260-206",
+      "negocioId": "FOC-01",
+      "insumoId": "pan",
+      "insumoNombre": "Pan Brioche Artesanal",
+      "tipo": "consumo",
+      "cantidad": 1,
+      "unidad": "Unidades",
+      "motivo": "Venta 1x Hamburguesa Especial Al Carbón (#ORD-120)",
+      "fecha": "2026-11-03T01:05:51.260Z"
+    },
+    {
+      "id": "MOV-1793667951260-116",
+      "negocioId": "FOC-01",
+      "insumoId": "carne",
+      "insumoNombre": "Carne de Res / Parrilla (150g)",
+      "tipo": "consumo",
+      "cantidad": 1,
+      "unidad": "Porciones",
+      "motivo": "Venta 1x Hamburguesa Especial Al Carbón (#ORD-120)",
+      "fecha": "2026-11-03T01:05:51.260Z"
+    },
+    {
+      "id": "MOV-1793360655112-331",
+      "negocioId": "FOC-01",
+      "insumoId": "cebolla",
+      "insumoNombre": "Cebolla Fresca Picada",
+      "tipo": "consumo",
+      "cantidad": 0.015,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Hamburguesa Clásica Al Carbón (#ORD-119)",
+      "fecha": "2026-10-30T11:44:15.112Z"
+    },
+    {
+      "id": "MOV-1793360655112-488",
+      "negocioId": "FOC-01",
+      "insumoId": "salsa",
+      "insumoNombre": "Salsas de la Casa (Tártara/Ajo)",
+      "tipo": "consumo",
+      "cantidad": 0.02,
+      "unidad": "Litros",
+      "motivo": "Venta 1x Hamburguesa Clásica Al Carbón (#ORD-119)",
+      "fecha": "2026-10-30T11:44:15.112Z"
+    },
+    {
+      "id": "MOV-1793360655112-678",
+      "negocioId": "FOC-01",
+      "insumoId": "queso",
+      "insumoNombre": "Queso Costeño / Mozzarella",
+      "tipo": "consumo",
+      "cantidad": 0.03,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Hamburguesa Clásica Al Carbón (#ORD-119)",
+      "fecha": "2026-10-30T11:44:15.112Z"
+    },
+    {
+      "id": "MOV-1793360655112-280",
+      "negocioId": "FOC-01",
+      "insumoId": "pan",
+      "insumoNombre": "Pan Brioche Artesanal",
+      "tipo": "consumo",
+      "cantidad": 1,
+      "unidad": "Unidades",
+      "motivo": "Venta 1x Hamburguesa Clásica Al Carbón (#ORD-119)",
+      "fecha": "2026-10-30T11:44:15.112Z"
+    },
+    {
+      "id": "MOV-1793360655112-455",
+      "negocioId": "FOC-01",
+      "insumoId": "carne",
+      "insumoNombre": "Carne de Res / Parrilla (150g)",
+      "tipo": "consumo",
+      "cantidad": 1,
+      "unidad": "Porciones",
+      "motivo": "Venta 1x Hamburguesa Clásica Al Carbón (#ORD-119)",
+      "fecha": "2026-10-30T11:44:15.112Z"
+    },
+    {
+      "id": "MOV-1793360655112-675",
+      "negocioId": "FOC-01",
+      "insumoId": "cebolla",
+      "insumoNombre": "Cebolla Fresca Picada",
+      "tipo": "consumo",
+      "cantidad": 0.025,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-119)",
+      "fecha": "2026-10-30T11:44:15.112Z"
+    },
+    {
+      "id": "MOV-1793360655112-497",
+      "negocioId": "FOC-01",
+      "insumoId": "salsa",
+      "insumoNombre": "Salsas de la Casa (Tártara/Ajo)",
+      "tipo": "consumo",
+      "cantidad": 0.03,
+      "unidad": "Litros",
+      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-119)",
+      "fecha": "2026-10-30T11:44:15.112Z"
+    },
+    {
+      "id": "MOV-1793360655112-854",
+      "negocioId": "FOC-01",
+      "insumoId": "ripio",
+      "insumoNombre": "Ripio de Papa Crocante",
+      "tipo": "consumo",
+      "cantidad": 0.03,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-119)",
+      "fecha": "2026-10-30T11:44:15.112Z"
+    },
+    {
+      "id": "MOV-1793360655112-864",
+      "negocioId": "FOC-01",
+      "insumoId": "tocineta",
+      "insumoNombre": "Tocineta Ahumada Tajada",
+      "tipo": "consumo",
+      "cantidad": 2,
+      "unidad": "Lonjas",
+      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-119)",
+      "fecha": "2026-10-30T11:44:15.112Z"
+    },
+    {
+      "id": "MOV-1793360655112-903",
+      "negocioId": "FOC-01",
+      "insumoId": "queso",
+      "insumoNombre": "Queso Costeño / Mozzarella",
+      "tipo": "consumo",
+      "cantidad": 0.06,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-119)",
+      "fecha": "2026-10-30T11:44:15.112Z"
+    },
+    {
+      "id": "MOV-1793360655112-949",
+      "negocioId": "FOC-01",
+      "insumoId": "pan",
+      "insumoNombre": "Pan Brioche Artesanal",
+      "tipo": "consumo",
+      "cantidad": 1,
+      "unidad": "Unidades",
+      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-119)",
+      "fecha": "2026-10-30T11:44:15.112Z"
+    },
+    {
+      "id": "MOV-1793360655112-934",
+      "negocioId": "FOC-01",
+      "insumoId": "carne",
+      "insumoNombre": "Carne de Res / Parrilla (150g)",
+      "tipo": "consumo",
+      "cantidad": 2,
+      "unidad": "Porciones",
+      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-119)",
+      "fecha": "2026-10-30T11:44:15.112Z"
+    },
+    {
+      "id": "MOV-1793360655112-374",
+      "negocioId": "FOC-01",
+      "insumoId": "bebidas",
+      "insumoNombre": "Bebidas Refrigeradas (Gaseosa/Jugo)",
+      "tipo": "consumo",
+      "cantidad": 1,
+      "unidad": "Unidades",
+      "motivo": "Venta 1x Gaseosa Postobón Manzana 400ml (#ORD-119)",
+      "fecha": "2026-10-30T11:44:15.112Z"
+    },
+    {
+      "id": "MOV-1793360655112-469",
+      "negocioId": "FOC-01",
+      "insumoId": "ripio",
+      "insumoNombre": "Ripio de Papa Crocante",
+      "tipo": "consumo",
+      "cantidad": 0.02,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Salchipapa Familiar Especial (#ORD-119)",
+      "fecha": "2026-10-30T11:44:15.112Z"
+    }
+  ],
+  "mensajesWhatsApp": [
+    {
+      "clienteNombre": "Javier Serrano",
+      "telefono": "164913976717365",
+      "texto": "Hola buenas noches",
+      "urlMenu": "https://humor-garbage-tied-mouth.trycloudflare.com/m/3697",
+      "fecha": "2026-10-30T11:40:46.287Z"
+    },
+    {
+      "clienteNombre": "Javier Serrano",
+      "telefono": "164913976717365",
+      "texto": "Para hacer un pedido",
+      "urlMenu": "https://humor-garbage-tied-mouth.trycloudflare.com/m/5316",
+      "fecha": "2026-10-30T11:40:49.746Z"
+    },
+    {
+      "clienteNombre": "Javier Serrano",
+      "telefono": "164913976717365",
+      "texto": "Hola buenas noches",
+      "urlMenu": "https://humor-garbage-tied-mouth.trycloudflare.com/m/1085",
+      "fecha": "2026-10-30T11:42:19.674Z"
+    },
+    {
+      "clienteNombre": "Josue",
+      "telefono": "136584439541937",
+      "texto": "Hola",
+      "tipoEvento": "opciones",
+      "urlMenu": null,
+      "fecha": "2026-11-04T23:42:18.601Z"
+    },
+    {
+      "clienteNombre": "Maria Jose",
+      "telefono": "262667449188371",
+      "texto": "1 o 2",
+      "tipoEvento": "menu_link",
+      "urlMenu": "https://realm-analytical-profiles-wellness.trycloudflare.com/m/7709",
+      "fecha": "2026-11-05T00:38:48.636Z"
+    },
+    {
+      "clienteNombre": "Maria Jose",
+      "telefono": "262667449188371",
+      "texto": "Yo no le dije hola",
+      "tipoEvento": "opciones",
+      "urlMenu": null,
+      "fecha": "2026-11-05T00:39:04.263Z"
+    }
+  ],
+  "nextTicketNumber": 127,
+  "botWhatsAppActivo": false
+}

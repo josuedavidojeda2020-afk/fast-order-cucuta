@@ -1,0 +1,563 @@
+{
+  "id": "FOC-02",
+  "usuarioLogin": "la15",
+  "claveAcceso": "1234",
+  "claveCajero": "2222",
+  "claveCocina": "3333",
+  "nombre": "Perradas & Salchipapas La 15",
+  "barrio": "Ciudadela Juan Atalaya",
+  "propietario": "María Fernanda Vera",
+  "whatsappLinea": "311 234 5678",
+  "especialidad": "Perros Venezolanos & Salchipapas",
+  "icono": "🌭",
+  "suscripcionMensual": 40000,
+  "estadoSuscripcion": "Activa",
+  "motorizados": [
+    "En local (Sin motorizado)",
+    "Domiciliario Atalaya - Wilmer T. (Moto NRT-12C)"
+  ],
+  "catalogo": [
+    {
+      "id": "p4",
+      "nombre": "Perro Caliente Venezolano Full",
+      "categoria": "Perros",
+      "precio": 10000,
+      "imagen": "IMAGENES PARA PEDIR/PERRO-CALIENTE-TOCINETA.jpg",
+      "descripcion": "Salchicha manguera, repollo, cebolla, queso costeño y tártara.",
+      "ingredientes": [
+        "Repollo",
+        "Cebolla",
+        "Queso costeño",
+        "Ripio de papa",
+        "Salsa tártara"
+      ],
+      "tiempo": "6 min",
+      "icono": "fa-clock",
+      "receta": {
+        "salchicha": 1,
+        "panPerro": 1,
+        "queso": 0.03,
+        "cebolla": 0.02,
+        "salsa": 0.025,
+        "ripio": 0.025
+      }
+    },
+    {
+      "id": "p8",
+      "nombre": "Salchipapa Salvaje Mixta",
+      "categoria": "Salchipapas",
+      "precio": 27000,
+      "imagen": "IMAGENES PARA PEDIR/SALCHIPAPA-MIXTA.jpg",
+      "descripcion": "Papas criollas y francesas, carne, pechuga, tocineta y doble queso.",
+      "ingredientes": [
+        "Papa criolla",
+        "Carne",
+        "Pechuga",
+        "Tocineta",
+        "Doble queso",
+        "Salsas"
+      ],
+      "tiempo": "14 min",
+      "icono": "fa-clock",
+      "receta": {
+        "papa": 0.45,
+        "salchicha": 3,
+        "carne": 2,
+        "tocineta": 2,
+        "queso": 0.09,
+        "salsa": 0.045
+      }
+    },
+    {
+      "id": "p10",
+      "nombre": "Coca-Cola 400ml",
+      "categoria": "Bebidas",
+      "precio": 4500,
+      "imagen": "IMAGENES PARA PEDIR/COCA COLA 400ml.png",
+      "descripcion": "Botella personal fría.",
+      "ingredientes": [],
+      "tiempo": "Fría",
+      "icono": "fa-snowflake",
+      "receta": {
+        "bebidas": 1
+      }
+    }
+  ],
+  "insumos": [
+    {
+      "id": "carne",
+      "nombre": "Carne de Res / Parrilla (150g)",
+      "unidad": "Porciones",
+      "stockActual": 84,
+      "umbralMinimo": 15,
+      "costoUnitario": 3800
+    },
+    {
+      "id": "pan",
+      "nombre": "Pan Brioche Artesanal",
+      "unidad": "Unidades",
+      "stockActual": 48,
+      "umbralMinimo": 18,
+      "costoUnitario": 1200
+    },
+    {
+      "id": "queso",
+      "nombre": "Queso Costeño / Mozzarella",
+      "unidad": "Kg",
+      "stockActual": 1.1,
+      "umbralMinimo": 2,
+      "costoUnitario": 18000
+    },
+    {
+      "id": "salchicha",
+      "nombre": "Salchicha Manguera / Ranchera",
+      "unidad": "Unidades",
+      "stockActual": 66,
+      "umbralMinimo": 15,
+      "costoUnitario": 1500
+    },
+    {
+      "id": "panPerro",
+      "nombre": "Pan Suave para Perro",
+      "unidad": "Unidades",
+      "stockActual": 42,
+      "umbralMinimo": 12,
+      "costoUnitario": 900
+    },
+    {
+      "id": "tocineta",
+      "nombre": "Tocineta Ahumada Tajada",
+      "unidad": "Lonjas",
+      "stockActual": 60,
+      "umbralMinimo": 15,
+      "costoUnitario": 950
+    },
+    {
+      "id": "papa",
+      "nombre": "Papa a la Francesa / Criolla",
+      "unidad": "Kg",
+      "stockActual": 12,
+      "umbralMinimo": 3,
+      "costoUnitario": 7500
+    },
+    {
+      "id": "ripio",
+      "nombre": "Ripio de Papa Crocante",
+      "unidad": "Kg",
+      "stockActual": 2.9,
+      "umbralMinimo": 0.8,
+      "costoUnitario": 9000
+    },
+    {
+      "id": "cebolla",
+      "nombre": "Cebolla Fresca Picada",
+      "unidad": "Kg",
+      "stockActual": 2.4,
+      "umbralMinimo": 0.5,
+      "costoUnitario": 5500
+    },
+    {
+      "id": "salsa",
+      "nombre": "Salsas de la Casa (Tártara/Ajo)",
+      "unidad": "Litros",
+      "stockActual": 4.2,
+      "umbralMinimo": 1,
+      "costoUnitario": 11000
+    },
+    {
+      "id": "bebidas",
+      "nombre": "Bebidas Refrigeradas (Gaseosa/Jugo)",
+      "unidad": "Unidades",
+      "stockActual": 41,
+      "umbralMinimo": 10,
+      "costoUnitario": 2600
+    }
+  ],
+  "pedidos": [
+    {
+      "id": "#ORD-203",
+      "negocioId": "FOC-02",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-11-03T01:39:47.315Z",
+      "fechaPreparacion": "2026-11-03T01:40:37.836Z",
+      "fechaDespacho": "2026-11-03T01:40:38.893Z",
+      "clienteNombre": "Cliente Domicilio",
+      "telefono": "",
+      "direccionDomicilio": "Domicilio",
+      "motorizado": "En local (Sin motorizado)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "item_1793669982880_ruwr",
+          "productoId": "p10",
+          "nombreProducto": "Coca-Cola 400ml",
+          "cantidad": 1,
+          "precioUnitario": 4500,
+          "imagen": "IMAGENES PARA PEDIR/COCA COLA 400ml.png",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 4500
+    },
+    {
+      "id": "#ORD-202",
+      "negocioId": "FOC-02",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-11-03T01:39:26.753Z",
+      "fechaPreparacion": "2026-11-03T01:40:38.343Z",
+      "fechaDespacho": "2026-11-03T01:40:39.489Z",
+      "clienteNombre": "Cliente Domicilio",
+      "telefono": "",
+      "direccionDomicilio": "Domicilio",
+      "motorizado": "En local (Sin motorizado)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "item_1793669959918_0wev",
+          "productoId": "p10",
+          "nombreProducto": "Coca-Cola 400ml",
+          "cantidad": 1,
+          "precioUnitario": 4500,
+          "imagen": "IMAGENES PARA PEDIR/COCA COLA 400ml.png",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 4500
+    },
+    {
+      "id": "#WA-3849",
+      "negocioId": "FOC-02",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-11-03T01:02:50.614Z",
+      "fechaPreparacion": "2026-11-03T01:02:57.412Z",
+      "fechaDespacho": "2026-11-03T01:02:58.341Z",
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "direccionDomicilio": "Hdjd",
+      "motorizado": "Domiciliario 1 - Camilo R. (Moto KLM-45D)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "LINE-1793667768277-212q",
+          "productoId": "p10",
+          "nombreProducto": "Coca-Cola 400ml",
+          "cantidad": 1,
+          "precioUnitario": 4500,
+          "imagen": "IMAGENES PARA PEDIR/COCA COLA 400ml.png",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "total": 4500
+    }
+  ],
+  "movimientos": [
+    {
+      "id": "MOV-1793670110491-974",
+      "negocioId": "FOC-02",
+      "insumoId": "queso",
+      "insumoNombre": "Queso Costeño / Mozzarella",
+      "tipo": "merma",
+      "cantidad": 3.5,
+      "unidad": "Kg",
+      "motivo": "Compra proveedor local Cúcuta",
+      "fecha": "2026-11-03T01:41:50.491Z"
+    },
+    {
+      "id": "MOV-1793669987315-477",
+      "negocioId": "FOC-02",
+      "insumoId": "bebidas",
+      "insumoNombre": "Bebidas Refrigeradas (Gaseosa/Jugo)",
+      "tipo": "consumo",
+      "cantidad": 1,
+      "unidad": "Unidades",
+      "motivo": "Venta 1x Coca-Cola 400ml (#ORD-203)",
+      "fecha": "2026-11-03T01:39:47.315Z"
+    },
+    {
+      "id": "MOV-1793669966754-273",
+      "negocioId": "FOC-02",
+      "insumoId": "bebidas",
+      "insumoNombre": "Bebidas Refrigeradas (Gaseosa/Jugo)",
+      "tipo": "consumo",
+      "cantidad": 1,
+      "unidad": "Unidades",
+      "motivo": "Venta 1x Coca-Cola 400ml (#ORD-202)",
+      "fecha": "2026-11-03T01:39:26.754Z"
+    },
+    {
+      "id": "MOV-1793668257859-478",
+      "negocioId": "FOC-02",
+      "insumoId": "pan",
+      "insumoNombre": "Pan Brioche Artesanal",
+      "tipo": "merma",
+      "cantidad": 15,
+      "unidad": "Unidades",
+      "motivo": "Compra de insumos para el turno",
+      "fecha": "2026-11-03T01:10:57.859Z"
+    },
+    {
+      "id": "MOV-1793668238800-667",
+      "negocioId": "FOC-02",
+      "insumoId": "pan",
+      "insumoNombre": "Pan Brioche Artesanal",
+      "tipo": "entrada",
+      "cantidad": 15,
+      "unidad": "Unidades",
+      "motivo": "Compra de insumos para el turno",
+      "fecha": "2026-11-03T01:10:38.800Z"
+    }
+  ],
+  "mensajesWhatsApp": [
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "Hola, buenas noches",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/3867",
+      "fecha": "2026-11-03T01:00:17.844Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/1884",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/1835",
+      "fecha": "2026-11-03T01:00:20.651Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/7340",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/5525",
+      "fecha": "2026-11-03T01:00:22.241Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/5151",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/3592",
+      "fecha": "2026-11-03T01:00:24.793Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/5442",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/3069",
+      "fecha": "2026-11-03T01:00:26.670Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/8307",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/8238",
+      "fecha": "2026-11-03T01:00:28.960Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/9463",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/7949",
+      "fecha": "2026-11-03T01:00:35.085Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/6079",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/9468",
+      "fecha": "2026-11-03T01:00:37.471Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/9333",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/1862",
+      "fecha": "2026-11-03T01:00:39.205Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/4392",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/2514",
+      "fecha": "2026-11-03T01:00:41.098Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/2466",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/4843",
+      "fecha": "2026-11-03T01:00:43.019Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/1312",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/3119",
+      "fecha": "2026-11-03T01:00:45.430Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/1165",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/1639",
+      "fecha": "2026-11-03T01:00:52.114Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/1796",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/4323",
+      "fecha": "2026-11-03T01:00:55.145Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/8515",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/8561",
+      "fecha": "2026-11-03T01:00:56.719Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/5764",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/1756",
+      "fecha": "2026-11-03T01:00:58.238Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/6730",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/2362",
+      "fecha": "2026-11-03T01:01:00.015Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/3055",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/9057",
+      "fecha": "2026-11-03T01:01:01.861Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/4283",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/9900",
+      "fecha": "2026-11-03T01:01:05.228Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/6502",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/3061",
+      "fecha": "2026-11-03T01:01:07.045Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/9870",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/4459",
+      "fecha": "2026-11-03T01:01:08.913Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/4997",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/8772",
+      "fecha": "2026-11-03T01:01:10.787Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/8536",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/5946",
+      "fecha": "2026-11-03T01:01:23.098Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/6509",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/8667",
+      "fecha": "2026-11-03T01:01:24.932Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/8102",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/6702",
+      "fecha": "2026-11-03T01:01:31.064Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/3865",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/5960",
+      "fecha": "2026-11-03T01:01:32.491Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/1365",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/7996",
+      "fecha": "2026-11-03T01:01:34.347Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/4354",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/7343",
+      "fecha": "2026-11-03T01:01:36.271Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/1899",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/1412",
+      "fecha": "2026-11-03T01:01:38.019Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/3090",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/6454",
+      "fecha": "2026-11-03T01:01:39.890Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/2232",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/7661",
+      "fecha": "2026-11-03T01:01:41.752Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/6401",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/5247",
+      "fecha": "2026-11-03T01:01:43.671Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/4947",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/3428",
+      "fecha": "2026-11-03T01:01:45.556Z"
+    },
+    {
+      "clienteNombre": "David",
+      "telefono": "19190668869874",
+      "texto": "🍔 *¡Hola Josue! Bienvenido a Al Carbón Parrilla & Burgers*\n\nHaz tu pedido aquí en nuestro Menú Digital:\nhttps://minute-smith-cost-refuse.trycloudflare.com/m/7107",
+      "urlMenu": "https://minute-smith-cost-refuse.trycloudflare.com/m/4971",
+      "fecha": "2026-11-03T01:01:47.628Z"
+    }
+  ],
+  "nextTicketNumber": 204
+}

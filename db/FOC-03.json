@@ -1,0 +1,42 @@
+{
+  "id": "FOC-03",
+  "usuarioLogin": "alcarbon.sa",
+  "claveAcceso": "1234",
+  "claveCajero": "2222",
+  "claveCocina": "3333",
+  "nombre": "Al carbon",
+  "barrio": "nd",
+  "propietario": "Miguel Angel Ojeda",
+  "whatsappLinea": "nd",
+  "especialidad": "Comidas Rápidas & Domicilios",
+  "icono": "🔥",
+  "suscripcionMensual": 40000,
+  "estadoSuscripcion": "Activa",
+  "motorizados": [
+    "En local (Sin motorizado)"
+  ],
+  "catalogo": [],
+  "insumos": [],
+  "pedidos": [],
+  "movimientos": [],
+  "mensajesWhatsApp": [
+    {
+      "clienteNombre": "Jesús",
+      "telefono": "200566449950844",
+      "texto": "Hola cerda asquerosa",
+      "tipoEvento": "opciones",
+      "urlMenu": null,
+      "fecha": "2026-11-05T00:50:46.064Z"
+    },
+    {
+      "clienteNombre": "Jesús",
+      "telefono": "200566449950844",
+      "texto": "1",
+      "tipoEvento": "menu_link",
+      "urlMenu": "https://enhance-pulled-accessing-suit.trycloudflare.com/m/3964",
+      "fecha": "2026-11-05T00:50:54.730Z"
+    }
+  ],
+  "nextTicketNumber": 101,
+  "botWhatsAppActivo": false
+}

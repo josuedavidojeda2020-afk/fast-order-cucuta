@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Fast Order Cúcuta - Sistema SaaS de Gestión de Pedidos, Cocina KDS e Inventario</title>
+  <!-- Typography & Icons -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#fff7ed',
+              100: '#ffedd5',
+              500: '#ea580c',
+              600: '#c2410c',
+              700: '#9a3412',
+            },
+            surface: {
+              DEFAULT: '#0f172a',
+              card: '#1e293b',
+              panel: '#111827',
+              border: '#334155',
+              hover: '#273549'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+    .custom-scroll {
+      scrollbar-width: thin;
+      scrollbar-color: #334155 #0f172a;
+    }
+
+    /* Animaciones interactivas para los encabezados y pestañas superiores */
+    .nav-tab {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .nav-tab::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, #f97316, #fbbf24, #f97316);
+      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: translateX(-50%);
+      border-radius: 3px 3px 0 0;
+    }
+    .nav-tab:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(180deg, rgba(249, 115, 22, 0.14) 0%, rgba(15, 23, 42, 0.4) 100%);
+      color: #ffffff !important;
+      box-shadow: inset 0 1px 0 0 rgba(251, 146, 60, 0.25);
+    }
+    .nav-tab:hover::after {
+      width: 100%;
+    }
+    .nav-tab i {
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.28s ease;
+    }
+    .nav-tab:hover i {
+      transform: scale(1.22) rotate(-6deg);
+      filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.6));
+    }
+
+    /* Animación para botones de categorías y píldoras del encabezado */
+    .cat-btn {
+      transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .cat-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 6px 15px -3px rgba(249, 115, 22, 0.35);
+    }
+    .header-pill-anim {
+      transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .header-pill-anim:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px -3px rgba(15, 23, 42, 0.8), 0 0 10px -2px rgba(249, 115, 22, 0.25);
+      border-color: rgba(249, 115, 22, 0.45);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col antialiased selection:bg-orange-500 selection:text-white">
+
+  <!-- ======================================================================= -->
+  <!-- PORTAL DE INICIO DE SESIÓN POR CREDENCIALES (OPCIÓN B REAL SaaS)        -->
+  <!-- ======================================================================= -->
+  <div id="login-portal-overlay" class="fixed inset-0 z-[60] bg-slate-950/95 backdrop-blur-md overflow-y-auto p-4 md:p-8 flex items-center justify-center">
+
+    <!-- VISTA 1: LOGIN LIMPIO (SOLO USUARIO, CONTRASEÑA Y LAS 3 OPCIONES DE ROL) -->
+    <div id="client-login-card" class="max-w-md w-full bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-7 shadow-2xl my-auto">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center text-white shadow-lg shadow-orange-950/50">
+          <i class="fa-solid fa-fire-flame-curved text-xl"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-extrabold text-lg text-white">Fast Order</span>
+            <span class="bg-orange-500/15 text-orange-400 border border-orange-500/30 text-[10px] font-bold px-2 py-0.5 rounded">CÚCUTA</span>
+          </div>
+          <p class="text-xs text-slate-400">Iniciar Sesión</p>
+        </div>
+      </div>
+
+      <form onsubmit="procesarFormularioLogin(event)" class="space-y-4 text-xs">
+        <!-- 1. Usuario -->
+        <div>
+          <label class="block text-slate-300 font-bold mb-1.5">Usuario:</label>
+          <div class="relative">
+            <i class="fa-solid fa-user absolute left-3.5 top-2.5 text-slate-400"></i>
+            <input id="login-username-input" type="text" value="alcarbon" placeholder="Ingresa tu usuario" class="w-full bg-slate-950 border border-slate-700 rounded-xl pl-9 pr-3 py-2.5 text-white font-mono focus:outline-none focus:border-orange-500" required/>
+          </div>
+        </div>
+
+        <!-- 2. Contraseña -->
+        <div>
+          <label class="block text-slate-300 font-bold mb-1.5">Contraseña:</label>
+          <div class="relative">
+            <i class="fa-solid fa-lock absolute left-3.5 top-2.5 text-slate-400"></i>
+            <input id="login-pin-input" type="password" value="" placeholder="Ingresa la contraseña de tu rol" class="w-full bg-slate-950 border border-slate-700 rounded-xl pl-9 pr-3 py-2.5 text-white font-mono focus:outline-none focus:border-orange-500" required/>
+          </div>
+        </div>
+
+        <!-- 3. Selección de las 3 Opciones (Dueño, Cajero, Cocina) -->
+        <div>
+          <label class="block text-slate-300 font-bold mb-1.5">Selecciona tu Rol de Ingreso:</label>
+          <input type="hidden" id="login-role-input" value="propietario"/>
+          <div class="grid grid-cols-3 gap-2">
+            <div onclick="seleccionarRolEnLogin('propietario', this)" class="login-role-card p-2.5 rounded-xl border border-orange-500 bg-orange-950/30 ring-1 ring-orange-500/40 text-center transition cursor-pointer">
+              <div class="font-bold text-white text-xs">👑 Dueño</div>
+              <div class="text-[10px] text-slate-400 mt-0.5">Acceso Total</div>
+            </div>
+            <div onclick="seleccionarRolEnLogin('cajero', this)" class="login-role-card p-2.5 rounded-xl border border-slate-800 bg-slate-950/70 hover:border-slate-700 text-center transition cursor-pointer">
+              <div class="font-bold text-white text-xs">💵 Cajero</div>
+              <div class="text-[10px] text-slate-400 mt-0.5">Caja y Pedidos</div>
+            </div>
+            <div onclick="seleccionarRolEnLogin('cocina', this)" class="login-role-card p-2.5 rounded-xl border border-slate-800 bg-slate-950/70 hover:border-slate-700 text-center transition cursor-pointer">
+              <div class="font-bold text-white text-xs">👨‍🍳 Cocina</div>
+              <div class="text-[10px] text-slate-400 mt-0.5">Solo Cocina</div>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-3 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-sm transition shadow-lg shadow-orange-950/50 flex items-center justify-center gap-2">
+          <i class="fa-solid fa-right-to-bracket"></i> Iniciar Sesión
+        </button>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- ==================== TOP NAVIGATION HEADER (ESPACIO PRIVADO DEL NEGOCIO) ==================== -->
+  <header class="bg-slate-900 border-b border-slate-800 px-5 py-3 flex flex-wrap items-center justify-between gap-3 sticky top-0 z-50">
+    <!-- Active Tenant Business Name & Location -->
+    <div class="flex items-center gap-3.5">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center text-white shadow-lg shadow-orange-950/40">
+        <i class="fa-solid fa-fire-flame-curved text-lg"></i>
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="font-extrabold text-base sm:text-lg tracking-tight text-white" id="active-tenant-title">🔥 Al Carbón Parrilla & Burgers</span>
+        </div>
+        <p class="text-xs text-slate-400 font-medium" id="header-business-subtitle">
+          Usuario: alcarbon
+        </p>
+      </div>
+    </div>
+
+    <!-- Status Bar, Role Badge & Logout Button -->
+    <div class="flex flex-wrap items-center gap-2 text-xs">
+      <!-- Active Role Badge -->
+      <div class="header-pill-anim flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800/90 text-slate-200 font-bold" id="active-role-badge">
+        👑 Dueño / Admin
+      </div>
+
+      <!-- Stock Alert Pill -->
+      <div onclick="activarPestana('tab-inventory')" class="header-pill-anim cursor-pointer flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-slate-700 bg-slate-800/80 text-slate-300" id="header-stock-alert" title="Alertas de stock mínimo de insumos">
+        <i class="fa-solid fa-boxes-stacked text-amber-400"></i>
+        <span id="header-stock-text">Stock OK</span>
+      </div>
+
+      <!-- Live Clock -->
+      <div class="header-pill-anim hidden sm:flex px-2.5 py-1.5 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-xs border border-slate-700/60 shadow-inner items-center gap-1.5" id="live-clock">
+        <i class="fa-regular fa-clock text-slate-400"></i> 19:30:00
+      </div>
+
+      <!-- Logout / Return to Login Portal -->
+      <button onclick="cerrarSesionActual()" class="header-pill-anim px-3 py-1.5 rounded-lg bg-red-600/20 hover:bg-red-600/30 text-red-300 border border-red-500/30 font-bold text-xs transition flex items-center gap-1.5" title="Cerrar sesión o cambiar de rol">
+        <i class="fa-solid fa-right-from-bracket"></i> Salir
+      </button>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN NAVIGATION TABS (FULL-WIDTH STRETCH + HOVER ANIMATION) ==================== -->
+  <nav class="bg-slate-900/95 backdrop-blur border-b border-slate-800 w-full flex items-stretch overflow-x-auto custom-scroll">
+    <button class="nav-tab flex-1 justify-center px-4 py-3.5 text-sm font-semibold border-b-2 border-orange-500 text-orange-400 border-r border-slate-800/70 flex items-center gap-2.5 whitespace-nowrap" data-tab="tab-pos">
+      <i class="fa-solid fa-cash-register"></i> Caja POS & Menú
+    </button>
+    <button class="nav-tab flex-1 justify-center px-4 py-3.5 text-sm font-semibold border-b-2 border-transparent text-slate-400 hover:text-slate-200 border-r border-slate-800/70 flex items-center gap-2.5 whitespace-nowrap" data-tab="tab-kitchen">
+      <i class="fa-solid fa-kitchen-set"></i> Pantalla Cocina (KDS)
+      <span class="ml-1 text-xs px-2 py-0.5 rounded-full bg-orange-500/20 text-orange-400 font-mono font-bold" id="kitchen-tab-badge">2</span>
+    </button>
+    <button class="nav-tab flex-1 justify-center px-4 py-3.5 text-sm font-semibold border-b-2 border-transparent text-slate-400 hover:text-slate-200 border-r border-slate-800/70 flex items-center gap-2.5 whitespace-nowrap" data-tab="tab-inventory">
+      <i class="fa-solid fa-boxes-stacked"></i> Inventario, Recetas & Mermas
+    </button>
+    <button class="nav-tab flex-1 justify-center px-4 py-3.5 text-sm font-semibold border-b-2 border-transparent text-slate-400 hover:text-slate-200 border-r border-slate-800/70 flex items-center gap-2.5 whitespace-nowrap" data-tab="tab-whatsapp">
+      <i class="fa-brands fa-whatsapp text-emerald-400"></i> Recepción WhatsApp
+    </button>
+    <button class="nav-tab flex-1 justify-center px-4 py-3.5 text-sm font-semibold border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center gap-2.5 whitespace-nowrap" data-tab="tab-metrics">
+      <i class="fa-solid fa-file-invoice-dollar text-blue-400"></i> Cierre de Caja & Ventas
+    </button>
+  </nav>
+
+  <!-- ==================== MAIN CONTENT AREA ==================== -->
+  <main class="flex-1 p-5 md:p-6 bg-slate-950 overflow-y-auto">
+
+    <!-- ======================================================== -->
+    <!-- TAB 1: CAJA POS / TOMA DE PEDIDOS DEL NEGOCIO (RF-01,02) -->
+    <!-- ======================================================== -->
+    <section class="tab-pane block" id="tab-pos">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 max-w-7xl mx-auto">
+        <!-- Left Column: Menu Catalog (7-8 Cols) -->
+        <div class="lg:col-span-7 xl:col-span-8 flex flex-col gap-4">
+          <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl flex flex-col gap-3 shadow-sm">
+            <div class="w-full flex flex-wrap items-center justify-between gap-2">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-utensils text-orange-500"></i>
+                <span class="text-slate-100 font-bold text-sm" id="pos-active-business-badge">🔥 Menú de Al Carbón Parrilla & Burgers</span>
+              </div>
+              <button id="btn-nuevo-plato" type="button" onclick="abrirModalNuevoProducto()" class="header-pill-anim px-3 py-1.5 rounded-lg bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/40 text-emerald-300 text-xs font-bold transition flex items-center gap-1.5" title="Agregar un plato nuevo al menú de este negocio">
+                <i class="fa-solid fa-plus"></i> Nuevo Plato
+              </button>
+            </div>
+            <!-- Category Filter Pills (Full-Width Stretch) -->
+            <div class="w-full flex flex-wrap items-center gap-2" id="category-filters">
+              <button class="cat-btn flex-1 justify-center text-center px-3 py-2 rounded-lg text-xs font-semibold bg-orange-600 text-white transition shadow-sm" data-cat="all">Todos</button>
+              <button class="cat-btn flex-1 justify-center text-center px-3 py-2 rounded-lg text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition" data-cat="Hamburguesas">Hamburguesas</button>
+              <button class="cat-btn flex-1 justify-center text-center px-3 py-2 rounded-lg text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition" data-cat="Perros">Perros</button>
+              <button class="cat-btn flex-1 justify-center text-center px-3 py-2 rounded-lg text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition" data-cat="Salchipapas">Salchipapas</button>
+              <button class="cat-btn flex-1 justify-center text-center px-3 py-2 rounded-lg text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition" data-cat="Bebidas">Bebidas</button>
+            </div>
+          </div>
+          <!-- Product Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4" id="products-grid"></div>
+        </div>
+
+        <!-- Right Column: Order Cart Builder (4-5 Cols) -->
+        <div class="lg:col-span-5 xl:col-span-4 flex flex-col gap-4">
+          <div class="bg-slate-900 border border-slate-800 rounded-xl shadow-lg flex flex-col overflow-hidden sticky top-20">
+            <!-- Cart Header -->
+            <div class="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/90">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-receipt text-orange-500"></i>
+                <h3 class="font-bold text-slate-100 text-sm">Comanda Actual</h3>
+              </div>
+              <!-- Channel Selector (Counter vs WhatsApp) -->
+              <div class="flex items-center bg-slate-950 p-1 rounded-lg border border-slate-800 text-xs font-semibold">
+                <label class="channel-label px-2.5 py-1 rounded cursor-pointer bg-orange-600 text-white flex items-center gap-1.5 transition" id="lbl-counter">
+                  <input checked="" class="hidden" name="order-channel" onchange="switchChannel('counter')" type="radio" value="counter"/>
+                  <i class="fa-solid fa-store text-[11px]"></i> Local / Caja
+                </label>
+                <label class="channel-label px-2.5 py-1 rounded cursor-pointer text-slate-400 hover:text-white flex items-center gap-1.5 transition" id="lbl-whatsapp">
+                  <input class="hidden" name="order-channel" onchange="switchChannel('whatsapp')" type="radio" value="whatsapp"/>
+                  <i class="fa-brands fa-whatsapp text-emerald-400 text-[11px]"></i> WhatsApp
+                </label>
+              </div>
+            </div>
+
+            <!-- Customer Data & Payment Method -->
+            <div class="p-3.5 bg-slate-950/60 border-b border-slate-800 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <div id="field-cust-name" class="sm:col-span-2">
+                <label id="lbl-cust-name" class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block mb-1">Cliente / Mesa</label>
+                <div class="relative">
+                  <i class="fa-solid fa-user absolute left-2.5 top-2 text-slate-500 text-xs"></i>
+                  <input class="w-full bg-slate-900 border border-slate-700/80 rounded-lg pl-7 pr-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-orange-500 font-medium" id="cust-name" placeholder="Ej: Mesa 1" type="text" value="Mesa 1"/>
+                </div>
+              </div>
+              <div id="field-cust-phone" class="hidden">
+                <label class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block mb-1">Teléfono</label>
+                <div class="relative">
+                  <i class="fa-solid fa-phone absolute left-2.5 top-2 text-slate-500 text-xs"></i>
+                  <input class="w-full bg-slate-900 border border-slate-700/80 rounded-lg pl-7 pr-2.5 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 font-mono" id="cust-phone" placeholder="314 888 9999" type="tel"/>
+                </div>
+              </div>
+              <div id="field-cust-notes" class="sm:col-span-2">
+                <label class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block mb-1">Anotación</label>
+                <div class="relative">
+                  <i class="fa-solid fa-note-sticky absolute left-2.5 top-2 text-slate-500 text-xs"></i>
+                  <input class="w-full bg-slate-900 border border-slate-700/80 rounded-lg pl-7 pr-2.5 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-orange-500" id="cust-notes" placeholder="Ej: Para llevar, entregar en barra, observación..." type="text"/>
+                </div>
+              </div>
+              <div id="field-cust-address" class="sm:col-span-2 hidden">
+                <label class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block mb-1">Dirección de Domicilio</label>
+                <div class="relative">
+                  <i class="fa-solid fa-location-dot absolute left-2.5 top-2 text-slate-500 text-xs"></i>
+                  <input class="w-full bg-slate-900 border border-slate-700/80 rounded-lg pl-7 pr-2.5 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-orange-500" id="cust-address" placeholder="Ej: Barrio Caobos Calle 15 #4-20" type="text"/>
+                </div>
+              </div>
+              <div class="sm:col-span-2">
+                <label class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block mb-1">Medio de Pago</label>
+                <div class="relative">
+                  <i class="fa-solid fa-wallet absolute left-2.5 top-2 text-emerald-400 text-xs"></i>
+                  <select id="cust-payment" class="w-full bg-slate-900 border border-slate-700/80 rounded-lg pl-7 pr-2 py-1.5 text-xs text-white focus:outline-none focus:border-orange-500">
+                    <option value="Efectivo">💵 Efectivo</option>
+                    <option value="Nequi">📱 Nequi</option>
+                    <option value="Daviplata">📲 Daviplata</option>
+                    <option value="Transferencia Bancolombia">🏦 Bancolombia</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Items List in Draft Cart -->
+            <div class="p-3.5 flex-1 max-h-[250px] overflow-y-auto custom-scroll space-y-2.5" id="cart-items-list"></div>
+
+            <!-- Modifiers Quick Preset Bar -->
+            <div class="px-3.5 py-3 bg-slate-950/80 border-t border-slate-800">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[11px] font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1">
+                  <i class="fa-solid fa-tags text-orange-500"></i> Modificadores & Adiciones:
+                </span>
+                <span class="text-[10px] text-slate-400">Clic para activar/quitar</span>
+              </div>
+              <div class="flex flex-wrap gap-1.5" id="preset-tags-container"></div>
+            </div>
+
+            <!-- Total & Checkout Actions -->
+            <div class="p-4 bg-slate-900 border-t border-slate-800 flex flex-col gap-2.5">
+              <div class="flex items-center justify-between text-xs text-slate-400">
+                <span>Cobro por adiciones / extras:</span>
+                <span class="font-mono font-semibold text-emerald-400" id="order-additions-display">+$0 COP</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-slate-300 font-semibold">Total a Cobrar:</span>
+                <span class="font-mono text-xl font-bold text-slate-100" id="order-total-display">$0 COP</span>
+              </div>
+              <div class="grid grid-cols-12 gap-2 pt-1">
+                <button class="col-span-3 px-2.5 py-2.5 rounded-lg border border-slate-700 bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs transition flex items-center justify-center gap-1" id="btn-clear-cart" onclick="clearCart()" title="Vaciar comanda actual">
+                  <i class="fa-solid fa-trash-can text-slate-400"></i> Limpiar
+                </button>
+                <button class="col-span-5 px-3 py-2.5 rounded-lg bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs tracking-wide transition shadow-sm flex items-center justify-center gap-1.5" id="btn-dispatch-order" onclick="dispatchOrder(false)">
+                  <i class="fa-solid fa-fire-burner"></i> Enviar a Cocina
+                </button>
+                <button class="col-span-4 px-2.5 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition shadow-sm flex items-center justify-center gap-1" onclick="dispatchOrder(true)" title="Enviar a cocina e imprimir comanda térmica de 80mm">
+                  <i class="fa-solid fa-print"></i> + Recibo
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- TAB 2: PANTALLA DE COCINA KDS KANBAN (RF-04,05,06,13)    -->
+    <!-- ======================================================== -->
+    <section class="tab-pane hidden" id="tab-kitchen">
+      <div class="max-w-7xl mx-auto flex flex-col gap-6">
+        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h2 class="text-lg font-bold text-white flex items-center gap-2" id="kds-business-name">
+              🔥 Cocina KDS — Al Carbón Parrilla & Burgers
+            </h2>
+          </div>
+          <div class="flex items-center gap-2 font-mono text-xs">
+            <span class="px-3 py-1.5 rounded-lg bg-amber-950/50 border border-amber-500/30 text-amber-300 flex items-center gap-1.5">
+              <i class="fa-regular fa-clock"></i> Por Iniciar: <strong id="kstat-pending">1</strong>
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-blue-950/50 border border-blue-500/30 text-blue-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-fire"></i> En Parrilla: <strong id="kstat-preparing">1</strong>
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-emerald-950/50 border border-emerald-500/30 text-emerald-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-circle-check"></i> Listos: <strong id="kstat-dispatched">1</strong>
+            </span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-slate-900 border border-slate-800 rounded-xl flex flex-col overflow-hidden">
+            <div class="px-4 py-3 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
+              <div class="flex items-center gap-2 text-xs font-bold tracking-wider text-amber-400 uppercase">
+                <i class="fa-solid fa-hourglass-start"></i> 1. Por Iniciar (Pendiente)
+              </div>
+              <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-300 font-mono text-xs flex items-center justify-center font-bold" id="badge-col-pending">1</span>
+            </div>
+            <div class="p-3 space-y-3 flex-1 min-h-[420px]" id="container-pending"></div>
+          </div>
+
+          <div class="bg-slate-900 border border-slate-800 rounded-xl flex flex-col overflow-hidden">
+            <div class="px-4 py-3 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
+              <div class="flex items-center gap-2 text-xs font-bold tracking-wider text-blue-400 uppercase">
+                <i class="fa-solid fa-fire"></i> 2. En Cocción (Preparación)
+              </div>
+              <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-300 font-mono text-xs flex items-center justify-center font-bold" id="badge-col-preparing">1</span>
+            </div>
+            <div class="p-3 space-y-3 flex-1 min-h-[420px]" id="container-preparing"></div>
+          </div>
+
+          <div class="bg-slate-900 border border-slate-800 rounded-xl flex flex-col overflow-hidden">
+            <div class="px-4 py-3 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
+              <div class="flex items-center gap-2 text-xs font-bold tracking-wider text-emerald-400 uppercase">
+                <i class="fa-solid fa-circle-check"></i> 3. Despachados (Listos)
+              </div>
+              <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-300 font-mono text-xs flex items-center justify-center font-bold" id="badge-col-dispatched">1</span>
+            </div>
+            <div class="p-3 space-y-3 flex-1 min-h-[420px]" id="container-dispatched"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- TAB 3: INVENTARIO, RECETAS & MERMAS (RF-07, RF-08, RF-09) -->
+    <!-- ======================================================== -->
+    <section class="tab-pane hidden" id="tab-inventory">
+      <div class="max-w-7xl mx-auto flex flex-col gap-6">
+        <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h2 class="text-lg font-bold text-white flex items-center gap-2" id="inv-business-name">
+              🔥 Inventario y Kardex — Al Carbón Parrilla & Burgers
+            </h2>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <button class="px-4 py-2 bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/40 text-emerald-300 rounded-lg text-xs font-bold flex items-center gap-2 transition shadow-sm" onclick="abrirModalNuevoInsumo()">
+              <i class="fa-solid fa-plus"></i> Nuevo Insumo
+            </button>
+            <button class="px-4 py-2 bg-orange-600 hover:bg-orange-500 text-white rounded-lg text-xs font-bold flex items-center gap-2 transition shadow-sm" onclick="reabastecerTodosLosInsumos()">
+              <i class="fa-solid fa-truck-ramp-box"></i> Surtir Stock Completo
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-sm">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-950/70 text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
+                <tr>
+                  <th class="py-3 px-4">Insumo / Materia Prima</th>
+                  <th class="py-3 px-4">Disponible</th>
+                  <th class="py-3 px-4">Unidad</th>
+                  <th class="py-3 px-4">Stock Mínimo</th>
+                  <th class="py-3 px-4">Estado</th>
+                  <th class="py-3 px-4">Costo Unitario</th>
+                  <th class="py-3 px-4 text-right">Ajuste Rápido</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-800 text-slate-200" id="inventory-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div id="inventory-movement-panel" class="lg:col-span-5 bg-slate-900 border border-slate-800 rounded-xl p-5 transition">
+            <h3 class="text-sm font-bold text-white flex items-center gap-2 mb-3">
+              <i class="fa-solid fa-clipboard-check text-orange-500"></i> Registrar Compra de Insumo o Merma
+            </h3>
+            <form onsubmit="registrarMovimientoManual(event)" class="space-y-3 text-xs">
+              <div class="relative" id="mov-insumo-combobox">
+                <label class="block text-slate-400 font-semibold mb-1">Seleccionar Insumo:</label>
+                <input type="hidden" id="mov-insumo-id" value=""/>
+                <div class="relative">
+                  <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-500 text-xs pointer-events-none"></i>
+                  <input
+                    id="mov-insumo-search"
+                    type="text"
+                    autocomplete="off"
+                    placeholder="Escribe o selecciona un insumo..."
+                    onfocus="abrirDropdownInsumosMovimiento(true)"
+                    oninput="filtrarOpcionesInsumoMovimiento(this.value)"
+                    class="w-full bg-slate-950 border border-slate-700 rounded-lg pl-8 pr-8 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500"
+                  />
+                  <button
+                    type="button"
+                    onclick="toggleDropdownInsumosMovimiento(event)"
+                    class="absolute right-2 top-1.5 w-6 h-6 rounded text-slate-400 hover:text-white flex items-center justify-center"
+                    title="Ver lista de insumos"
+                  >
+                    <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                  </button>
+                </div>
+                <div
+                  id="mov-insumo-dropdown"
+                  class="hidden absolute left-0 right-0 top-full mt-1 max-h-48 overflow-y-auto custom-scroll bg-slate-900 border border-slate-700 rounded-xl shadow-2xl z-40 divide-y divide-slate-800/80"
+                ></div>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-slate-400 font-semibold mb-1">Tipo de Movimiento:</label>
+                  <select id="mov-tipo" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-orange-500">
+                    <option value="entrada">📦 Entrada (Compra a Proveedor)</option>
+                    <option value="merma">🗑️ Merma (Daño / Desperdicio)</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-slate-400 font-semibold mb-1">Cantidad:</label>
+                  <input id="mov-cantidad" type="number" step="0.05" min="0.05" value="5" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white font-mono focus:outline-none focus:border-orange-500" required/>
+                </div>
+              </div>
+              <div>
+                <label class="block text-slate-400 font-semibold mb-1">Observación / Proveedor / Motivo:</label>
+                <input id="mov-motivo" type="text" placeholder="Ej: Compra Frigorífico Cúcuta / Pan dañado" value="Compra proveedor local Cúcuta" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-orange-500" required/>
+              </div>
+              <button type="submit" class="w-full py-2.5 bg-orange-600 hover:bg-orange-500 text-white font-bold rounded-lg transition flex items-center justify-center gap-2 shadow-sm">
+                <i class="fa-solid fa-floppy-disk"></i> Registrar Movimiento en Kardex
+              </button>
+            </form>
+          </div>
+
+          <div class="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-xl p-5 flex flex-col">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-clock-rotate-left text-blue-400"></i> Kardex de Movimientos en Vivo
+              </h3>
+              <div class="flex items-center gap-1 text-[11px]">
+                <button onclick="filtrarMovimientos('todos')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200">Todos</button>
+                <button onclick="filtrarMovimientos('consumo')" class="px-2.5 py-1 rounded bg-blue-950/60 text-blue-300 border border-blue-500/30">Ventas</button>
+                <button onclick="filtrarMovimientos('entrada')" class="px-2.5 py-1 rounded bg-emerald-950/60 text-emerald-300 border border-emerald-500/30">Compras</button>
+                <button onclick="filtrarMovimientos('merma')" class="px-2.5 py-1 rounded bg-red-950/60 text-red-300 border border-red-500/30">Mermas</button>
+              </div>
+            </div>
+            <div class="overflow-x-auto max-h-[250px] overflow-y-auto custom-scroll">
+              <table class="w-full text-left text-xs">
+                <thead class="bg-slate-950/80 text-slate-400 uppercase border-b border-slate-800 sticky top-0">
+                  <tr>
+                    <th class="py-2 px-3">Hora</th>
+                    <th class="py-2 px-3">Insumo</th>
+                    <th class="py-2 px-3">Tipo</th>
+                    <th class="py-2 px-3">Cantidad</th>
+                    <th class="py-2 px-3">Detalle / Referencia</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-800" id="movements-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- TAB 4: RECEPCIÓN DE PEDIDOS WHATSAPP POR QR (RF-03)      -->
+    <!-- ======================================================== -->
+    <section class="tab-pane hidden" id="tab-whatsapp">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+        <!-- Columna Izquierda: Vinculación Real por Código QR (Forma 1) -->
+        <div class="lg:col-span-5 bg-slate-900 border border-slate-800 rounded-xl p-5 flex flex-col justify-between shadow-lg">
+          <div>
+            <div class="flex items-center justify-between pb-3.5 border-b border-slate-800">
+              <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-xl bg-emerald-600/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 text-lg">
+                  <i class="fa-solid fa-qrcode"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-white text-sm">Vincular WhatsApp del Negocio</h3>
+                  <p class="text-[11px] text-slate-400">Conexión directa por Código QR (Multi-Dispositivo)</p>
+                </div>
+              </div>
+              <span id="wa-connection-badge" class="px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30 text-[10px] font-mono font-bold">
+                Listo para vincular
+              </span>
+            </div>
+
+            <!-- Recuadro Interactivo del Código QR -->
+            <div class="my-4 p-4 rounded-xl bg-slate-950 border border-slate-800 flex flex-col items-center justify-center text-center min-h-[250px]" id="wa-qr-container">
+              <div id="wa-qr-placeholder" class="flex flex-col items-center gap-3 py-4">
+                <div class="w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-3xl">
+                  <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <div class="max-w-xs">
+                  <p class="text-xs font-bold text-white" id="wa-status-title">Conecta el celular del restaurante</p>
+                  <p class="text-[11px] text-slate-400 mt-1" id="wa-status-subtitle"></p>
+                </div>
+              </div>
+              <img id="wa-qr-image" src="" alt="Código QR de WhatsApp" class="hidden w-52 h-52 rounded-xl border-4 border-white shadow-xl mb-2"/>
+            </div>
+
+            <!-- Botones de Conexión QR y Desconexión -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+              <button type="button" onclick="conectarWhatsAppPorQR(false)" class="py-2.5 px-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition shadow-md flex items-center justify-center gap-1.5">
+                <i class="fa-solid fa-qrcode"></i> Conectar QR
+              </button>
+              <button type="button" onclick="conectarWhatsAppPorQR(true)" class="py-2.5 px-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-semibold transition flex items-center justify-center gap-1.5" title="Generar un nuevo código QR">
+                <i class="fa-solid fa-rotate"></i> Cambiar QR
+              </button>
+              <button type="button" id="btn-desconectar-wa" onclick="desconectarWhatsAppDesdeUI()" class="py-2.5 px-2.5 rounded-xl bg-red-950/60 hover:bg-red-900 border border-red-700/50 text-red-300 font-bold transition flex items-center justify-center gap-1.5" title="Desactivar y cerrar sesión de WhatsApp">
+                <i class="fa-solid fa-power-off"></i> Desactivar
+              </button>
+            </div>
+
+            <!-- Tarjeta del Menú Digital Interactivo en Vivo -->
+            <div class="mt-4 p-3.5 rounded-xl bg-gradient-to-br from-amber-500/15 via-slate-950 to-slate-950 border border-amber-500/40 text-[11px] text-slate-300 space-y-2.5">
+              <div class="flex items-center justify-between">
+                <div class="font-bold text-amber-300 flex items-center gap-1.5 text-xs">
+                  <i class="fa-solid fa-utensils text-amber-400"></i> Menú Digital
+                </div>
+                <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] font-bold">Envío Automático</span>
+              </div>
+              <div class="pt-1">
+                <button type="button" onclick="abrirMenuDigitalCliente()" class="w-full py-2.5 px-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-black transition flex items-center justify-center gap-1.5 shadow">
+                  <i class="fa-solid fa-up-right-from-square"></i> Ver Vista Previa del Menú Digital
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Bandeja en Vivo de Mensajes de Clientes -> Cocina -->
+        <div class="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-xl overflow-hidden flex flex-col shadow-lg">
+          <div class="px-4 py-3 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full bg-emerald-600 flex items-center justify-center text-white text-lg">
+                <i class="fa-brands fa-whatsapp"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-white text-xs" id="wa-business-title">Al Carbón Parrilla & Burgers • Línea 314 888 9999</h3>
+              </div>
+            </div>
+            <span class="text-[10px] font-mono text-emerald-400 bg-slate-900 px-2.5 py-1 rounded border border-slate-800">En Vivo</span>
+          </div>
+
+          <div id="wa-chat-messages" class="p-4 bg-slate-950/80 space-y-3 flex-1 max-h-[370px] overflow-y-auto custom-scroll"></div>
+
+          <!-- Entrada rápida o prueba manual de recepción -->
+          <div class="p-3.5 bg-slate-900 border-t border-slate-800 space-y-2.5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <input id="wa-sender-name" type="text" placeholder="Nombre del cliente (Ej: Laura Gómez)" class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-emerald-500"/>
+              <input id="wa-sender-address" type="text" placeholder="Dirección / Barrio (Ej: Caobos Calle 15 #4-20)" class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-emerald-500"/>
+            </div>
+            <div class="flex gap-2">
+              <input id="wa-custom-input" type="text" placeholder="Escribe o pega aquí un pedido de WhatsApp para enviarlo directo a Cocina..." class="flex-1 bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500"/>
+              <button onclick="parseWhatsAppOrder()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg transition flex items-center gap-1.5 shadow-md">
+                <i class="fa-solid fa-paper-plane"></i> Enviar a Cocina
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- TAB 5: CIERRE DE CAJA Y VENTAS                           -->
+    <!-- ======================================================== -->
+    <section class="tab-pane hidden" id="tab-metrics">
+      <div class="max-w-7xl mx-auto flex flex-col gap-6">
+
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+          <!-- Encabezado y Controles de Período (Día / Semana / Mes + Buscador de Fechas Anteriores) -->
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 mb-5 border-b border-slate-800">
+            <div>
+              <h3 class="text-base font-bold text-white flex items-center gap-2" id="rep-active-business-name">
+                🔥 Cierre de Caja y Reporte de Ventas
+              </h3>
+              <p class="text-xs text-orange-400 font-medium mt-0.5" id="rep-periodo-label">
+                Mostrando ventas del día de hoy
+              </p>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2.5 text-xs">
+              <!-- Selector de tipo de reporte: Día, Semana, Mes -->
+              <div class="inline-flex rounded-xl bg-slate-950 p-1 border border-slate-800">
+                <button type="button" id="btn-rep-modo-dia" onclick="cambiarModoReporteCaja('dia')" class="px-3 py-1.5 rounded-lg font-bold transition bg-orange-600 text-white">
+                  Día
+                </button>
+                <button type="button" id="btn-rep-modo-semana" onclick="cambiarModoReporteCaja('semana')" class="px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-white">
+                  Semana
+                </button>
+                <button type="button" id="btn-rep-modo-mes" onclick="cambiarModoReporteCaja('mes')" class="px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-white">
+                  Mes
+                </button>
+              </div>
+
+              <!-- Selector de Fecha (para Día y Semana) -->
+              <div id="box-rep-filtro-fecha" class="flex items-center gap-1.5">
+                <input
+                  id="rep-filtro-fecha"
+                  type="date"
+                  onchange="actualizarFechaReporteCaja(this.value)"
+                  class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-1.5 text-white font-mono text-xs focus:outline-none focus:border-orange-500"
+                />
+                <button
+                  type="button"
+                  onclick="irAReporteDeHoy()"
+                  class="px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-semibold transition"
+                  title="Volver a las ventas de hoy"
+                >
+                  Hoy
+                </button>
+              </div>
+
+              <!-- Selector de Mes (para modo Mes) -->
+              <div id="box-rep-filtro-mes" class="hidden items-center gap-1.5">
+                <input
+                  id="rep-filtro-mes"
+                  type="month"
+                  onchange="actualizarMesReporteCaja(this.value)"
+                  class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-1.5 text-white font-mono text-xs focus:outline-none focus:border-orange-500"
+                />
+                <button
+                  type="button"
+                  onclick="irAReporteDeHoy()"
+                  class="px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-semibold transition"
+                  title="Volver al mes actual"
+                >
+                  Mes actual
+                </button>
+              </div>
+
+              <button type="button" onclick="imprimirReporteCierreCaja()" class="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold flex items-center gap-1.5 transition">
+                <i class="fa-solid fa-print text-orange-400"></i> Imprimir Reporte
+              </button>
+            </div>
+          </div>
+
+          <!-- Tarjetas de Resumen del Período Seleccionado -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-5">
+            <div class="p-3.5 bg-slate-950/70 border border-slate-800 rounded-lg">
+              <span class="text-[11px] text-slate-400 uppercase font-semibold" id="rep-titulo-kpi-ventas">Ventas del Día</span>
+              <div class="font-mono text-lg font-extrabold text-emerald-400 mt-1" id="rep-ventas-hoy">$0 COP</div>
+              <span class="text-[11px] text-slate-400" id="rep-pedidos-hoy">0 órdenes registradas</span>
+            </div>
+            <div class="p-3.5 bg-slate-950/70 border border-slate-800 rounded-lg">
+              <span class="text-[11px] text-slate-400 uppercase font-semibold">Medios de Pago</span>
+              <div class="font-mono text-xs font-bold text-slate-200 mt-1.5 space-y-0.5" id="rep-desglose-pagos">
+                <div>💵 Efectivo: <span class="text-emerald-400">$0</span></div>
+                <div>📱 Transferencia/Otros: <span class="text-blue-400">$0</span></div>
+              </div>
+            </div>
+            <div class="p-3.5 bg-slate-950/70 border border-slate-800 rounded-lg">
+              <span class="text-[11px] text-slate-400 uppercase font-semibold">Recaudo por Adiciones</span>
+              <div class="font-mono text-lg font-extrabold text-orange-400 mt-1" id="rep-adiciones-hoy">+$0 COP</div>
+              <span class="text-[11px] text-slate-400">Extras cobrados en pedidos</span>
+            </div>
+            <div class="p-3.5 bg-slate-950/70 border border-slate-800 rounded-lg">
+              <span class="text-[11px] text-slate-400 uppercase font-semibold">Cocina e Inventario</span>
+              <div class="font-mono text-sm font-extrabold text-blue-400 mt-1" id="rep-tiempo-promedio">10 min promedio</div>
+              <span class="text-[11px] text-amber-300 font-mono" id="rep-mermas-count">0 merma(s) / 0 consumos</span>
+            </div>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-950/80 text-slate-400 uppercase border-b border-slate-800">
+                <tr>
+                  <th class="py-2.5 px-3">Ticket</th>
+                  <th class="py-2.5 px-3">Fecha / Hora</th>
+                  <th class="py-2.5 px-3">Cliente / Mesa</th>
+                  <th class="py-2.5 px-3">Canal & Pago</th>
+                  <th class="py-2.5 px-3">Detalle de Productos</th>
+                  <th class="py-2.5 px-3">Estado</th>
+                  <th class="py-2.5 px-3 text-right">Total Cobrado</th>
+                  <th class="py-2.5 px-3 text-right">Recibo</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-800" id="daily-sales-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================================= -->
+  <!-- PANTALLA INTERACTIVA: AGREGAR / EDITAR PLATO DEL MENÚ                   -->
+  <!-- ======================================================================= -->
+  <div id="modal-nuevo-plato" class="hidden fixed inset-0 z-[65] bg-slate-950/90 backdrop-blur-md overflow-y-auto p-4 md:p-6 flex items-center justify-center">
+    <div class="max-w-3xl w-full bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-2xl my-auto">
+      <!-- Encabezado del Modal -->
+      <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-orange-500/15 border border-orange-500/30 flex items-center justify-center text-orange-400">
+            <i class="fa-solid fa-utensils text-lg"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-extrabold text-white" id="modal-plato-titulo">Añadir Nuevo Plato al Menú</h3>
+            <p class="text-xs text-slate-400">Configura el nombre, categoría, precio, ingredientes y fotografía del plato</p>
+          </div>
+        </div>
+        <button type="button" onclick="cerrarModalNuevoProducto()" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Formulario Interactivo -->
+      <form onsubmit="guardarPlatoDesdeModal(event)" class="mt-5 grid grid-cols-1 md:grid-cols-12 gap-5 text-xs">
+        <input type="hidden" id="plato-edit-id" value=""/>
+
+        <!-- Columna Izquierda: Datos del Plato (7 cols) -->
+        <div class="md:col-span-7 space-y-3.5">
+          <!-- Nombre del Plato -->
+          <div>
+            <label class="block text-slate-300 font-bold mb-1">Nombre del Plato *</label>
+            <input id="plato-nombre-input" type="text" placeholder="Ej: Churrasco Especial Al Carbón" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white font-medium focus:outline-none focus:border-orange-500" required/>
+          </div>
+
+          <!-- Categoría (con opción de crear categoría nueva) y Precio -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-slate-300 font-bold mb-1">Categoría *</label>
+              <select id="plato-categoria-select" onchange="toggleInputNuevaCategoria(this.value)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:border-orange-500"></select>
+              <!-- Campo para escribir una nueva categoría cuando elige "+ Crear nueva categoría..." -->
+              <div id="plato-nueva-categoria-box" class="hidden mt-2">
+                <input id="plato-nueva-categoria-input" type="text" placeholder="Escribe la nueva categoría (ej: Parrilla)" class="w-full bg-slate-950 border border-orange-500 rounded-xl px-3 py-2 text-white focus:outline-none"/>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-slate-300 font-bold mb-1">Precio de Venta ($ COP) *</label>
+              <div class="relative">
+                <span class="absolute left-3.5 top-2.5 text-orange-400 font-mono font-bold">$</span>
+                <input id="plato-precio-input" type="number" min="500" step="500" placeholder="22000" class="w-full bg-slate-950 border border-slate-700 rounded-xl pl-8 pr-3 py-2.5 text-white font-mono font-bold focus:outline-none focus:border-orange-500" required/>
+              </div>
+            </div>
+          </div>
+
+          <!-- Descripción -->
+          <div>
+            <label class="block text-slate-300 font-bold mb-1">Descripción del Plato *</label>
+            <textarea id="plato-descripcion-input" rows="2" placeholder="Describe cómo se sirve el plato (ej: Corte asado al carbón de 250g con papas a la francesa y ensalada fresca)..." class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-white focus:outline-none focus:border-orange-500 resize-none" required></textarea>
+          </div>
+
+          <!-- Ingredientes del Plato (Uno por uno) -->
+          <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-3 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <label class="text-slate-200 font-bold flex items-center gap-1.5">
+                <i class="fa-solid fa-carrot text-orange-400"></i>
+                <span>Ingredientes del Plato</span>
+              </label>
+              <span id="plato-ingredientes-count" class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-900 border border-slate-700 text-slate-400">0 ingredientes</span>
+            </div>
+
+            <!-- Lista de ingredientes añadidos -->
+            <div id="plato-lista-ingredientes-ui" class="flex flex-wrap gap-1.5 min-h-[28px] items-center"></div>
+
+            <!-- Caja para escribir un ingrediente a la vez -->
+            <div id="plato-ingrediente-captura-box" class="space-y-2 pt-1 border-t border-slate-800/80">
+              <div class="flex flex-col sm:flex-row gap-2">
+                <input
+                  id="plato-ingrediente-individual-input"
+                  type="text"
+                  placeholder="Escribe un ingrediente (ej: Queso fundido)"
+                  onkeydown="if(event.key==='Enter'){event.preventDefault();agregarIngredienteAlPlatoModal();}"
+                  class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-orange-500"
+                />
+                <div class="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onclick="agregarIngredienteAlPlatoModal()"
+                    class="px-3 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold transition flex items-center gap-1 whitespace-nowrap"
+                  >
+                    <i class="fa-solid fa-plus text-[10px]"></i> Añadir más
+                  </button>
+                  <button
+                    type="button"
+                    onclick="finalizarCapturaIngredientesModal()"
+                    class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-emerald-400 font-bold transition flex items-center gap-1 whitespace-nowrap"
+                  >
+                    <i class="fa-solid fa-check text-[10px]"></i> Finalizar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Botón para volver a abrir la captura si ya dio clic en Finalizar -->
+            <button
+              id="btn-reabrir-captura-ingredientes"
+              type="button"
+              onclick="mostrarCapturaIngredientesModal()"
+              class="hidden w-full py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-dashed border-slate-700 text-orange-400 font-semibold text-[11px] transition flex items-center justify-center gap-1.5"
+            >
+              <i class="fa-solid fa-plus text-[10px]"></i> Añadir más ingredientes
+            </button>
+          </div>
+
+          <!-- Adiciones del Plato (Configuradas por el Administrador para este plato) -->
+          <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-3 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <label class="text-slate-200 font-bold flex items-center gap-1.5">
+                <i class="fa-solid fa-circle-plus text-emerald-400"></i>
+                <span>Adiciones Permitidas en este Plato</span>
+              </label>
+              <span id="plato-adiciones-count" class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-900 border border-slate-700 text-slate-400">0 adiciones</span>
+            </div>
+
+            <!-- Lista de adiciones añadidas al plato -->
+            <div id="plato-lista-adiciones-ui" class="flex flex-wrap gap-1.5 min-h-[28px] items-center"></div>
+
+            <!-- Caja para escribir una adición a la vez (Nombre + Precio) -->
+            <div id="plato-adicion-captura-box" class="space-y-2 pt-1 border-t border-slate-800/80">
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-2">
+                <input
+                  id="plato-adicion-nombre-input"
+                  type="text"
+                  placeholder="Adición (ej: Extra Queso)"
+                  onkeydown="if(event.key==='Enter'){event.preventDefault();agregarAdicionAlPlatoModal();}"
+                  class="sm:col-span-5 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-emerald-500"
+                />
+                <div class="relative sm:col-span-3">
+                  <span class="absolute left-2.5 top-2 text-emerald-400 font-mono font-bold">$</span>
+                  <input
+                    id="plato-adicion-precio-input"
+                    type="number"
+                    min="0"
+                    step="500"
+                    placeholder="3000"
+                    onkeydown="if(event.key==='Enter'){event.preventDefault();agregarAdicionAlPlatoModal();}"
+                    class="w-full bg-slate-900 border border-slate-700 rounded-xl pl-6 pr-2 py-2 text-white font-mono focus:outline-none focus:border-emerald-500"
+                  />
+                </div>
+                <div class="sm:col-span-4 flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onclick="agregarAdicionAlPlatoModal()"
+                    class="flex-1 px-2.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition flex items-center justify-center gap-1 whitespace-nowrap"
+                  >
+                    <i class="fa-solid fa-plus text-[10px]"></i> Añadir más
+                  </button>
+                  <button
+                    type="button"
+                    onclick="finalizarCapturaAdicionesModal()"
+                    class="px-2.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-emerald-400 font-bold transition flex items-center justify-center gap-1 whitespace-nowrap"
+                  >
+                    <i class="fa-solid fa-check text-[10px]"></i> Finalizar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Botón para volver a abrir la captura de adiciones si dio clic en Finalizar -->
+            <button
+              id="btn-reabrir-captura-adiciones"
+              type="button"
+              onclick="mostrarCapturaAdicionesModal()"
+              class="hidden w-full py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-dashed border-slate-700 text-emerald-400 font-semibold text-[11px] transition flex items-center justify-center gap-1.5"
+            >
+              <i class="fa-solid fa-plus text-[10px]"></i> Añadir más adiciones
+            </button>
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Fotografía del Plato y Vista Previa (5 cols) -->
+        <div class="md:col-span-5 flex flex-col justify-between bg-slate-950/80 border border-slate-800 rounded-xl p-4">
+          <div>
+            <label class="block text-slate-300 font-bold mb-2">Fotografía del Plato:</label>
+
+            <!-- Vista Previa de la Imagen -->
+            <div class="relative w-full h-40 rounded-xl bg-slate-900 border border-slate-800 overflow-hidden mb-3 flex items-center justify-center group">
+              <img id="plato-foto-preview" src="IMAGENES PARA PEDIR/ESPECIAL.jpg" alt="Vista previa" class="w-full h-full object-cover"/>
+              <div class="absolute inset-0 bg-slate-950/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                <label for="plato-foto-file" class="cursor-pointer px-3 py-1.5 rounded-lg bg-orange-600 text-white font-bold text-xs shadow-lg flex items-center gap-1.5">
+                  <i class="fa-solid fa-camera"></i> Cambiar Foto
+                </label>
+              </div>
+            </div>
+
+            <!-- Botón para subir imagen desde la computadora o celular -->
+            <label for="plato-foto-file" class="w-full py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-dashed border-slate-600 hover:border-orange-500 text-slate-200 font-semibold flex items-center justify-center gap-2 cursor-pointer transition mb-3">
+              <i class="fa-solid fa-upload text-orange-400"></i>
+              <span>Subir foto desde mi dispositivo</span>
+            </label>
+            <input id="plato-foto-file" type="file" accept="image/*" class="hidden" onchange="procesarArchivoFotoPlato(event)"/>
+
+            <!-- Galería rápida opcional -->
+            <div>
+              <span class="block text-[10px] text-slate-400 mb-1.5">O elige una foto de referencia rápida:</span>
+              <div class="grid grid-cols-5 gap-1.5" id="plato-galeria-rapida"></div>
+            </div>
+          </div>
+
+          <!-- Tiempo estimado -->
+          <div class="mt-3 pt-3 border-t border-slate-800 flex items-center justify-between">
+            <span class="text-slate-400">Tiempo preparación:</span>
+            <input id="plato-tiempo-input" type="text" value="10 min" class="w-24 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-center text-white font-mono text-xs focus:outline-none focus:border-orange-500"/>
+          </div>
+        </div>
+
+        <!-- Botones de Acción -->
+        <div class="md:col-span-12 pt-3 border-t border-slate-800 flex items-center justify-end gap-2.5">
+          <button type="button" onclick="cerrarModalNuevoProducto()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
+            Cancelar
+          </button>
+          <button type="submit" class="px-5 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold transition shadow-lg shadow-orange-950/50 flex items-center gap-2">
+            <i class="fa-solid fa-floppy-disk"></i> Guardar Plato en el Menú
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- PANTALLA INTERACTIVA: AGREGAR NUEVO INSUMO AL INVENTARIO DEL NEGOCIO    -->
+  <!-- ======================================================================= -->
+  <div id="modal-nuevo-insumo" class="hidden fixed inset-0 z-[65] bg-slate-950/90 backdrop-blur-md overflow-y-auto p-4 md:p-6 flex items-center justify-center">
+    <div class="max-w-lg w-full bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-2xl my-auto">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+            <i class="fa-solid fa-boxes-stacked text-lg"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-extrabold text-white">Añadir Nuevo Insumo al Inventario</h3>
+            <p class="text-xs text-slate-400">Registra una materia prima exclusiva para este restaurante</p>
+          </div>
+        </div>
+        <button type="button" onclick="cerrarModalNuevoInsumo()" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form onsubmit="guardarNuevoInsumoDesdeModal(event)" class="mt-5 space-y-4 text-xs">
+        <div>
+          <label class="block text-slate-300 font-bold mb-1">Nombre del Insumo / Materia Prima *</label>
+          <input id="insumo-nombre-input" type="text" placeholder="Ej: Carne de Res (150g), Pan Artesanal, Queso Mozzarella..." class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white font-medium focus:outline-none focus:border-emerald-500" required/>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-bold mb-1">Unidad de Medida *</label>
+            <select id="insumo-unidad-input" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:border-emerald-500">
+              <option value="Unidades">Unidades</option>
+              <option value="Porciones">Porciones</option>
+              <option value="Kg">Kilogramos (Kg)</option>
+              <option value="Litros">Litros</option>
+              <option value="Lonjas">Lonjas</option>
+              <option value="Bolsas">Bolsas / Paquetes</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-slate-300 font-bold mb-1">Costo Unitario ($ COP) *</label>
+            <input id="insumo-costo-input" type="number" min="0" step="100" value="2500" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white font-mono focus:outline-none focus:border-emerald-500" required/>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-bold mb-1">Stock Inicial Disponible *</label>
+            <input id="insumo-stock-input" type="number" min="0" step="0.1" value="30" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white font-mono focus:outline-none focus:border-emerald-500" required/>
+          </div>
+          <div>
+            <label class="block text-slate-300 font-bold mb-1">Alerta de Stock Mínimo *</label>
+            <input id="insumo-umbral-input" type="number" min="0" step="0.1" value="10" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white font-mono focus:outline-none focus:border-emerald-500" required/>
+          </div>
+        </div>
+
+        <div class="pt-3 border-t border-slate-800 flex items-center justify-end gap-2.5">
+          <button type="button" onclick="cerrarModalNuevoInsumo()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
+            Cancelar
+          </button>
+          <button type="submit" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition shadow-lg shadow-emerald-950/50 flex items-center gap-2">
+            <i class="fa-solid fa-floppy-disk"></i> Guardar Insumo
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- RECUADRO DE CONFIRMACIÓN PARA ELIMINAR INSUMO DEL INVENTARIO            -->
+  <!-- ======================================================================= -->
+  <div id="modal-confirmar-eliminar-insumo" class="hidden fixed inset-0 z-[70] bg-slate-950/90 backdrop-blur-md p-4 flex items-center justify-center">
+    <div class="max-w-sm w-full bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-2xl text-center">
+      <div class="w-12 h-12 rounded-2xl bg-red-500/15 border border-red-500/30 text-red-400 flex items-center justify-center text-xl mx-auto mb-3">
+        <i class="fa-solid fa-trash-can"></i>
+      </div>
+      <h3 class="text-base font-extrabold text-white">¿Eliminar este insumo?</h3>
+      <p class="text-xs text-slate-400 mt-1.5">
+        Se eliminará <strong id="eliminar-insumo-nombre" class="text-white">este insumo</strong> del inventario.
+      </p>
+      <div class="mt-5 flex items-center justify-center gap-2.5 text-xs">
+        <button type="button" onclick="cerrarModalConfirmarEliminarInsumo()" class="flex-1 py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold transition">
+          Cancelar
+        </button>
+        <button type="button" onclick="confirmarEliminacionInsumo()" class="flex-1 py-2.5 px-4 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold transition shadow-lg shadow-red-950/50 flex items-center justify-center gap-1.5">
+          <i class="fa-solid fa-trash"></i> Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== NOTIFICATION TOAST ==================== -->
+  <div class="fixed bottom-6 right-6 z-[70] transform transition duration-300 pointer-events-none flex items-center gap-3 bg-slate-900 border border-slate-700 text-white px-4 py-3 rounded-xl shadow-2xl translate-y-20 opacity-0 max-w-md" id="toast-notification">
+    <div class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-sm flex-shrink-0" id="toast-icon">
+      <i class="fa-solid fa-circle-check"></i>
+    </div>
+    <span class="text-xs font-medium leading-snug" id="toast-message">Notificación</span>
+  </div>
+
+  <!-- Application Script -->
+  <script src="app.js?v=20261104_8"></script>
+</body>
+</html>

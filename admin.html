@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fast Order Cúcuta — Consola Privada de Base de Datos & Clientes SaaS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col antialiased selection:bg-orange-500 selection:text-white">
+
+  <!-- ======================================================================= -->
+  <!-- 1. LOGIN MAESTRO EXCLUSIVO PARA EL DUEÑO DEL SOFTWARE (/admin.html)     -->
+  <!-- ======================================================================= -->
+  <div id="admin-login-overlay" class="fixed inset-0 z-50 bg-slate-950 flex items-center justify-center p-4">
+    <div class="max-w-md w-full bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-7 shadow-2xl">
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-blue-950/50">
+          <i class="fa-solid fa-database text-xl"></i>
+        </div>
+        <div>
+          <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 border border-blue-500/30 font-bold">
+            Panel Privado Super-Admin
+          </span>
+          <h1 class="font-extrabold text-lg text-white mt-0.5">Fast Order Cúcuta • Base de Datos</h1>
+        </div>
+      </div>
+
+      <p class="text-xs text-slate-400 mb-5 leading-relaxed">
+        Este portal es exclusivo para el propietario del software. Desde aquí administras las bases de datos aisladas (<code class="text-blue-300 font-mono">db/FOC-0X.json</code>), creas nuevos negocios clientes y controlas sus suscripciones.
+      </p>
+
+      <form onsubmit="autenticarSuperAdmin(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block text-slate-300 font-bold mb-1.5">Usuario Administrador:</label>
+          <div class="relative">
+            <i class="fa-solid fa-user-shield absolute left-3.5 top-2.5 text-slate-400"></i>
+            <input id="admin-user-input" type="text" value="admin" placeholder="admin" class="w-full bg-slate-950 border border-slate-700 rounded-xl pl-9 pr-3 py-2.5 text-white font-mono focus:outline-none focus:border-blue-500" required />
+          </div>
+        </div>
+        <div>
+          <label class="block text-slate-300 font-bold mb-1.5">Clave Maestra:</label>
+          <div class="relative">
+            <i class="fa-solid fa-key absolute left-3.5 top-2.5 text-slate-400"></i>
+            <input id="admin-pass-input" type="password" value="1234" placeholder="••••" class="w-full bg-slate-950 border border-slate-700 rounded-xl pl-9 pr-3 py-2.5 text-white font-mono focus:outline-none focus:border-blue-500" required />
+          </div>
+        </div>
+        <button type="submit" class="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm transition shadow-lg shadow-blue-950/50 flex items-center justify-center gap-2">
+          <i class="fa-solid fa-unlock-keyhole"></i> Entrar al Gestor de Base de Datos
+        </button>
+      </form>
+
+      <div class="mt-4 pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+        <span>¿Ir al login de restaurantes?</span>
+        <a href="index.html" class="text-orange-400 hover:text-orange-300 font-bold flex items-center gap-1">
+          Abrir POS Restaurante <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- 2. CABECERA DEL PANEL DE ADMINISTRACIÓN DE BASE DE DATOS                -->
+  <!-- ======================================================================= -->
+  <header class="bg-slate-900 border-b border-slate-800 px-6 py-4 flex flex-wrap items-center justify-between gap-4 sticky top-0 z-30">
+    <div class="flex items-center gap-3.5">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-lg">
+        <i class="fa-solid fa-server"></i>
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <h1 class="font-extrabold text-base text-white">Consola Central de Base de Datos (Multi-Tenant)</h1>
+          <span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-mono text-[10px] font-bold">AISLAMIENTO ACTIVO</span>
+        </div>
+        <p class="text-xs text-slate-400">Cada negocio afiliado opera sobre su propio archivo físico <code class="text-blue-300 font-mono">db/FOC-0X.json</code> y credenciales independientes</p>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2.5">
+      <button onclick="abrirModalCrearEditarNegocio()" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-2 transition shadow-lg shadow-emerald-950/50">
+        <i class="fa-solid fa-plus"></i> Registrar Nuevo Negocio
+      </button>
+      <a href="index.html" class="px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold flex items-center gap-1.5 transition">
+        <i class="fa-solid fa-cash-register text-orange-400"></i> Ir al Login de Restaurantes
+      </a>
+      <button onclick="cerrarSesionAdmin()" class="px-3 py-2.5 rounded-xl bg-slate-950 hover:bg-red-950/50 text-slate-400 hover:text-red-300 border border-slate-800 text-xs font-semibold transition">
+        <i class="fa-solid fa-power-off"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- ======================================================================= -->
+  <!-- 3. CONTENIDO PRINCIPAL: KPIS + TABLA DE NEGOCIOS + INSPECTOR DB         -->
+  <!-- ======================================================================= -->
+  <main class="max-w-7xl w-full mx-auto px-6 py-6 space-y-6 flex-1">
+
+    <!-- KPIs Financieros y Técnicos -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4">
+        <span class="text-[11px] text-slate-400 font-semibold uppercase">Negocios en Base de Datos</span>
+        <div class="text-2xl font-extrabold text-white font-mono mt-1" id="kpi-total-negocios">0</div>
+        <span class="text-[11px] text-emerald-400 font-mono" id="kpi-archivos-db">db/FOC-01.json ...</span>
+      </div>
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4">
+        <span class="text-[11px] text-slate-400 font-semibold uppercase">Ingresos Mensuales (MRR SaaS)</span>
+        <div class="text-2xl font-extrabold text-emerald-400 font-mono mt-1" id="kpi-mrr">$0 COP</div>
+        <span class="text-[11px] text-slate-500">Suscripción mensual activa por restaurante</span>
+      </div>
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4">
+        <span class="text-[11px] text-slate-400 font-semibold uppercase">Total Platos Registrados</span>
+        <div class="text-2xl font-extrabold text-blue-400 font-mono mt-1" id="kpi-total-platos">0</div>
+        <span class="text-[11px] text-slate-500">Catálogos aislados por negocio</span>
+      </div>
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4">
+        <span class="text-[11px] text-slate-400 font-semibold uppercase">Órdenes Totales Procesadas</span>
+        <div class="text-2xl font-extrabold text-orange-400 font-mono mt-1" id="kpi-total-ordenes">0</div>
+        <span class="text-[11px] text-slate-500" id="kpi-total-ventas">Ventas acumuladas: $0</span>
+      </div>
+    </div>
+
+    <!-- Listado Profesional de Negocios en la Base de Datos -->
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+      <div class="px-5 py-4 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h2 class="text-sm font-bold text-white flex items-center gap-2">
+            <i class="fa-solid fa-table-list text-blue-400"></i>
+            Tabla de Negocios Afiliados (`negocios` • Aislamiento por Tenant)
+          </h2>
+          <p class="text-xs text-slate-400">Administra usuarios, contraseñas, estado de suscripción y archivos de base de datos de cada cliente</p>
+        </div>
+        <button onclick="cargarNegociosDesdeServidor()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-rotate"></i> Actualizar Tabla
+        </button>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr class="bg-slate-950/80 text-slate-400 border-b border-slate-800 uppercase text-[10px] font-bold tracking-wider">
+              <th class="py-3 px-4">ID / Archivo DB</th>
+              <th class="py-3 px-4">Restaurante & Ubicación</th>
+              <th class="py-3 px-4">Credenciales de Acceso</th>
+              <th class="py-3 px-4">Datos Aislados</th>
+              <th class="py-3 px-4">Suscripción</th>
+              <th class="py-3 px-4 text-right">Acciones de Base de Datos</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-negocios-body" class="divide-y divide-slate-800/80"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Inspector de Tablas Internas por Negocio -->
+    <div id="inspector-db-box" class="hidden bg-slate-900 border border-blue-500/30 rounded-2xl p-5 shadow-xl">
+      <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800">
+        <div>
+          <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 border border-blue-500/30 font-bold" id="inspector-db-file">db/FOC-01.json</span>
+          <h3 class="text-base font-extrabold text-white mt-1" id="inspector-db-title">Inspección de Base de Datos</h3>
+        </div>
+        <button onclick="cerrarInspectorDB()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold">
+          Cerrar Inspector ✕
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4 text-xs">
+        <!-- Columna 1: Catálogo de Platos -->
+        <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+          <div class="font-bold text-white mb-2 flex items-center justify-between">
+            <span>🍔 Tabla `productos` (Menú)</span>
+            <span class="font-mono text-[11px] text-orange-400" id="insp-count-platos">0</span>
+          </div>
+          <div id="insp-list-platos" class="space-y-1.5 max-h-60 overflow-y-auto pr-1"></div>
+        </div>
+
+        <!-- Columna 2: Insumos de Inventario -->
+        <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+          <div class="font-bold text-white mb-2 flex items-center justify-between">
+            <span>📦 Tabla `insumos` (Inventario)</span>
+            <span class="font-mono text-[11px] text-emerald-400" id="insp-count-insumos">0</span>
+          </div>
+          <div id="insp-list-insumos" class="space-y-1.5 max-h-60 overflow-y-auto pr-1"></div>
+        </div>
+
+        <!-- Columna 3: Pedidos Registrados -->
+        <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+          <div class="font-bold text-white mb-2 flex items-center justify-between">
+            <span>🧾 Tabla `pedidos` (Comandas)</span>
+            <span class="font-mono text-[11px] text-blue-400" id="insp-count-pedidos">0</span>
+          </div>
+          <div id="insp-list-pedidos" class="space-y-1.5 max-h-60 overflow-y-auto pr-1"></div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ======================================================================= -->
+  <!-- 4. MODAL PARA CREAR O EDITAR UN NEGOCIO EN LA BASE DE DATOS             -->
+  <!-- ======================================================================= -->
+  <div id="modal-admin-negocio" class="hidden fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full p-6 shadow-2xl my-auto">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+            <i class="fa-solid fa-store text-lg"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-extrabold text-white" id="modal-neg-titulo">Registrar Nuevo Negocio en Base de Datos</h3>
+            <p class="text-xs text-slate-400">Se creará su archivo independiente y credenciales de acceso</p>
+          </div>
+        </div>
+        <button type="button" onclick="cerrarModalAdminNegocio()" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form onsubmit="guardarNegocioAdmin(event)" class="mt-4 space-y-3.5 text-xs">
+        <input type="hidden" id="form-neg-edit-id" value="" />
+
+        <div>
+          <label class="block text-slate-300 font-bold mb-1">Nombre Comercial del Restaurante *</label>
+          <input id="form-neg-nombre" type="text" oninput="autocompletarUsuarioSugerido(this.value)" placeholder="Ej: Asados & Burgers San Eduardo" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white font-medium focus:outline-none focus:border-emerald-500" required />
+        </div>
+
+        <div>
+          <label class="block text-slate-300 font-bold mb-1">Usuario de Acceso del Negocio (Login) *</label>
+          <input id="form-neg-usuario" type="text" placeholder="Ej: saneduardo" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white font-mono focus:outline-none focus:border-emerald-500" required />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 bg-slate-950/60 border border-slate-800 rounded-xl p-3">
+          <div>
+            <label class="block text-amber-300 font-bold mb-1 text-[11px]">👑 Clave Dueño *</label>
+            <input id="form-neg-clave" type="text" value="1234" placeholder="Ej: 1234" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white font-mono focus:outline-none focus:border-emerald-500" required />
+          </div>
+          <div>
+            <label class="block text-blue-300 font-bold mb-1 text-[11px]">💵 Clave Cajero *</label>
+            <input id="form-neg-clave-cajero" type="text" value="2222" placeholder="Ej: 2222" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white font-mono focus:outline-none focus:border-emerald-500" required />
+          </div>
+          <div>
+            <label class="block text-emerald-300 font-bold mb-1 text-[11px]">👨‍🍳 Clave Cocina *</label>
+            <input id="form-neg-clave-cocina" type="text" value="3333" placeholder="Ej: 3333" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white font-mono focus:outline-none focus:border-emerald-500" required />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-bold mb-1">Barrio / Dirección en Cúcuta *</label>
+            <input id="form-neg-barrio" type="text" placeholder="Ej: Barrio Caobos • Cúcuta" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-emerald-500" required />
+          </div>
+          <div>
+            <label class="block text-slate-300 font-bold mb-1">WhatsApp del Restaurante *</label>
+            <input id="form-neg-whatsapp" type="text" placeholder="Ej: 315 800 1122" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white font-mono focus:outline-none focus:border-emerald-500" required />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-bold mb-1">Nombre del Propietario *</label>
+            <input id="form-neg-propietario" type="text" placeholder="Ej: Carlos Ramírez" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-emerald-500" required />
+          </div>
+          <div>
+            <label class="block text-slate-300 font-bold mb-1">Mensualidad SaaS ($ COP) *</label>
+            <input id="form-neg-mensualidad" type="number" step="1000" value="40000" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white font-mono focus:outline-none focus:border-emerald-500" required />
+          </div>
+        </div>
+
+        <div id="box-tipo-menu-inicial">
+          <label class="block text-slate-300 font-bold mb-1">Catálogo Inicial del Negocio *</label>
+          <select id="form-neg-tipo-menu" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:border-emerald-500">
+            <option value="vacio">📋 Menú en blanco (El dueño creará sus propios platos desde cero)</option>
+            <option value="plantilla">🍔 Cargar plantilla demostrativa de comidas rápidas</option>
+          </select>
+        </div>
+
+        <div class="pt-3 border-t border-slate-800 flex items-center justify-end gap-2.5">
+          <button type="button" onclick="cerrarModalAdminNegocio()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold">
+            Cancelar
+          </button>
+          <button type="submit" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold shadow-lg shadow-emerald-950/50 flex items-center gap-2">
+            <i class="fa-solid fa-floppy-disk"></i> Guardar en Base de Datos
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="admin-toast" class="fixed bottom-6 right-6 z-50 hidden bg-slate-900 border border-slate-700 text-white px-4 py-3 rounded-xl shadow-2xl text-xs font-medium flex items-center gap-2.5">
+    <span id="admin-toast-text"></span>
+  </div>
+
+  <script>
+    const API_BASE = window.location.protocol.startsWith('http') ? '' : 'http://localhost:3000';
+    let negociosEnServidor = [];
+
+    function mostrarToast(msg) {
+      const box = document.getElementById('admin-toast');
+      const txt = document.getElementById('admin-toast-text');
+      if (!box || !txt) return;
+      txt.innerText = msg;
+      box.classList.remove('hidden');
+      setTimeout(() => box.classList.add('hidden'), 3500);
+    }
+
+    async function autenticarSuperAdmin(e) {
+      if (e) e.preventDefault();
+      const usuario = document.getElementById('admin-user-input').value.trim().toLowerCase();
+      const clave = document.getElementById('admin-pass-input').value.trim();
+
+      try {
+        const resp = await fetch(`${API_BASE}/api/auth/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ usuario, clave })
+        });
+        const data = await resp.json();
+        if (data && data.ok && data.isAdmin) {
+          sessionStorage.setItem('fast_order_superadmin', '1');
+          document.getElementById('admin-login-overlay').classList.add('hidden');
+          negociosEnServidor = data.negocios || [];
+          renderizarPanelAdmin();
+          mostrarToast('🔓 Sesión de Super-Admin iniciada correctamente');
+          return;
+        }
+        mostrarToast('❌ Acceso denegado: usa las credenciales maestras (admin / 1234)');
+      } catch (err) {
+        mostrarToast('❌ No se pudo conectar con el servidor Node.js');
+      }
+    }
+
+    function cerrarSesionAdmin() {
+      sessionStorage.removeItem('fast_order_superadmin');
+      document.getElementById('admin-login-overlay').classList.remove('hidden');
+    }
+
+    async function cargarNegociosDesdeServidor() {
+      try {
+        const resp = await fetch(`${API_BASE}/api/state?negocioId=admin`);
+        const res = await resp.json();
+        if (res && res.ok && res.data && Array.isArray(res.data.negocios)) {
+          negociosEnServidor = res.data.negocios;
+          renderizarPanelAdmin();
+        }
+      } catch (e) {}
+    }
+
+    function renderizarPanelAdmin() {
+      const totalNegocios = negociosEnServidor.length;
+      const activos = negociosEnServidor.filter(n => n.estadoSuscripcion !== 'Suspendida');
+      const mrr = activos.reduce((acc, n) => acc + (Number(n.suscripcionMensual) || 40000), 0);
+      const totalPlatos = negociosEnServidor.reduce((acc, n) => acc + ((n.catalogo || []).length), 0);
+      const totalOrdenes = negociosEnServidor.reduce((acc, n) => acc + ((n.pedidos || []).length), 0);
+      const totalVentas = negociosEnServidor.reduce(
+        (acc, n) => acc + (n.pedidos || []).reduce((s, p) => s + (Number(p.total) || 0), 0),
+        0
+      );
+
+      document.getElementById('kpi-total-negocios').innerText = `${totalNegocios} (${activos.length} activos)`;
+      document.getElementById('kpi-archivos-db').innerText = negociosEnServidor.map(n => `db/${n.id}.json`).join(' • ');
+      document.getElementById('kpi-mrr').innerText = `$${mrr.toLocaleString('es-CO')} COP`;
+      document.getElementById('kpi-total-platos').innerText = totalPlatos;
+      document.getElementById('kpi-total-ordenes').innerText = totalOrdenes;
+      document.getElementById('kpi-total-ventas').innerText = `Ventas acumuladas: $${totalVentas.toLocaleString('es-CO')} COP`;
+
+      const tbody = document.getElementById('tabla-negocios-body');
+      tbody.innerHTML = negociosEnServidor.map(n => {
+        const ventasN = (n.pedidos || []).reduce((s, p) => s + (Number(p.total) || 0), 0);
+        const suspendido = n.estadoSuscripcion === 'Suspendida';
+        return `
+          <tr class="hover:bg-slate-950/60 transition">
+            <td class="py-3.5 px-4 font-mono">
+              <div class="font-bold text-white">${n.id}</div>
+              <div class="text-[10px] text-blue-400">db/${n.id}.json</div>
+            </td>
+            <td class="py-3.5 px-4">
+              <div class="font-bold text-white text-sm flex items-center gap-1.5">
+                <span>${n.icono || '🔥'}</span>
+                <span>${n.nombre}</span>
+              </div>
+              <div class="text-[11px] text-slate-400">${n.barrio || 'Cúcuta'} • Prop: <strong class="text-slate-300">${n.propietario || '-'}</strong> (${n.whatsappLinea || '-'})</div>
+            </td>
+            <td class="py-3.5 px-4 font-mono">
+              <div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-orange-500/15 text-orange-300 border border-orange-500/30 text-[11px]">
+                <i class="fa-solid fa-user text-[9px]"></i> ${n.usuarioLogin}
+              </div>
+              <div class="text-[10px] text-slate-400 mt-1.5 space-y-0.5">
+                <div>👑 Dueño: <strong class="text-white">${n.claveAcceso || '1234'}</strong></div>
+                <div>💵 Cajero: <strong class="text-blue-300">${n.claveCajero || '2222'}</strong></div>
+                <div>👨‍🍳 Cocina: <strong class="text-emerald-300">${n.claveCocina || '3333'}</strong></div>
+              </div>
+            </td>
+            <td class="py-3.5 px-4 font-mono text-[11px]">
+              <div class="text-slate-300">🍔 ${(n.catalogo || []).length} platos • 📦 ${(n.insumos || []).length} insumos</div>
+              <div class="text-emerald-400 font-bold mt-0.5">🧾 ${(n.pedidos || []).length} órdenes ($${ventasN.toLocaleString('es-CO')})</div>
+            </td>
+            <td class="py-3.5 px-4">
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-bold font-mono ${
+                suspendido
+                  ? 'bg-red-500/15 text-red-400 border border-red-500/30'
+                  : 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30'
+              }">
+                ${suspendido ? '⛔ SUSPENDIDA' : '✅ ACTIVA'} ($${(Number(n.suscripcionMensual) || 40000).toLocaleString('es-CO')})
+              </span>
+            </td>
+            <td class="py-3.5 px-4 text-right">
+              <div class="flex items-center justify-end gap-1.5 flex-wrap">
+                <button onclick="inspeccionarNegocio('${n.id}')" title="Ver tablas de base de datos" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-blue-300 font-semibold text-[11px] transition">
+                  <i class="fa-solid fa-magnifying-glass"></i> DB
+                </button>
+                <button onclick="abrirModalCrearEditarNegocio('${n.id}')" title="Editar usuario, clave o nombre" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-[11px] transition">
+                  <i class="fa-solid fa-pen"></i> Editar
+                </button>
+                <button onclick="cambiarEstadoSuscripcion('${n.id}')" class="px-2.5 py-1.5 rounded-lg ${
+                  suspendido ? 'bg-emerald-600/20 text-emerald-300 hover:bg-emerald-600/30' : 'bg-amber-600/20 text-amber-300 hover:bg-amber-600/30'
+                } font-semibold text-[11px] transition">
+                  ${suspendido ? '▶️ Activar' : '⏸️ Suspender'}
+                </button>
+                <a href="index.html?autologin=${encodeURIComponent(n.id)}" class="px-2.5 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-500 text-white font-bold text-[11px] transition">
+                  Abrir POS →
+                </a>
+                ${negociosEnServidor.length > 1 ? `
+                  <button onclick="eliminarNegocio('${n.id}')" title="Eliminar base de datos de este negocio" class="px-2 py-1.5 rounded-lg bg-red-950/60 hover:bg-red-900/80 text-red-300 text-[11px] transition">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                ` : ''}
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function autocompletarUsuarioSugerido(val) {
+      const editId = document.getElementById('form-neg-edit-id').value;
+      if (editId) return;
+      const userEl = document.getElementById('form-neg-usuario');
+      userEl.value = String(val || '').trim().toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 14);
+    }
+
+    function abrirModalCrearEditarNegocio(negocioId = null) {
+      const modal = document.getElementById('modal-admin-negocio');
+      const editInput = document.getElementById('form-neg-edit-id');
+      const boxMenu = document.getElementById('box-tipo-menu-inicial');
+
+      if (negocioId) {
+        const neg = negociosEnServidor.find(n => n.id === negocioId);
+        if (!neg) return;
+        document.getElementById('modal-neg-titulo').innerText = `Editar Negocio (${neg.id})`;
+        editInput.value = neg.id;
+        document.getElementById('form-neg-nombre').value = neg.nombre || '';
+        document.getElementById('form-neg-usuario').value = neg.usuarioLogin || '';
+        document.getElementById('form-neg-clave').value = neg.claveAcceso || '1234';
+        document.getElementById('form-neg-clave-cajero').value = neg.claveCajero || '2222';
+        document.getElementById('form-neg-clave-cocina').value = neg.claveCocina || '3333';
+        document.getElementById('form-neg-barrio').value = neg.barrio || '';
+        document.getElementById('form-neg-whatsapp').value = neg.whatsappLinea || '';
+        document.getElementById('form-neg-propietario').value = neg.propietario || '';
+        document.getElementById('form-neg-mensualidad').value = neg.suscripcionMensual || 40000;
+        boxMenu.classList.add('hidden');
+      } else {
+        document.getElementById('modal-neg-titulo').innerText = 'Registrar Nuevo Negocio en Base de Datos';
+        editInput.value = '';
+        document.getElementById('form-neg-nombre').value = '';
+        document.getElementById('form-neg-usuario').value = '';
+        document.getElementById('form-neg-clave').value = '1234';
+        document.getElementById('form-neg-clave-cajero').value = '2222';
+        document.getElementById('form-neg-clave-cocina').value = '3333';
+        document.getElementById('form-neg-barrio').value = '';
+        document.getElementById('form-neg-whatsapp').value = '';
+        document.getElementById('form-neg-propietario').value = '';
+        document.getElementById('form-neg-mensualidad').value = 40000;
+        document.getElementById('form-neg-tipo-menu').value = 'vacio';
+        boxMenu.classList.remove('hidden');
+      }
+
+      modal.classList.remove('hidden');
+    }
+
+    function cerrarModalAdminNegocio() {
+      document.getElementById('modal-admin-negocio').classList.add('hidden');
+    }
+
+    async function guardarNegocioAdmin(e) {
+      if (e) e.preventDefault();
+      const editId = document.getElementById('form-neg-edit-id').value;
+      const payload = {
+        id: editId || undefined,
+        nombre: document.getElementById('form-neg-nombre').value.trim(),
+        usuarioLogin: document.getElementById('form-neg-usuario').value.trim().toLowerCase(),
+        claveAcceso: document.getElementById('form-neg-clave').value.trim() || '1234',
+        claveCajero: document.getElementById('form-neg-clave-cajero').value.trim() || '2222',
+        claveCocina: document.getElementById('form-neg-clave-cocina').value.trim() || '3333',
+        barrio: document.getElementById('form-neg-barrio').value.trim(),
+        whatsappLinea: document.getElementById('form-neg-whatsapp').value.trim(),
+        propietario: document.getElementById('form-neg-propietario').value.trim(),
+        suscripcionMensual: Number(document.getElementById('form-neg-mensualidad').value) || 40000,
+        tipoMenu: document.getElementById('form-neg-tipo-menu').value,
+        catalogo: [],
+        insumos: [],
+        pedidos: [],
+        movimientos: [],
+        mensajesWhatsApp: []
+      };
+
+      const url = editId ? `${API_BASE}/api/admin/negocios/update` : `${API_BASE}/api/negocios/register`;
+      try {
+        const resp = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await resp.json();
+        if (!resp.ok || !data.ok) {
+          mostrarToast(`❌ ${data.error || 'Error guardando el negocio'}`);
+          return;
+        }
+        if (data.negocio && data.negocio.id) {
+          const negCompleto = {
+            ...data.negocio,
+            claveAcceso: payload.claveAcceso,
+            claveCajero: payload.claveCajero,
+            claveCocina: payload.claveCocina
+          };
+          await fetch(`${API_BASE}/api/sync`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              accion: 'admin_update_credentials',
+              negocioId: negCompleto.id,
+              negocio: negCompleto
+            })
+          }).catch(() => {});
+        }
+        cerrarModalAdminNegocio();
+        await cargarNegociosDesdeServidor();
+        mostrarToast(editId ? `✅ Datos actualizados para "${payload.nombre}"` : `🎉 Base de datos creada para "${payload.nombre}" (Usuario: ${payload.usuarioLogin})`);
+      } catch (err) {
+        mostrarToast('❌ Error de red al guardar en el servidor');
+      }
+    }
+
+    async function cambiarEstadoSuscripcion(id) {
+      const neg = negociosEnServidor.find(n => n.id === id);
+      if (!neg) return;
+      const nuevoEstado = neg.estadoSuscripcion === 'Suspendida' ? 'Activa' : 'Suspendida';
+      try {
+        await fetch(`${API_BASE}/api/admin/negocios/update`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id, estadoSuscripcion: nuevoEstado })
+        });
+        await cargarNegociosDesdeServidor();
+        mostrarToast(`🔔 Suscripción de "${neg.nombre}" marcada como ${nuevoEstado}`);
+      } catch (e) {}
+    }
+
+    async function eliminarNegocio(id) {
+      const neg = negociosEnServidor.find(n => n.id === id);
+      if (!neg) return;
+      if (!confirm(`¿Eliminar definitivamente el negocio "${neg.nombre}" y su archivo db/${neg.id}.json?`)) return;
+      try {
+        const resp = await fetch(`${API_BASE}/api/admin/negocios/delete`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id })
+        });
+        const data = await resp.json();
+        if (!data.ok) {
+          mostrarToast(`❌ ${data.error}`);
+          return;
+        }
+        await cargarNegociosDesdeServidor();
+        mostrarToast(`🗑️ Negocio "${neg.nombre}" eliminado de la base de datos`);
+      } catch (e) {}
+    }
+
+    function inspeccionarNegocio(id) {
+      const neg = negociosEnServidor.find(n => n.id === id);
+      if (!neg) return;
+      const box = document.getElementById('inspector-db-box');
+      document.getElementById('inspector-db-file').innerText = `Archivo Físico Aislado: db/${neg.id}.json`;
+      document.getElementById('inspector-db-title').innerText = `${neg.nombre} (Usuario: ${neg.usuarioLogin})`;
+
+      const platos = neg.catalogo || [];
+      const insumos = neg.insumos || [];
+      const pedidos = neg.pedidos || [];
+
+      document.getElementById('insp-count-platos').innerText = `${platos.length} registros`;
+      document.getElementById('insp-list-platos').innerHTML = platos.length === 0
+        ? '<p class="text-slate-500 italic">Menú en blanco (0 platos)</p>'
+        : platos.map(p => `<div class="flex justify-between py-1 border-b border-slate-900"><span>${p.nombre}</span><span class="font-mono text-orange-400">$${Number(p.precio).toLocaleString('es-CO')}</span></div>`).join('');
+
+      document.getElementById('insp-count-insumos').innerText = `${insumos.length} registros`;
+      document.getElementById('insp-list-insumos').innerHTML = insumos.length === 0
+        ? '<p class="text-slate-500 italic">Inventario en blanco (0 insumos)</p>'
+        : insumos.map(i => `<div class="flex justify-between py-1 border-b border-slate-900"><span>${i.nombre}</span><span class="font-mono text-emerald-400">${i.stockActual} ${i.unidad}</span></div>`).join('');
+
+      document.getElementById('insp-count-pedidos').innerText = `${pedidos.length} registros`;
+      document.getElementById('insp-list-pedidos').innerHTML = pedidos.length === 0
+        ? '<p class="text-slate-500 italic">Sin comandas registradas</p>'
+        : pedidos.map(o => `<div class="flex justify-between py-1 border-b border-slate-900"><span class="font-mono font-bold text-blue-300">${o.id}</span><span>${o.clienteNombre} • $${Number(o.total).toLocaleString('es-CO')}</span></div>`).join('');
+
+      box.classList.remove('hidden');
+      box.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function cerrarInspectorDB() {
+      document.getElementById('inspector-db-box').classList.add('hidden');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (sessionStorage.getItem('fast_order_superadmin') === '1') {
+        document.getElementById('admin-login-overlay').classList.add('hidden');
+        cargarNegociosDesdeServidor();
+      }
+    });
+  </script>
+</body>
+</html>
