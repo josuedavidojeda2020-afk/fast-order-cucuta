@@ -145,4 +145,4 @@ Lo implementado frente a lo propuesto en el diseño está en [docs/ARQUITECTURA.
 
 ## Asistencia de IA
 
-_Completar según lo que haya usado el equipo y lo que pida el profesor._ Ejemplo: "El proyecto se desarrolló con asistencia de IA en la escritura de código y documentación. Las decisiones, la revisión y la integración son del equipo."
+"El proyecto se desarrolló con asistencia de herramientas de IA, Para escribir y depurar partes del código de la aplicación se usó Google Antigravity y para la redaccion del documento se usó Claude, de Anthropic. Las decisiones, la revisión y la integración son del equipo."
