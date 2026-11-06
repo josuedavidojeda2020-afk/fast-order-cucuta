@@ -2,7 +2,7 @@
 
 Sistema de gestión integrada de pedidos e inventario para micronegocios de comida rápida de Cúcuta. Junta en un solo flujo los pedidos que llegan por **WhatsApp** y los que se toman en el **mostrador**, los muestra en la cocina en un tablero **Kanban (KDS)** y descuenta del inventario los insumos de cada plato.
 
-Proyecto universitario de Ingeniería de Sistemas · Asignatura: Proyecto final de ingeniería de sistemas · Docente: Jover Alonso Cabrales Pineda · Repositorio: `<URL-DE-TU-REPOSITORIO>`
+Proyecto universitario de Ingeniería de Sistemas · Asignatura: Proyecto final de ingeniería de sistemas · Docente: Jover Alonso Cabrales Pineda · Repositorio: `https://github.com/josuedavidojeda2020-afk/fast-order-cucuta`
 
 > **Estado:** prototipo funcional (MVP) con datos de demostración de dos negocios piloto.
 
@@ -145,4 +145,4 @@ Lo implementado frente a lo propuesto en el diseño está en [docs/ARQUITECTURA.
 
 ## Asistencia de IA
 
-"El proyecto se desarrolló con asistencia de herramientas de IA, Para escribir y depurar partes del código de la aplicación se usó Google Antigravity y para la redaccion del documento se usó Claude, de Anthropic. Las decisiones, la revisión y la integración son del equipo."
+El proyecto se desarrolló con asistencia de herramientas de IA. Para escribir y depurar partes del código de la aplicación se usó Google Antigravity, y para la redacción de la documentación se usó Claude, de Anthropic. Las decisiones, la revisión y la integración son del equipo.
