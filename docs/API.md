@@ -14,6 +14,7 @@ Servidor HTTP en `server.js`. Todas las respuestas son JSON (`application/json`)
 | POST | `/api/negocios/register` | Registrar un negocio nuevo |
 | POST | `/api/admin/negocios/update` | Editar un negocio (consola admin) |
 | POST | `/api/admin/negocios/delete` | Eliminar un negocio (consola admin) |
+| GET | `/api/admin/sqlite-tables` | Consultar registros en vivo de las tablas SQLite (`negocios`, `productos`, `insumos`, `pedidos`, `movimientos_inventario`) |
 | POST | `/api/sync` | Guardar y sincronizar los cambios de un negocio |
 | POST | `/api/menu-digital/order` | Recibir un pedido hecho desde el menú digital |
 | GET | `/m/<código>` | Enlace corto del menú digital (redirige a `/menu.html`) |

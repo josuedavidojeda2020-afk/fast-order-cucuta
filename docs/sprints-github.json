@@ -1,0 +1,568 @@
+{
+  "hitos": [
+    {
+      "titulo": "S1 – Requisitos y diseño",
+      "descripcion": "Levantamiento de requisitos, documento del Sprint 1 y diseño inicial."
+    },
+    {
+      "titulo": "S2 – Caja y cocina (MVP)",
+      "descripcion": "Servidor base, caja con comanda, tablero Kanban de cocina y tiempo real."
+    },
+    {
+      "titulo": "S3 – Inventario y reportes",
+      "descripcion": "Recetas, inventario, gestión del menú, cierre de caja y datos de demostración."
+    },
+    {
+      "titulo": "S4 – WhatsApp y menú digital",
+      "descripcion": "Conexión por QR, bot de opciones, enlaces cortos y menú digital del cliente."
+    },
+    {
+      "titulo": "S5 – Multi-negocio y modo sin internet",
+      "descripcion": "Aislamiento por negocio, roles, consola de administración y cola offline."
+    },
+    {
+      "titulo": "S6 – Documentación y entrega",
+      "descripcion": "README, carpeta docs y publicación del repositorio."
+    },
+    {
+      "titulo": "S7 – Seguridad y pruebas",
+      "descripcion": "Pendientes de endurecimiento, pruebas y piloto."
+    }
+  ],
+  "etiquetas": [
+    {
+      "nombre": "Fase 1",
+      "color": "1d76db",
+      "descripcion": "Primera fase del desarrollo"
+    },
+    {
+      "nombre": "Fase 2",
+      "color": "5319e7",
+      "descripcion": "Segunda fase del desarrollo"
+    },
+    {
+      "nombre": "Fase 3",
+      "color": "fbca04",
+      "descripcion": "Pendientes y mejoras"
+    },
+    {
+      "nombre": "backend",
+      "color": "0e8a16",
+      "descripcion": "Servidor Node.js"
+    },
+    {
+      "nombre": "frontend",
+      "color": "c5def5",
+      "descripcion": "Interfaz de usuario"
+    },
+    {
+      "nombre": "inventario",
+      "color": "bfd4f2",
+      "descripcion": "Inventario, recetas y reportes"
+    },
+    {
+      "nombre": "whatsapp",
+      "color": "25d366",
+      "descripcion": "Integración con WhatsApp y menú digital"
+    },
+    {
+      "nombre": "documentación",
+      "color": "0075ca",
+      "descripcion": "README y carpeta docs"
+    },
+    {
+      "nombre": "seguridad",
+      "color": "b60205",
+      "descripcion": "Seguridad y datos personales"
+    },
+    {
+      "nombre": "pruebas",
+      "color": "d4c5f9",
+      "descripcion": "Pruebas y validación"
+    }
+  ],
+  "issues": [
+    {
+      "id": "T01",
+      "titulo": "T01 – Levantamiento de requisitos y documento del Sprint 1",
+      "cuerpo": "## Descripción\nDocumentar el problema, los objetivos, el alcance y los requisitos funcionales y no funcionales de la idea inicial.\n\nResponsable: Kevin Eduardo Garcia Moreno\nArchivos: Consolidación idea de proyecto_ Fast Order Cúcuta.pdf\nHito: S1 – Requisitos y diseño\n\n## Criterio de aceptación\n- [x] El documento del Sprint 1 está terminado y entregado.\n",
+      "hito": "S1 – Requisitos y diseño",
+      "etiquetas": [
+        "Fase 1",
+        "documentación"
+      ],
+      "cerrada": true,
+      "responsable": "Kevin Eduardo Garcia Moreno",
+      "comentario_cierre": "Tarea completada. El código está disponible en Consolidación idea de proyecto_ Fast Order Cúcuta.pdf."
+    },
+    {
+      "id": "T02",
+      "titulo": "T02 – Diseño de la interfaz de caja y cocina",
+      "cuerpo": "## Descripción\nDefinir la distribución de las pestañas Caja, Cocina, Inventario, WhatsApp y Reportes, con botones grandes y colores de estado.\n\nResponsable: Josue David Ojeda Vivas\nArchivos: index.html, styles.css\nHito: S1 – Requisitos y diseño\n\n## Criterio de aceptación\n- [x] Existe una pantalla principal navegable con las pestañas definidas.\n",
+      "hito": "S1 – Requisitos y diseño",
+      "etiquetas": [
+        "Fase 1",
+        "frontend"
+      ],
+      "cerrada": true,
+      "responsable": "Josue David Ojeda Vivas",
+      "comentario_cierre": "Tarea completada. El código está disponible en index.html, styles.css."
+    },
+    {
+      "id": "T03",
+      "titulo": "T03 – Modelo de datos de negocios, productos, insumos y pedidos",
+      "cuerpo": "## Descripción\nDefinir la estructura JSON de negocio, catálogo, insumos, movimientos, pedidos y mensajes de WhatsApp.\n\nResponsable: Javier Alejandro Serrano Ruiz\nArchivos: database.json, db/\nHito: S1 – Requisitos y diseño\n\n## Criterio de aceptación\n- [x] Los datos de demostración cargan correctamente con la estructura definida.\n",
+      "hito": "S1 – Requisitos y diseño",
+      "etiquetas": [
+        "Fase 1",
+        "backend"
+      ],
+      "cerrada": true,
+      "responsable": "Javier Alejandro Serrano Ruiz",
+      "comentario_cierre": "Tarea completada. El código está disponible en database.json, db/."
+    },
+    {
+      "id": "T04",
+      "titulo": "T04 – Servidor Node.js base y archivos estáticos",
+      "cuerpo": "## Descripción\nCrear el servidor HTTP con módulos nativos de Node.js que sirve la aplicación y expone la API.\n\nResponsable: Javier Alejandro Serrano Ruiz\nArchivos: server.js, package.json, INICIAR_SERVIDOR.bat\nHito: S2 – Caja y cocina (MVP)\n\n## Criterio de aceptación\n- [x] npm start o el archivo .bat abre la aplicación en el puerto 3000.\n",
+      "hito": "S2 – Caja y cocina (MVP)",
+      "etiquetas": [
+        "Fase 1",
+        "backend"
+      ],
+      "cerrada": true,
+      "responsable": "Javier Alejandro Serrano Ruiz",
+      "comentario_cierre": "Tarea completada. El código está disponible en server.js, package.json, INICIAR_SERVIDOR.bat."
+    },
+    {
+      "id": "T05",
+      "titulo": "T05 – Catálogo y comanda de caja con adiciones y modificaciones",
+      "cuerpo": "## Descripción\nPermitir armar la comanda con productos, adiciones y modificaciones (\"sin cebolla\"), separar unidades del mismo plato y calcular el total.\n\nResponsable: Josue David Ojeda Vivas\nArchivos: index.html, app.js\nHito: S2 – Caja y cocina (MVP)\n\n## Criterio de aceptación\n- [x] El cajero registra un pedido con modificaciones y el cobro es correcto.\n",
+      "hito": "S2 – Caja y cocina (MVP)",
+      "etiquetas": [
+        "Fase 1",
+        "frontend"
+      ],
+      "cerrada": true,
+      "responsable": "Josue David Ojeda Vivas",
+      "comentario_cierre": "Tarea completada. El código está disponible en index.html, app.js."
+    },
+    {
+      "id": "T06",
+      "titulo": "T06 – Tablero Kanban de cocina con tres estados",
+      "cuerpo": "## Descripción\nMostrar los pedidos en columnas pendiente, en preparación y despachado, con cambio de estado en un solo toque.\n\nResponsable: Josue David Ojeda Vivas\nArchivos: app.js\nHito: S2 – Caja y cocina (MVP)\n\n## Criterio de aceptación\n- [x] Un pedido avanza de estado y se guardan las marcas de tiempo.\n",
+      "hito": "S2 – Caja y cocina (MVP)",
+      "etiquetas": [
+        "Fase 1",
+        "frontend"
+      ],
+      "cerrada": true,
+      "responsable": "Josue David Ojeda Vivas",
+      "comentario_cierre": "Tarea completada. El código está disponible en app.js."
+    },
+    {
+      "id": "T07",
+      "titulo": "T07 – Cronómetro, aviso sonoro y resaltado de modificaciones en cocina",
+      "cuerpo": "## Descripción\nAgregar cronómetro por pedido, sonido al llegar un pedido nuevo y colores para resaltar las modificaciones.\n\nResponsable: Josue David Ojeda Vivas\nArchivos: app.js\nHito: S2 – Caja y cocina (MVP)\n\n## Criterio de aceptación\n- [x] La cocina distingue con claridad las indicaciones especiales de cada pedido.\n",
+      "hito": "S2 – Caja y cocina (MVP)",
+      "etiquetas": [
+        "Fase 1",
+        "frontend"
+      ],
+      "cerrada": true,
+      "responsable": "Josue David Ojeda Vivas",
+      "comentario_cierre": "Tarea completada. El código está disponible en app.js."
+    },
+    {
+      "id": "T08",
+      "titulo": "T08 – Ticket térmico imprimible",
+      "cuerpo": "## Descripción\nGenerar el ticket del pedido en formato de impresora térmica al registrarlo.\n\nResponsable: Josue David Ojeda Vivas\nArchivos: app.js (imprimirTicketTermico)\nHito: S2 – Caja y cocina (MVP)\n\n## Criterio de aceptación\n- [x] Al registrar un pedido se abre el ticket listo para imprimir.\n",
+      "hito": "S2 – Caja y cocina (MVP)",
+      "etiquetas": [
+        "Fase 1",
+        "frontend"
+      ],
+      "cerrada": true,
+      "responsable": "Josue David Ojeda Vivas",
+      "comentario_cierre": "Tarea completada. El código está disponible en app.js (imprimirTicketTermico)."
+    },
+    {
+      "id": "T09",
+      "titulo": "T09 – Canal de eventos en tiempo real (SSE) entre caja y cocina",
+      "cuerpo": "## Descripción\nImplementar Server-Sent Events para que la cocina vea los pedidos sin recargar la página.\n\nResponsable: Javier Alejandro Serrano Ruiz\nArchivos: server.js (/api/stream)\nHito: S2 – Caja y cocina (MVP)\n\n## Criterio de aceptación\n- [x] Un pedido creado en caja aparece en la cocina sin refrescar.\n",
+      "hito": "S2 – Caja y cocina (MVP)",
+      "etiquetas": [
+        "Fase 1",
+        "backend"
+      ],
+      "cerrada": true,
+      "responsable": "Javier Alejandro Serrano Ruiz",
+      "comentario_cierre": "Tarea completada. El código está disponible en server.js (/api/stream)."
+    },
+    {
+      "id": "T10",
+      "titulo": "T10 – Recetas e inventario con descuento automático",
+      "cuerpo": "## Descripción\nAsociar a cada plato una receta de insumos y descontar el inventario al registrar el pedido.\n\nResponsable: Johan Humberto Villegas\nArchivos: app.js (Receta, Insumo)\nHito: S3 – Inventario y reportes\n\n## Criterio de aceptación\n- [x] Al vender un plato baja el stock de sus insumos.\n",
+      "hito": "S3 – Inventario y reportes",
+      "etiquetas": [
+        "Fase 2",
+        "inventario"
+      ],
+      "cerrada": true,
+      "responsable": "Johan Humberto Villegas",
+      "comentario_cierre": "Tarea completada. El código está disponible en app.js (Receta, Insumo)."
+    },
+    {
+      "id": "T11",
+      "titulo": "T11 – Alertas de stock bajo con umbral configurable",
+      "cuerpo": "## Descripción\nAvisar cuando un insumo llega a su umbral mínimo y permitir configurar ese umbral.\n\nResponsable: Johan Humberto Villegas\nArchivos: app.js\nHito: S3 – Inventario y reportes\n\n## Criterio de aceptación\n- [x] El insumo en nivel crítico se muestra con alerta.\n",
+      "hito": "S3 – Inventario y reportes",
+      "etiquetas": [
+        "Fase 2",
+        "inventario"
+      ],
+      "cerrada": true,
+      "responsable": "Johan Humberto Villegas",
+      "comentario_cierre": "Tarea completada. El código está disponible en app.js."
+    },
+    {
+      "id": "T12",
+      "titulo": "T12 – Entradas de compra, mermas e historial de movimientos",
+      "cuerpo": "## Descripción\nRegistrar entradas de inventario y mermas, y conservar el historial de movimientos.\n\nResponsable: Johan Humberto Villegas\nArchivos: app.js (MovimientoInventario)\nHito: S3 – Inventario y reportes\n\n## Criterio de aceptación\n- [x] Cada entrada, consumo o merma queda en el historial.\n",
+      "hito": "S3 – Inventario y reportes",
+      "etiquetas": [
+        "Fase 2",
+        "inventario"
+      ],
+      "cerrada": true,
+      "responsable": "Johan Humberto Villegas",
+      "comentario_cierre": "Tarea completada. El código está disponible en app.js (MovimientoInventario)."
+    },
+    {
+      "id": "T13",
+      "titulo": "T13 – Gestión del menú: alta, edición y baja de platos",
+      "cuerpo": "## Descripción\nPermitir al dueño agregar, editar y eliminar platos con categoría, foto, ingredientes, adiciones y receta.\n\nResponsable: Johan Humberto Villegas\nArchivos: app.js, index.html\nHito: S3 – Inventario y reportes\n\n## Criterio de aceptación\n- [x] El menú se modifica sin tocar el código.\n",
+      "hito": "S3 – Inventario y reportes",
+      "etiquetas": [
+        "Fase 2",
+        "inventario",
+        "frontend"
+      ],
+      "cerrada": true,
+      "responsable": "Johan Humberto Villegas",
+      "comentario_cierre": "Tarea completada. El código está disponible en app.js, index.html."
+    },
+    {
+      "id": "T14",
+      "titulo": "T14 – Cierre de caja y reportes por día, semana y mes",
+      "cuerpo": "## Descripción\nMostrar ventas por período, búsqueda de fechas anteriores y reporte imprimible.\n\nResponsable: Johan Humberto Villegas\nArchivos: app.js (renderDailyReportsAndMetrics)\nHito: S3 – Inventario y reportes\n\n## Criterio de aceptación\n- [x] El reporte de cierre coincide con los pedidos del período.\n",
+      "hito": "S3 – Inventario y reportes",
+      "etiquetas": [
+        "Fase 2",
+        "inventario"
+      ],
+      "cerrada": true,
+      "responsable": "Johan Humberto Villegas",
+      "comentario_cierre": "Tarea completada. El código está disponible en app.js (renderDailyReportsAndMetrics)."
+    },
+    {
+      "id": "T15",
+      "titulo": "T15 – Datos maestros y datos de demostración",
+      "cuerpo": "## Descripción\nPreparar el catálogo inicial y los negocios de demostración.\n\nResponsable: Johan Humberto Villegas\nArchivos: data.js, database.json, db/\nHito: S3 – Inventario y reportes\n\n## Criterio de aceptación\n- [x] La aplicación arranca con datos de ejemplo de dos negocios.\n",
+      "hito": "S3 – Inventario y reportes",
+      "etiquetas": [
+        "Fase 2",
+        "inventario"
+      ],
+      "cerrada": true,
+      "responsable": "Johan Humberto Villegas",
+      "comentario_cierre": "Tarea completada. El código está disponible en data.js, database.json, db/."
+    },
+    {
+      "id": "T16",
+      "titulo": "T16 – Conexión de WhatsApp por código QR",
+      "cuerpo": "## Descripción\nVincular el número del negocio mediante QR y mostrar el estado de la conexión.\n\nResponsable: Javier Alejandro Serrano Ruiz\nArchivos: server.js (whatsapp-web.js)\nHito: S4 – WhatsApp y menú digital\n\n## Criterio de aceptación\n- [x] Al escanear el QR el estado cambia a conectado.\n",
+      "hito": "S4 – WhatsApp y menú digital",
+      "etiquetas": [
+        "Fase 2",
+        "whatsapp",
+        "backend"
+      ],
+      "cerrada": true,
+      "responsable": "Javier Alejandro Serrano Ruiz",
+      "comentario_cierre": "Tarea completada. El código está disponible en server.js (whatsapp-web.js)."
+    },
+    {
+      "id": "T17",
+      "titulo": "T17 – Bot de opciones y atención humana",
+      "cuerpo": "## Descripción\nResponder al cliente con dos opciones: pedir por el menú digital o hablar con un asesor.\n\nResponsable: Javier Alejandro Serrano Ruiz\nArchivos: server.js (procesarFlujoHibridoWhatsApp)\nHito: S4 – WhatsApp y menú digital\n\n## Criterio de aceptación\n- [x] El bot responde y deriva a un asesor cuando el cliente lo pide.\n",
+      "hito": "S4 – WhatsApp y menú digital",
+      "etiquetas": [
+        "Fase 2",
+        "whatsapp",
+        "backend"
+      ],
+      "cerrada": true,
+      "responsable": "Javier Alejandro Serrano Ruiz",
+      "comentario_cierre": "Tarea completada. El código está disponible en server.js (procesarFlujoHibridoWhatsApp)."
+    },
+    {
+      "id": "T18",
+      "titulo": "T18 – Enlaces cortos del menú digital y túnel de Cloudflare",
+      "cuerpo": "## Descripción\nGenerar enlaces cortos y un enlace público para abrir el menú desde datos móviles.\n\nResponsable: Javier Alejandro Serrano Ruiz\nArchivos: server.js (/m/<código>, cloudflared)\nHito: S4 – WhatsApp y menú digital\n\n## Criterio de aceptación\n- [x] El cliente abre el menú desde su celular fuera del Wi-Fi del negocio.\n",
+      "hito": "S4 – WhatsApp y menú digital",
+      "etiquetas": [
+        "Fase 2",
+        "whatsapp",
+        "backend"
+      ],
+      "cerrada": true,
+      "responsable": "Javier Alejandro Serrano Ruiz",
+      "comentario_cierre": "Tarea completada. El código está disponible en server.js (/m/<código>, cloudflared)."
+    },
+    {
+      "id": "T19",
+      "titulo": "T19 – Recepción de pedidos del menú digital con descuento de inventario",
+      "cuerpo": "## Descripción\nRegistrar el pedido del cliente en la cocina y descontar el inventario según la receta.\n\nResponsable: Javier Alejandro Serrano Ruiz\nArchivos: server.js (/api/menu-digital/order)\nHito: S4 – WhatsApp y menú digital\n\n## Criterio de aceptación\n- [x] El pedido del menú digital llega a la cocina.\n",
+      "hito": "S4 – WhatsApp y menú digital",
+      "etiquetas": [
+        "Fase 2",
+        "whatsapp",
+        "backend"
+      ],
+      "cerrada": true,
+      "responsable": "Javier Alejandro Serrano Ruiz",
+      "comentario_cierre": "Tarea completada. El código está disponible en server.js (/api/menu-digital/order)."
+    },
+    {
+      "id": "T20",
+      "titulo": "T20 – Menú digital del cliente",
+      "cuerpo": "## Descripción\nCrear la página donde el cliente arma su pedido con adiciones y ve el estado.\n\nResponsable: Kevin Eduardo Garcia Moreno\nArchivos: menu.html\nHito: S4 – WhatsApp y menú digital\n\n## Criterio de aceptación\n- [x] El cliente completa un pedido desde el celular.\n",
+      "hito": "S4 – WhatsApp y menú digital",
+      "etiquetas": [
+        "Fase 2",
+        "frontend",
+        "whatsapp"
+      ],
+      "cerrada": true,
+      "responsable": "Kevin Eduardo Garcia Moreno",
+      "comentario_cierre": "Tarea completada. El código está disponible en menu.html."
+    },
+    {
+      "id": "T21",
+      "titulo": "T21 – Bandeja de mensajes de WhatsApp en la interfaz",
+      "cuerpo": "## Descripción\nMostrar los mensajes del negocio y permitir responder desde la aplicación.\n\nResponsable: Josue David Ojeda Vivas\nArchivos: index.html, app.js\nHito: S4 – WhatsApp y menú digital\n\n## Criterio de aceptación\n- [x] Los mensajes entrantes se ven y se responden desde la pestaña WhatsApp.\n",
+      "hito": "S4 – WhatsApp y menú digital",
+      "etiquetas": [
+        "Fase 2",
+        "whatsapp",
+        "frontend"
+      ],
+      "cerrada": true,
+      "responsable": "Josue David Ojeda Vivas",
+      "comentario_cierre": "Tarea completada. El código está disponible en index.html, app.js."
+    },
+    {
+      "id": "T22",
+      "titulo": "T22 – Aislamiento de datos por negocio",
+      "cuerpo": "## Descripción\nGuardar y consultar cada negocio por separado para que no se mezclen sus datos.\n\nResponsable: Javier Alejandro Serrano Ruiz\nArchivos: server.js (guardarNegocioAislado)\nHito: S5 – Multi-negocio y modo sin internet\n\n## Criterio de aceptación\n- [x] Un negocio nunca ve ni modifica los datos de otro.\n",
+      "hito": "S5 – Multi-negocio y modo sin internet",
+      "etiquetas": [
+        "Fase 2",
+        "backend"
+      ],
+      "cerrada": true,
+      "responsable": "Javier Alejandro Serrano Ruiz",
+      "comentario_cierre": "Tarea completada. El código está disponible en server.js (guardarNegocioAislado)."
+    },
+    {
+      "id": "T23",
+      "titulo": "T23 – Inicio de sesión por rol y permisos de pestañas",
+      "cuerpo": "## Descripción\nValidar usuario, clave y rol en el servidor, y mostrar solo las pestañas que corresponden a cada rol.\n\nResponsable: Javier Alejandro Serrano Ruiz\nArchivos: server.js (/api/auth/login), app.js (PERMISOS_POR_ROL)\nHito: S5 – Multi-negocio y modo sin internet\n\n## Criterio de aceptación\n- [x] Dueño, cajero y cocina ven cada uno solo sus pestañas.\n",
+      "hito": "S5 – Multi-negocio y modo sin internet",
+      "etiquetas": [
+        "Fase 2",
+        "backend",
+        "frontend"
+      ],
+      "cerrada": true,
+      "responsable": "Javier Alejandro Serrano Ruiz",
+      "comentario_cierre": "Tarea completada. El código está disponible en server.js (/api/auth/login), app.js (PERMISOS_POR_ROL)."
+    },
+    {
+      "id": "T24",
+      "titulo": "T24 – Consola de administración y suscripciones",
+      "cuerpo": "## Descripción\nCrear, editar, suspender y eliminar negocios, y controlar la suscripción mensual.\n\nResponsable: Kevin Eduardo Garcia Moreno\nArchivos: admin.html, server.js\nHito: S5 – Multi-negocio y modo sin internet\n\n## Criterio de aceptación\n- [x] Un negocio suspendido no puede iniciar sesión.\n",
+      "hito": "S5 – Multi-negocio y modo sin internet",
+      "etiquetas": [
+        "Fase 2",
+        "frontend",
+        "backend"
+      ],
+      "cerrada": true,
+      "responsable": "Kevin Eduardo Garcia Moreno",
+      "comentario_cierre": "Tarea completada. El código está disponible en admin.html, server.js."
+    },
+    {
+      "id": "T25",
+      "titulo": "T25 – Modo sin internet y cola de sincronización",
+      "cuerpo": "## Descripción\nPermitir seguir tomando pedidos sin conexión y sincronizarlos al reconectar sin duplicados.\n\nResponsable: Josue David Ojeda Vivas\nArchivos: app.js, server.js (/api/sync)\nHito: S5 – Multi-negocio y modo sin internet\n\n## Criterio de aceptación\n- [x] Los pedidos hechos sin internet aparecen una sola vez al volver la conexión.\n",
+      "hito": "S5 – Multi-negocio y modo sin internet",
+      "etiquetas": [
+        "Fase 2",
+        "frontend"
+      ],
+      "cerrada": true,
+      "responsable": "Josue David Ojeda Vivas",
+      "comentario_cierre": "Tarea completada. El código está disponible en app.js, server.js (/api/sync)."
+    },
+    {
+      "id": "T26",
+      "titulo": "T26 – Domicilios y asignación de motorizado",
+      "cuerpo": "## Descripción\nRegistrar dirección, método de pago y motorizado de cada domicilio.\n\nResponsable: Josue David Ojeda Vivas\nArchivos: app.js, index.html\nHito: S5 – Multi-negocio y modo sin internet\n\n## Criterio de aceptación\n- [x] El pedido a domicilio guarda dirección y motorizado.\n",
+      "hito": "S5 – Multi-negocio y modo sin internet",
+      "etiquetas": [
+        "Fase 2",
+        "frontend"
+      ],
+      "cerrada": true,
+      "responsable": "Josue David Ojeda Vivas",
+      "comentario_cierre": "Tarea completada. El código está disponible en app.js, index.html."
+    },
+    {
+      "id": "T27",
+      "titulo": "T27 – README y carpeta de documentación",
+      "cuerpo": "## Descripción\nEscribir el README, la guía de instalación, la arquitectura, la API y la información del equipo.\n\nResponsable: Kevin Eduardo Garcia Moreno\nArchivos: README.md, docs/\nHito: S6 – Documentación y entrega\n\n## Criterio de aceptación\n- [x] La documentación describe la versión actual de la aplicación.\n",
+      "hito": "S6 – Documentación y entrega",
+      "etiquetas": [
+        "Fase 2",
+        "documentación"
+      ],
+      "cerrada": true,
+      "responsable": "Kevin Eduardo Garcia Moreno",
+      "comentario_cierre": "Tarea completada. El código está disponible en README.md, docs/."
+    },
+    {
+      "id": "T28",
+      "titulo": "T28 – Publicación del repositorio en GitHub",
+      "cuerpo": "## Descripción\nSubir el proyecto sin node_modules ni la sesión de WhatsApp.\n\nResponsable: Kevin Eduardo Garcia Moreno\nArchivos: Repositorio\nHito: S6 – Documentación y entrega\n\n## Criterio de aceptación\n- [x] El repositorio contiene el proyecto y la documentación.\n",
+      "hito": "S6 – Documentación y entrega",
+      "etiquetas": [
+        "Fase 2",
+        "documentación"
+      ],
+      "cerrada": true,
+      "responsable": "Kevin Eduardo Garcia Moreno",
+      "comentario_cierre": "Tarea completada. El código está disponible en Repositorio."
+    },
+    {
+      "id": "T29",
+      "titulo": "T29 – Limpiar datos de prueba de database.json y db/",
+      "cuerpo": "## Descripción\nEliminar mensajes de prueba inadecuados y teléfonos o direcciones de personas reales.\n\nResponsable: Kevin Eduardo Garcia Moreno\nArchivos: database.json, db/\nHito: S7 – Seguridad y pruebas\n\n## Criterio de aceptación\n- [ ] Los archivos de datos solo contienen información ficticia.\n",
+      "hito": "S7 – Seguridad y pruebas",
+      "etiquetas": [
+        "Fase 3",
+        "seguridad",
+        "documentación"
+      ],
+      "cerrada": false,
+      "responsable": "Kevin Eduardo Garcia Moreno",
+      "comentario_cierre": ""
+    },
+    {
+      "id": "T30",
+      "titulo": "T30 – Cifrar las claves de acceso con hash",
+      "cuerpo": "## Descripción\nGuardar las claves de dueño, cajero y cocina con hash en lugar de texto plano.\n\nResponsable: Javier Alejandro Serrano Ruiz\nArchivos: server.js, database.json\nHito: S7 – Seguridad y pruebas\n\n## Criterio de aceptación\n- [ ] Ninguna clave aparece en texto plano en los JSON.\n",
+      "hito": "S7 – Seguridad y pruebas",
+      "etiquetas": [
+        "Fase 3",
+        "seguridad",
+        "backend"
+      ],
+      "cerrada": false,
+      "responsable": "Javier Alejandro Serrano Ruiz",
+      "comentario_cierre": ""
+    },
+    {
+      "id": "T31",
+      "titulo": "T31 – Tokens de sesión y protección de las rutas /api",
+      "cuerpo": "## Descripción\nEmitir un token al iniciar sesión y exigirlo en las rutas de datos y de administración.\n\nResponsable: Javier Alejandro Serrano Ruiz\nArchivos: server.js\nHito: S7 – Seguridad y pruebas\n\n## Criterio de aceptación\n- [ ] Una petición sin token válido recibe 401.\n",
+      "hito": "S7 – Seguridad y pruebas",
+      "etiquetas": [
+        "Fase 3",
+        "seguridad",
+        "backend"
+      ],
+      "cerrada": false,
+      "responsable": "Javier Alejandro Serrano Ruiz",
+      "comentario_cierre": ""
+    },
+    {
+      "id": "T32",
+      "titulo": "T32 – Pruebas automatizadas del servidor y de las reglas de pedido",
+      "cuerpo": "## Descripción\nEscribir pruebas para el inicio de sesión, la sincronización sin duplicados y el descuento de inventario.\n\nResponsable: Kevin Eduardo Garcia Moreno\nArchivos: server.js, app.js\nHito: S7 – Seguridad y pruebas\n\n## Criterio de aceptación\n- [ ] Existe un comando npm test que ejecuta las pruebas.\n",
+      "hito": "S7 – Seguridad y pruebas",
+      "etiquetas": [
+        "Fase 3",
+        "pruebas"
+      ],
+      "cerrada": false,
+      "responsable": "Kevin Eduardo Garcia Moreno",
+      "comentario_cierre": ""
+    },
+    {
+      "id": "T33",
+      "titulo": "T33 – Respaldos automáticos de la base de datos",
+      "cuerpo": "## Descripción\nHacer una copia diaria de los archivos JSON de cada negocio.\n\nResponsable: Johan Humberto Villegas\nArchivos: db/\nHito: S7 – Seguridad y pruebas\n\n## Criterio de aceptación\n- [ ] Existen copias con fecha de los últimos días.\n",
+      "hito": "S7 – Seguridad y pruebas",
+      "etiquetas": [
+        "Fase 3",
+        "seguridad",
+        "inventario"
+      ],
+      "cerrada": false,
+      "responsable": "Johan Humberto Villegas",
+      "comentario_cierre": ""
+    },
+    {
+      "id": "T34",
+      "titulo": "T34 – Aviso de tratamiento de datos (Ley 1581 de 2012)",
+      "cuerpo": "## Descripción\nInformar al cliente del uso de su nombre y teléfono y pedir su consentimiento.\n\nResponsable: Kevin Eduardo Garcia Moreno\nArchivos: menu.html\nHito: S7 – Seguridad y pruebas\n\n## Criterio de aceptación\n- [ ] El menú digital muestra el aviso antes de enviar el pedido.\n",
+      "hito": "S7 – Seguridad y pruebas",
+      "etiquetas": [
+        "Fase 3",
+        "seguridad",
+        "documentación"
+      ],
+      "cerrada": false,
+      "responsable": "Kevin Eduardo Garcia Moreno",
+      "comentario_cierre": ""
+    },
+    {
+      "id": "T35",
+      "titulo": "T35 – Migrar la persistencia de archivos JSON a una base de datos relacional",
+      "cuerpo": "## Descripción\nEvaluar y migrar el almacenamiento a PostgreSQL o MySQL.\n\nResponsable: Javier Alejandro Serrano Ruiz\nArchivos: server.js\nHito: S7 – Seguridad y pruebas\n\n## Criterio de aceptación\n- [ ] Los negocios y pedidos se guardan en la base de datos.\n",
+      "hito": "S7 – Seguridad y pruebas",
+      "etiquetas": [
+        "Fase 3",
+        "backend"
+      ],
+      "cerrada": false,
+      "responsable": "Javier Alejandro Serrano Ruiz",
+      "comentario_cierre": ""
+    },
+    {
+      "id": "T36",
+      "titulo": "T36 – Prueba piloto en un negocio real con métricas",
+      "cuerpo": "## Descripción\nProbar el sistema en un negocio real y medir errores, desperdicio y tiempos de despacho.\n\nResponsable: Kevin Eduardo Garcia Moreno\nArchivos: —\nHito: S7 – Seguridad y pruebas\n\n## Criterio de aceptación\n- [ ] Hay un informe con las métricas del piloto.\n",
+      "hito": "S7 – Seguridad y pruebas",
+      "etiquetas": [
+        "Fase 3",
+        "pruebas"
+      ],
+      "cerrada": false,
+      "responsable": "Kevin Eduardo Garcia Moreno",
+      "comentario_cierre": ""
+    }
+  ]
+}

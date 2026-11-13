@@ -31,6 +31,28 @@
         "Ripio de papa",
         "Salsa tártara"
       ],
+      "adiciones": [
+        {
+          "id": "add_salchicha",
+          "nombre": "Salchicha Extra",
+          "precio": 4000
+        },
+        {
+          "id": "add_queso",
+          "nombre": "Extra Queso",
+          "precio": 3000
+        },
+        {
+          "id": "add_tocineta",
+          "nombre": "Adición Tocineta",
+          "precio": 4000
+        },
+        {
+          "id": "add_papa",
+          "nombre": "Porción Papas",
+          "precio": 5000
+        }
+      ],
       "tiempo": "6 min",
       "icono": "fa-clock",
       "receta": {
@@ -57,6 +79,28 @@
         "Doble queso",
         "Salsas"
       ],
+      "adiciones": [
+        {
+          "id": "add_salchicha",
+          "nombre": "Salchicha Extra",
+          "precio": 4000
+        },
+        {
+          "id": "add_queso",
+          "nombre": "Extra Queso",
+          "precio": 3000
+        },
+        {
+          "id": "add_tocineta",
+          "nombre": "Adición Tocineta",
+          "precio": 4000
+        },
+        {
+          "id": "add_papa",
+          "nombre": "Porción Papas",
+          "precio": 5000
+        }
+      ],
       "tiempo": "14 min",
       "icono": "fa-clock",
       "receta": {
@@ -76,6 +120,7 @@
       "imagen": "IMAGENES PARA PEDIR/COCA COLA 400ml.png",
       "descripcion": "Botella personal fría.",
       "ingredientes": [],
+      "adiciones": [],
       "tiempo": "Fría",
       "icono": "fa-snowflake",
       "receta": {
@@ -201,6 +246,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 4500
     },
     {
@@ -230,6 +276,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 4500
     },
     {
@@ -259,6 +306,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 4500
     }
   ],
@@ -559,5 +607,6 @@
       "fecha": "2026-11-03T01:01:47.628Z"
     }
   ],
-  "nextTicketNumber": 204
+  "nextTicketNumber": 204,
+  "botWhatsAppActivo": true
 }

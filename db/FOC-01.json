@@ -446,7 +446,7 @@
       "id": "carne",
       "nombre": "Carne de Res / Parrilla (150g)",
       "unidad": "Porciones",
-      "stockActual": 4,
+      "stockActual": 0,
       "umbralMinimo": 15,
       "costoUnitario": 3800
     },
@@ -454,7 +454,7 @@
       "id": "pan",
       "nombre": "Pan Brioche Artesanal",
       "unidad": "Unidades",
-      "stockActual": 7,
+      "stockActual": 5,
       "umbralMinimo": 18,
       "costoUnitario": 1200
     },
@@ -478,7 +478,7 @@
       "id": "panPerro",
       "nombre": "Pan Suave para Perro",
       "unidad": "Unidades",
-      "stockActual": 23,
+      "stockActual": 28,
       "umbralMinimo": 12,
       "costoUnitario": 900
     },
@@ -486,7 +486,7 @@
       "id": "tocineta",
       "nombre": "Tocineta Ahumada Tajada",
       "unidad": "Lonjas",
-      "stockActual": 2,
+      "stockActual": 0,
       "umbralMinimo": 15,
       "costoUnitario": 950
     },
@@ -502,7 +502,7 @@
       "id": "ripio",
       "nombre": "Ripio de Papa Crocante",
       "unidad": "Kg",
-      "stockActual": 1.7,
+      "stockActual": 1.64,
       "umbralMinimo": 0.8,
       "costoUnitario": 9000
     },
@@ -510,7 +510,7 @@
       "id": "cebolla",
       "nombre": "Cebolla Fresca Picada",
       "unidad": "Kg",
-      "stockActual": 1.45,
+      "stockActual": 1.41,
       "umbralMinimo": 0.5,
       "costoUnitario": 5500
     },
@@ -518,7 +518,7 @@
       "id": "salsa",
       "nombre": "Salsas de la Casa (Tártara/Ajo)",
       "unidad": "Litros",
-      "stockActual": 2.29,
+      "stockActual": 2.23,
       "umbralMinimo": 1,
       "costoUnitario": 11000
     },
@@ -532,6 +532,129 @@
     }
   ],
   "pedidos": [
+    {
+      "id": "#WA-2120",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-11-07T20:39:36.556Z",
+      "fechaPreparacion": "2026-11-07T20:39:50.698Z",
+      "fechaDespacho": "2026-11-07T20:39:53.116Z",
+      "clienteNombre": "Miguel Ojeda 🍂",
+      "telefono": "157440733655130",
+      "direccionDomicilio": "Urb Villa bolivar lote 29",
+      "motorizado": "Domiciliario 1 - Camilo R. (Moto KLM-45D)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "LINE-1794083961882-144i",
+          "productoId": "p1",
+          "nombreProducto": "Hamburguesa Especial Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 18000,
+          "imagen": "IMAGENES PARA PEDIR/ESPECIAL.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "ocultoEnKDS": false,
+      "total": 18000
+    },
+    {
+      "id": "#WA-4938",
+      "negocioId": "FOC-01",
+      "canal": "WhatsApp",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-11-06T12:08:42.195Z",
+      "fechaPreparacion": "2026-11-06T12:29:45.684Z",
+      "fechaDespacho": "2026-11-06T12:29:47.414Z",
+      "clienteNombre": "Johan",
+      "telefono": "31658287845434",
+      "direccionDomicilio": "Altos de tamarindo",
+      "motorizado": "Domiciliario 1 - Camilo R. (Moto KLM-45D)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "LINE-1793966908912-yycd",
+          "productoId": "p2",
+          "nombreProducto": "Hamburguesa Clásica Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 14000,
+          "imagen": "IMAGENES PARA PEDIR/CLASICA.jpg",
+          "modificaciones": [],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "ocultoEnKDS": false,
+      "total": 14000
+    },
+    {
+      "id": "#ORD-127",
+      "negocioId": "FOC-01",
+      "canal": "caja",
+      "estado": "DESPACHADO",
+      "fechaIngreso": "2026-11-06T12:00:36.499Z",
+      "fechaPreparacion": "2026-11-06T12:00:47.976Z",
+      "fechaDespacho": "2026-11-06T12:29:44.625Z",
+      "clienteNombre": "Mesa 1",
+      "telefono": "",
+      "direccionDomicilio": "",
+      "motorizado": "En local (Sin motorizado)",
+      "metodoPago": "Efectivo",
+      "items": [
+        {
+          "id": "item_1793966404415_7zf7",
+          "productoId": "p3",
+          "nombreProducto": "Hamburguesa Doble Carne Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 24000,
+          "imagen": "IMAGENES PARA PEDIR/DOBLE-CARNE.jpg",
+          "modificaciones": [],
+          "notas": ""
+        },
+        {
+          "id": "item_1793966405190_o5jv",
+          "productoId": "p3",
+          "nombreProducto": "Hamburguesa Doble Carne Al Carbón",
+          "cantidad": 1,
+          "precioUnitario": 24000,
+          "imagen": "IMAGENES PARA PEDIR/DOBLE-CARNE.jpg",
+          "modificaciones": [
+            {
+              "id": "add_queso",
+              "tipo": "extra",
+              "descripcion": "+Extra Queso",
+              "costoExtra": 3000,
+              "icono": "➕",
+              "ajusteInsumo": {
+                "insumoId": "queso",
+                "delta": 1
+              }
+            },
+            {
+              "id": "add_carne",
+              "tipo": "extra",
+              "descripcion": "+Adición Carne",
+              "costoExtra": 6000,
+              "icono": "➕",
+              "ajusteInsumo": {
+                "insumoId": "carne",
+                "delta": 1
+              }
+            }
+          ],
+          "notas": ""
+        }
+      ],
+      "sincronizado": true,
+      "inventarioDescontado": true,
+      "ocultoEnKDS": false,
+      "total": 57000
+    },
     {
       "id": "#WA-4630",
       "negocioId": "FOC-01",
@@ -576,6 +699,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 24000
     },
     {
@@ -605,6 +729,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 12000
     },
     {
@@ -634,6 +759,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 18000
     },
     {
@@ -663,6 +789,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 20000
     },
     {
@@ -692,6 +819,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 48000
     },
     {
@@ -721,6 +849,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 18000
     },
     {
@@ -750,6 +879,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 16000
     },
     {
@@ -799,6 +929,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 49000
     },
     {
@@ -838,6 +969,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 52000
     },
     {
@@ -884,6 +1016,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 22000
     },
     {
@@ -913,6 +1046,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 18000
     },
     {
@@ -952,6 +1086,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 23000
     },
     {
@@ -1031,6 +1166,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 96000
     },
     {
@@ -1070,6 +1206,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 31000
     },
     {
@@ -1119,6 +1256,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 25000
     },
     {
@@ -1158,6 +1296,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 29000
     },
     {
@@ -1197,6 +1336,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 28000
     },
     {
@@ -1246,6 +1386,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 39000
     },
     {
@@ -1275,6 +1416,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 16000
     },
     {
@@ -1304,6 +1446,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 18000
     },
     {
@@ -1333,6 +1476,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 18000
     },
     {
@@ -1362,6 +1506,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 18000
     },
     {
@@ -1514,6 +1659,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 63000
     },
     {
@@ -1543,6 +1689,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 18000
     },
     {
@@ -1695,6 +1842,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 63000
     },
     {
@@ -1724,6 +1872,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 16000
     },
     {
@@ -1763,6 +1912,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 42000
     },
     {
@@ -1792,6 +1942,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 15000
     },
     {
@@ -1821,6 +1972,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 36000
     },
     {
@@ -1873,6 +2025,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 36000
     },
     {
@@ -1925,6 +2078,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 36000
     },
     {
@@ -2032,6 +2186,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 51000
     },
     {
@@ -2061,6 +2216,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 18000
     },
     {
@@ -2100,6 +2256,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 16000
     },
     {
@@ -2129,6 +2286,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 29000
     },
     {
@@ -2178,6 +2336,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 46000
     },
     {
@@ -2217,6 +2376,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 33000
     },
     {
@@ -2268,6 +2428,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 41000
     },
     {
@@ -2315,6 +2476,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 24000
     },
     {
@@ -2362,6 +2524,7 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 56000
     },
     {
@@ -2399,10 +2562,176 @@
       ],
       "sincronizado": true,
       "inventarioDescontado": true,
+      "ocultoEnKDS": false,
       "total": 30000
     }
   ],
   "movimientos": [
+    {
+      "id": "MOV-1793966460497-868",
+      "negocioId": "FOC-01",
+      "insumoId": "panPerro",
+      "insumoNombre": "Pan Suave para Perro",
+      "tipo": "entrada",
+      "cantidad": 5,
+      "unidad": "Unidades",
+      "motivo": "Compra proveedor local Cúcuta",
+      "fecha": "2026-11-06T12:01:00.497Z"
+    },
+    {
+      "id": "MOV-1793966436500-734",
+      "negocioId": "FOC-01",
+      "insumoId": "cebolla",
+      "insumoNombre": "Cebolla Fresca Picada",
+      "tipo": "consumo",
+      "cantidad": 0.025,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-127)",
+      "fecha": "2026-11-06T12:00:36.500Z"
+    },
+    {
+      "id": "MOV-1793966436500-941",
+      "negocioId": "FOC-01",
+      "insumoId": "salsa",
+      "insumoNombre": "Salsas de la Casa (Tártara/Ajo)",
+      "tipo": "consumo",
+      "cantidad": 0.03,
+      "unidad": "Litros",
+      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-127)",
+      "fecha": "2026-11-06T12:00:36.500Z"
+    },
+    {
+      "id": "MOV-1793966436500-774",
+      "negocioId": "FOC-01",
+      "insumoId": "ripio",
+      "insumoNombre": "Ripio de Papa Crocante",
+      "tipo": "consumo",
+      "cantidad": 0.03,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-127)",
+      "fecha": "2026-11-06T12:00:36.500Z"
+    },
+    {
+      "id": "MOV-1793966436500-933",
+      "negocioId": "FOC-01",
+      "insumoId": "tocineta",
+      "insumoNombre": "Tocineta Ahumada Tajada",
+      "tipo": "consumo",
+      "cantidad": 2,
+      "unidad": "Lonjas",
+      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-127)",
+      "fecha": "2026-11-06T12:00:36.500Z"
+    },
+    {
+      "id": "MOV-1793966436500-196",
+      "negocioId": "FOC-01",
+      "insumoId": "queso",
+      "insumoNombre": "Queso Costeño / Mozzarella",
+      "tipo": "consumo",
+      "cantidad": 1.06,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-127)",
+      "fecha": "2026-11-06T12:00:36.500Z"
+    },
+    {
+      "id": "MOV-1793966436500-495",
+      "negocioId": "FOC-01",
+      "insumoId": "pan",
+      "insumoNombre": "Pan Brioche Artesanal",
+      "tipo": "consumo",
+      "cantidad": 1,
+      "unidad": "Unidades",
+      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-127)",
+      "fecha": "2026-11-06T12:00:36.500Z"
+    },
+    {
+      "id": "MOV-1793966436500-729",
+      "negocioId": "FOC-01",
+      "insumoId": "carne",
+      "insumoNombre": "Carne de Res / Parrilla (150g)",
+      "tipo": "consumo",
+      "cantidad": 3,
+      "unidad": "Porciones",
+      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-127)",
+      "fecha": "2026-11-06T12:00:36.500Z"
+    },
+    {
+      "id": "MOV-1793966436500-888",
+      "negocioId": "FOC-01",
+      "insumoId": "cebolla",
+      "insumoNombre": "Cebolla Fresca Picada",
+      "tipo": "consumo",
+      "cantidad": 0.025,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-127)",
+      "fecha": "2026-11-06T12:00:36.500Z"
+    },
+    {
+      "id": "MOV-1793966436499-486",
+      "negocioId": "FOC-01",
+      "insumoId": "salsa",
+      "insumoNombre": "Salsas de la Casa (Tártara/Ajo)",
+      "tipo": "consumo",
+      "cantidad": 0.03,
+      "unidad": "Litros",
+      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-127)",
+      "fecha": "2026-11-06T12:00:36.499Z"
+    },
+    {
+      "id": "MOV-1793966436499-733",
+      "negocioId": "FOC-01",
+      "insumoId": "ripio",
+      "insumoNombre": "Ripio de Papa Crocante",
+      "tipo": "consumo",
+      "cantidad": 0.03,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-127)",
+      "fecha": "2026-11-06T12:00:36.499Z"
+    },
+    {
+      "id": "MOV-1793966436499-703",
+      "negocioId": "FOC-01",
+      "insumoId": "tocineta",
+      "insumoNombre": "Tocineta Ahumada Tajada",
+      "tipo": "consumo",
+      "cantidad": 2,
+      "unidad": "Lonjas",
+      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-127)",
+      "fecha": "2026-11-06T12:00:36.499Z"
+    },
+    {
+      "id": "MOV-1793966436499-727",
+      "negocioId": "FOC-01",
+      "insumoId": "queso",
+      "insumoNombre": "Queso Costeño / Mozzarella",
+      "tipo": "consumo",
+      "cantidad": 0.06,
+      "unidad": "Kg",
+      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-127)",
+      "fecha": "2026-11-06T12:00:36.499Z"
+    },
+    {
+      "id": "MOV-1793966436499-649",
+      "negocioId": "FOC-01",
+      "insumoId": "pan",
+      "insumoNombre": "Pan Brioche Artesanal",
+      "tipo": "consumo",
+      "cantidad": 1,
+      "unidad": "Unidades",
+      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-127)",
+      "fecha": "2026-11-06T12:00:36.499Z"
+    },
+    {
+      "id": "MOV-1793966436499-6",
+      "negocioId": "FOC-01",
+      "insumoId": "carne",
+      "insumoNombre": "Carne de Res / Parrilla (150g)",
+      "tipo": "consumo",
+      "cantidad": 2,
+      "unidad": "Porciones",
+      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-127)",
+      "fecha": "2026-11-06T12:00:36.499Z"
+    },
     {
       "id": "MOV-1793836715768-765",
       "negocioId": "FOC-01",
@@ -2897,171 +3226,6 @@
       "unidad": "Unidades",
       "motivo": "Venta 1x Hamburguesa Especial Al Carbón (#ORD-120)",
       "fecha": "2026-11-03T01:05:51.260Z"
-    },
-    {
-      "id": "MOV-1793667951260-116",
-      "negocioId": "FOC-01",
-      "insumoId": "carne",
-      "insumoNombre": "Carne de Res / Parrilla (150g)",
-      "tipo": "consumo",
-      "cantidad": 1,
-      "unidad": "Porciones",
-      "motivo": "Venta 1x Hamburguesa Especial Al Carbón (#ORD-120)",
-      "fecha": "2026-11-03T01:05:51.260Z"
-    },
-    {
-      "id": "MOV-1793360655112-331",
-      "negocioId": "FOC-01",
-      "insumoId": "cebolla",
-      "insumoNombre": "Cebolla Fresca Picada",
-      "tipo": "consumo",
-      "cantidad": 0.015,
-      "unidad": "Kg",
-      "motivo": "Venta 1x Hamburguesa Clásica Al Carbón (#ORD-119)",
-      "fecha": "2026-10-30T11:44:15.112Z"
-    },
-    {
-      "id": "MOV-1793360655112-488",
-      "negocioId": "FOC-01",
-      "insumoId": "salsa",
-      "insumoNombre": "Salsas de la Casa (Tártara/Ajo)",
-      "tipo": "consumo",
-      "cantidad": 0.02,
-      "unidad": "Litros",
-      "motivo": "Venta 1x Hamburguesa Clásica Al Carbón (#ORD-119)",
-      "fecha": "2026-10-30T11:44:15.112Z"
-    },
-    {
-      "id": "MOV-1793360655112-678",
-      "negocioId": "FOC-01",
-      "insumoId": "queso",
-      "insumoNombre": "Queso Costeño / Mozzarella",
-      "tipo": "consumo",
-      "cantidad": 0.03,
-      "unidad": "Kg",
-      "motivo": "Venta 1x Hamburguesa Clásica Al Carbón (#ORD-119)",
-      "fecha": "2026-10-30T11:44:15.112Z"
-    },
-    {
-      "id": "MOV-1793360655112-280",
-      "negocioId": "FOC-01",
-      "insumoId": "pan",
-      "insumoNombre": "Pan Brioche Artesanal",
-      "tipo": "consumo",
-      "cantidad": 1,
-      "unidad": "Unidades",
-      "motivo": "Venta 1x Hamburguesa Clásica Al Carbón (#ORD-119)",
-      "fecha": "2026-10-30T11:44:15.112Z"
-    },
-    {
-      "id": "MOV-1793360655112-455",
-      "negocioId": "FOC-01",
-      "insumoId": "carne",
-      "insumoNombre": "Carne de Res / Parrilla (150g)",
-      "tipo": "consumo",
-      "cantidad": 1,
-      "unidad": "Porciones",
-      "motivo": "Venta 1x Hamburguesa Clásica Al Carbón (#ORD-119)",
-      "fecha": "2026-10-30T11:44:15.112Z"
-    },
-    {
-      "id": "MOV-1793360655112-675",
-      "negocioId": "FOC-01",
-      "insumoId": "cebolla",
-      "insumoNombre": "Cebolla Fresca Picada",
-      "tipo": "consumo",
-      "cantidad": 0.025,
-      "unidad": "Kg",
-      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-119)",
-      "fecha": "2026-10-30T11:44:15.112Z"
-    },
-    {
-      "id": "MOV-1793360655112-497",
-      "negocioId": "FOC-01",
-      "insumoId": "salsa",
-      "insumoNombre": "Salsas de la Casa (Tártara/Ajo)",
-      "tipo": "consumo",
-      "cantidad": 0.03,
-      "unidad": "Litros",
-      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-119)",
-      "fecha": "2026-10-30T11:44:15.112Z"
-    },
-    {
-      "id": "MOV-1793360655112-854",
-      "negocioId": "FOC-01",
-      "insumoId": "ripio",
-      "insumoNombre": "Ripio de Papa Crocante",
-      "tipo": "consumo",
-      "cantidad": 0.03,
-      "unidad": "Kg",
-      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-119)",
-      "fecha": "2026-10-30T11:44:15.112Z"
-    },
-    {
-      "id": "MOV-1793360655112-864",
-      "negocioId": "FOC-01",
-      "insumoId": "tocineta",
-      "insumoNombre": "Tocineta Ahumada Tajada",
-      "tipo": "consumo",
-      "cantidad": 2,
-      "unidad": "Lonjas",
-      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-119)",
-      "fecha": "2026-10-30T11:44:15.112Z"
-    },
-    {
-      "id": "MOV-1793360655112-903",
-      "negocioId": "FOC-01",
-      "insumoId": "queso",
-      "insumoNombre": "Queso Costeño / Mozzarella",
-      "tipo": "consumo",
-      "cantidad": 0.06,
-      "unidad": "Kg",
-      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-119)",
-      "fecha": "2026-10-30T11:44:15.112Z"
-    },
-    {
-      "id": "MOV-1793360655112-949",
-      "negocioId": "FOC-01",
-      "insumoId": "pan",
-      "insumoNombre": "Pan Brioche Artesanal",
-      "tipo": "consumo",
-      "cantidad": 1,
-      "unidad": "Unidades",
-      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-119)",
-      "fecha": "2026-10-30T11:44:15.112Z"
-    },
-    {
-      "id": "MOV-1793360655112-934",
-      "negocioId": "FOC-01",
-      "insumoId": "carne",
-      "insumoNombre": "Carne de Res / Parrilla (150g)",
-      "tipo": "consumo",
-      "cantidad": 2,
-      "unidad": "Porciones",
-      "motivo": "Venta 1x Hamburguesa Doble Carne Al Carbón (#ORD-119)",
-      "fecha": "2026-10-30T11:44:15.112Z"
-    },
-    {
-      "id": "MOV-1793360655112-374",
-      "negocioId": "FOC-01",
-      "insumoId": "bebidas",
-      "insumoNombre": "Bebidas Refrigeradas (Gaseosa/Jugo)",
-      "tipo": "consumo",
-      "cantidad": 1,
-      "unidad": "Unidades",
-      "motivo": "Venta 1x Gaseosa Postobón Manzana 400ml (#ORD-119)",
-      "fecha": "2026-10-30T11:44:15.112Z"
-    },
-    {
-      "id": "MOV-1793360655112-469",
-      "negocioId": "FOC-01",
-      "insumoId": "ripio",
-      "insumoNombre": "Ripio de Papa Crocante",
-      "tipo": "consumo",
-      "cantidad": 0.02,
-      "unidad": "Kg",
-      "motivo": "Venta 1x Salchipapa Familiar Especial (#ORD-119)",
-      "fecha": "2026-10-30T11:44:15.112Z"
     }
   ],
   "mensajesWhatsApp": [
@@ -3111,6 +3275,6 @@
       "fecha": "2026-11-05T00:39:04.263Z"
     }
   ],
-  "nextTicketNumber": 127,
-  "botWhatsAppActivo": false
+  "nextTicketNumber": 128,
+  "botWhatsAppActivo": true
 }

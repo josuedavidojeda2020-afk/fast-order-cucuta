@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menú Digital Interactivo | Al Carbón Burguer - Fast Order Cúcuta</title>
+  <meta property="og:title" content="🍔 Menú Digital Interactivo - Haz tu Pedido Aquí" />
+  <meta property="og:description" content="Elige tus platos, personaliza los ingredientes de cada unidad y envía tu pedido directo a nuestra Cocina." />
+  <meta property="og:type" content="website" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: #090d16;
+      color: #f8fafc;
+    }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 9999px; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-slate-950 text-slate-100 pb-28">
+
+  <!-- ENCABEZADO DEL RESTAURANTE EN VIVO -->
+  <header class="sticky top-0 z-30 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 shadow-lg">
+    <div class="max-w-4xl mx-auto px-4 py-3.5 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-2xl shadow-md shadow-amber-500/20">
+          🍔
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 id="rest-name" class="text-base sm:text-lg font-black text-white tracking-tight">Al Carbón Burguer</h1>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> EN VIVO
+            </span>
+          </div>
+          <p id="rest-address" class="text-xs text-slate-400">Menú Digital Conectado Directo a Cocina • Cúcuta</p>
+        </div>
+      </div>
+
+      <button onclick="abrirModalCarrito()" class="relative px-3.5 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs flex items-center gap-2 shadow-lg shadow-amber-500/20 transition">
+        <span>🛒 Mi Pedido</span>
+        <span id="header-cart-badge" class="px-2 py-0.5 rounded-full bg-slate-950 text-amber-400 font-mono text-xs">0</span>
+      </button>
+    </div>
+
+    <!-- BARRA DE CATEGORÍAS DINÁMICAS (SE ACTUALIZA SI EL DUEÑO CREA CATEGORÍAS NUEVAS) -->
+    <div class="max-w-4xl mx-auto px-4 pb-3">
+      <div id="menu-categories" class="flex items-center gap-2 overflow-x-auto pb-1"></div>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="max-w-4xl mx-auto w-full px-4 pt-5 flex-1">
+
+    <!-- BANNER EXPLICATIVO DE PERSONALIZACIÓN EXACTA -->
+    <div class="mb-5 bg-gradient-to-r from-emerald-950/60 via-slate-900 to-slate-900 border border-emerald-500/30 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div>
+        <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-400 block">✨ Personalización 100% Exacta por Unidad</span>
+        <p class="text-xs text-slate-300 mt-0.5">
+          Elige cualquier plato y personaliza <strong>cada unidad por separado</strong> (quita ingredientes que no desees o añade extras). Al confirmar, tu pedido pasa <strong>directo a la Pantalla de Cocina</strong>.
+        </p>
+      </div>
+      <div id="sync-indicator" class="text-[11px] font-mono text-emerald-300 bg-emerald-950/80 border border-emerald-500/30 px-3 py-1.5 rounded-xl shrink-0 text-center">
+        🔄 Catálogo sincronizado
+      </div>
+    </div>
+
+    <!-- PANEL DE SEGUIMIENTO EN VIVO CUANDO YA ENVIÓ UN PEDIDO -->
+    <div id="live-order-tracker" class="hidden mb-6 bg-slate-900 border-2 border-emerald-500/50 rounded-2xl p-5 shadow-xl">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-800">
+        <div>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-400">📡 Seguimiento en Tiempo Real en Cocina</span>
+          <h2 id="tracker-order-id" class="text-xl font-black text-white font-mono mt-0.5">#WA-0000</h2>
+        </div>
+        <span id="tracker-status-badge" class="px-3 py-1.5 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold text-xs">
+          ⏳ En Cola de Cocina
+        </span>
+      </div>
+      <div id="tracker-order-summary" class="mt-3 text-xs text-slate-300 space-y-1"></div>
+      <p class="text-[11px] text-slate-400 mt-3">
+        💬 También enviamos el recibo detallado a tu WhatsApp. Cuando el cocinero cambie el estado en el restaurante, se actualizará aquí automáticamente.
+      </p>
+    </div>
+
+    <!-- GRILLA DE PLATOS DEL MENÚ EN VIVO -->
+    <div id="menu-products-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
+
+  </main>
+
+  <!-- BARRA FLOTANTE INFERIOR DE RESUMEN DEL PEDIDO -->
+  <div id="bottom-cart-bar" class="fixed bottom-0 inset-x-0 z-30 bg-slate-900/95 backdrop-blur-md border-t border-slate-800 p-3 shadow-2xl hidden">
+    <div class="max-w-4xl mx-auto flex items-center justify-between gap-3">
+      <div>
+        <span id="bottom-cart-count" class="text-xs font-bold text-amber-400 block">0 unidades personalizadas</span>
+        <span id="bottom-cart-total" class="text-lg font-black text-white font-mono">$0</span>
+      </div>
+      <button onclick="abrirModalCarrito()" class="px-5 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-slate-950 font-black text-sm shadow-lg shadow-emerald-500/25 transition">
+        Revisar y Enviar a Cocina ➔
+      </button>
+    </div>
+  </div>
+
+  <!-- ====================================================================== -->
+  <!-- MODAL 1: PERSONALIZAR CADA UNIDAD DEL PLATO (INGREDIENTES Y ADICIONES) -->
+  <!-- ====================================================================== -->
+  <div id="modal-personalizar" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl my-auto max-h-[92vh] flex flex-col">
+      <!-- Cabecera del plato -->
+      <div class="p-4 bg-slate-950 border-b border-slate-800 flex items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <img id="cust-prod-img" src="" alt="Plato" class="w-14 h-14 rounded-xl object-cover border border-slate-700" />
+          <div>
+            <span id="cust-prod-cat" class="text-[10px] font-bold uppercase tracking-wider text-amber-400">Categoría</span>
+            <h3 id="cust-prod-name" class="text-base sm:text-lg font-black text-white leading-tight">Nombre del Plato</h3>
+            <span id="cust-prod-price" class="text-xs font-mono font-bold text-emerald-400">$0</span>
+          </div>
+        </div>
+        <button onclick="cerrarModalPersonalizar()" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white font-bold">✕</button>
+      </div>
+
+      <!-- Selector de cuántas unidades desea de este plato -->
+      <div class="px-4 py-3 bg-slate-800/60 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <span class="text-xs font-bold text-white block">¿Cuántas unidades deseas de este plato?</span>
+          <span class="text-[11px] text-slate-400">Cada unidad se puede configurar con sus propios ingredientes por separado</span>
+        </div>
+        <div class="flex items-center gap-2 bg-slate-950 border border-slate-700 rounded-xl px-2 py-1">
+          <button type="button" onclick="cambiarCantidadUnidadesModal(-1)" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-black text-base">-</button>
+          <span id="cust-unit-count" class="w-8 text-center font-mono font-black text-amber-400 text-base">1</span>
+          <button type="button" onclick="cambiarCantidadUnidadesModal(1)" class="w-8 h-8 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-base">+</button>
+        </div>
+      </div>
+
+      <!-- Contenedor de tarjetas de personalización por unidad (#1, #2, ...) -->
+      <div id="cust-units-container" class="p-4 overflow-y-auto space-y-4 flex-1"></div>
+
+      <!-- Pie del modal -->
+      <div class="p-4 bg-slate-950 border-t border-slate-800 flex items-center justify-between gap-3">
+        <div>
+          <span class="text-[11px] text-slate-400 block">Subtotal de estas unidades:</span>
+          <span id="cust-modal-subtotal" class="text-lg font-black text-emerald-400 font-mono">$0</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="cerrarModalPersonalizar()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold">
+            Cancelar
+          </button>
+          <button type="button" onclick="confirmarUnidadesAlCarrito()" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-amber-500/20">
+            ✅ Agregar al Pedido
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================== -->
+  <!-- MODAL 2: CARRITO Y DATOS DE ENTREGA PARA ENVIAR DIRECTO A COCINA       -->
+  <!-- ====================================================================== -->
+  <div id="modal-carrito" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-xl w-full overflow-hidden shadow-2xl my-auto max-h-[92vh] flex flex-col">
+      <div class="p-4 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
+        <div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-400">Paso Final • Directo a Pantalla de Cocina</span>
+          <h3 class="text-lg font-black text-white">🛒 Revisa y Confirma tu Pedido</h3>
+        </div>
+        <button onclick="cerrarModalCarrito()" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white font-bold">✕</button>
+      </div>
+
+      <div class="p-4 overflow-y-auto space-y-4 flex-1">
+        <!-- Lista detallada de cada unidad y sus modificaciones -->
+        <div>
+          <label class="text-xs font-bold text-slate-300 uppercase tracking-wider block mb-2">Platos y Personalización por Unidad</label>
+          <div id="cart-items-list" class="space-y-2"></div>
+        </div>
+
+        <!-- Datos del cliente (se pre-llenan desde el link de WhatsApp) -->
+        <div class="bg-slate-950/90 border border-slate-800 rounded-xl p-3.5 space-y-3">
+          <div class="text-xs font-bold text-amber-400">📍 Datos de Contacto y Entrega</div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="text-[11px] font-semibold text-slate-400 block mb-1">Tu Nombre *</label>
+              <input id="chk-nombre" type="text" placeholder="Ej. Juan Pérez" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:border-amber-500 focus:outline-none" />
+            </div>
+            <div>
+              <label class="text-[11px] font-semibold text-slate-400 block mb-1">Tu WhatsApp / Celular *</label>
+              <input id="chk-telefono" type="text" placeholder="Ej. 314 888 9999" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white font-mono focus:border-amber-500 focus:outline-none" />
+            </div>
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <label class="text-[11px] font-semibold text-slate-400">Dirección Exacta / Barrio (o Recoger en el local) *</label>
+              <button type="button" onclick="document.getElementById('chk-direccion').value = 'Recoger en el local (Para llevar)'" class="text-[10px] font-bold text-amber-400 hover:underline">
+                🏪 Poner "Recoger en el local"
+              </button>
+            </div>
+            <input id="chk-direccion" type="text" placeholder="Ej. Barrio Caobos Calle 15 #4-20, Casa Blanca" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:border-amber-500 focus:outline-none" />
+          </div>
+
+          <div>
+            <label class="text-[11px] font-semibold text-slate-400 block mb-1">Método de Pago</label>
+            <select id="chk-metodo-pago" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:border-amber-500 focus:outline-none">
+              <option value="Efectivo">💵 Efectivo contraentrega</option>
+              <option value="Nequi">📱 Transferencia Nequi</option>
+              <option value="Bancolombia">🏦 Transferencia Bancolombia</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-slate-950 border-t border-slate-800 flex items-center justify-between gap-3">
+        <div>
+          <span class="text-[11px] text-slate-400 block">Total a Pagar:</span>
+          <span id="chk-total" class="text-xl font-black text-emerald-400 font-mono">$0</span>
+        </div>
+        <button id="btn-enviar-pedido" type="button" onclick="enviarPedidoACocina()" class="px-5 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-emerald-500/25 transition">
+          🚀 Confirmar y Enviar a Cocina
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST DE NOTIFICACIÓN -->
+  <div id="toast" class="fixed top-4 right-4 z-50 hidden bg-slate-900 border border-emerald-500/50 text-white px-4 py-3 rounded-xl shadow-2xl text-xs font-bold"></div>
+
+  <script>
+    const API_BASE = window.location.protocol.startsWith('http') ? '' : 'http://localhost:3000';
+    const STORAGE_KEY = 'FAST_ORDER_PRODUCTION_V7';
+    const bcChannel = typeof BroadcastChannel !== 'undefined' ? new BroadcastChannel('fast_order_cucuta_realtime') : null;
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const paramNegocioId = urlParams.get('negocio') || null;
+    let idNegocioEnUso = paramNegocioId || 'FOC-01';
+    const paramTel = urlParams.get('tel') || '';
+    const paramNombre = urlParams.get('nombre') || '';
+    const paramJid = urlParams.get('jid') || '';
+
+    // Estado en vivo del restaurante
+    let negocioActivo = null;
+    let todosLosNegocios = [];
+    let categoriaSeleccionada = 'Todos';
+    let carritoCliente = []; // Cada elemento es 1 unidad individualizada
+    let ultimoPedidoEnviadoId = null;
+
+    // Estado temporal del modal de personalización por unidades
+    let platoEnModal = null;
+    let unidadesEnModal = []; // Array de { sinIngredientes: Set, adiciones: Map(id -> obj), nota: '' }
+
+    function generarAdicionesInicialesPorDefectoMenu(categoria = '', nombre = '') {
+      const cat = String(categoria || '').toLowerCase();
+      const nom = String(nombre || '').toLowerCase();
+      if (cat.includes('bebida') || cat.includes('gaseosa') || cat.includes('jugo')) {
+        return [];
+      }
+      const base = [];
+      if (cat.includes('hamburguesa') || cat.includes('parrilla') || cat.includes('asado') || nom.includes('hamburguesa')) {
+        base.push({ id: 'add_carne', nombre: 'Adición Carne', precio: 6000 });
+      }
+      if (cat.includes('perro') || cat.includes('salchipapa') || nom.includes('perro') || nom.includes('salchipapa')) {
+        base.push({ id: 'add_salchicha', nombre: 'Salchicha Extra', precio: 4000 });
+      }
+      base.push(
+        { id: 'add_queso', nombre: 'Extra Queso', precio: 3000 },
+        { id: 'add_tocineta', nombre: 'Adición Tocineta', precio: 4000 },
+        { id: 'add_papa', nombre: 'Porción Papas', precio: 5000 }
+      );
+      return base;
+    }
+
+    function mostrarToast(msg) {
+      const t = document.getElementById('toast');
+      if (!t) return;
+      t.innerText = msg;
+      t.classList.remove('hidden');
+      setTimeout(() => t.classList.add('hidden'), 3200);
+    }
+
+    function obtenerAdicionesRealesDelPlato(prod) {
+      if (!prod) return [];
+      const listaOrigen = Array.isArray(prod.adiciones)
+        ? prod.adiciones
+        : generarAdicionesInicialesPorDefectoMenu(prod.categoria, prod.nombre);
+
+      return listaOrigen
+        .map((a, idx) => {
+          const nombreLimpio = String(a.nombre || a.descripcion || '').replace(/^[➕+]\s*/, '').trim();
+          return {
+            id: a.id || `add_${idx}`,
+            descripcion: `➕ ${nombreLimpio}`,
+            precioExtra: Number(a.precio ?? a.precioExtra ?? a.costoExtra ?? 0) || 0
+          };
+        })
+        .filter(a => a.descripcion !== '➕ ');
+    }
+
+    function obtenerIngredientesRealesDelPlato(prod) {
+      if (!prod) return [];
+      const lista = [];
+      const agregar = (txt) => {
+        const limpio = String(txt || '').trim().replace(/\.$/, '');
+        if (limpio && !lista.some(x => x.toLowerCase() === limpio.toLowerCase())) {
+          lista.push(limpio);
+        }
+      };
+
+      if (Array.isArray(prod.ingredientes)) {
+        prod.ingredientes.forEach(agregar);
+        return lista;
+      }
+      if (prod.ingredientesTexto && String(prod.ingredientesTexto).trim() !== '') {
+        String(prod.ingredientesTexto).split(',').forEach(agregar);
+      }
+      if (prod.descripcion && String(prod.descripcion).includes('• Ingredientes:')) {
+        const parte = String(prod.descripcion).split('• Ingredientes:')[1] || '';
+        parte.split(/[,•]+/).forEach(agregar);
+      }
+      return lista;
+    }
+
+    function aplicarNegociosEnVivo(negocios, idActivoServidor = null) {
+      if (!Array.isArray(negocios) || negocios.length === 0) return;
+      todosLosNegocios = negocios;
+      if (!paramNegocioId && idActivoServidor) {
+        idNegocioEnUso = idActivoServidor;
+      }
+      negocioActivo = negocios.find(n => n.id === idNegocioEnUso) || negocios[0];
+
+      document.getElementById('rest-name').innerText = negocioActivo.nombre || 'Fast Order Cúcuta';
+      document.getElementById('rest-address').innerText = `${negocioActivo.barrio || negocioActivo.direccion || 'Cúcuta'} • Menú en Tiempo Real`;
+
+      renderizarCategorias();
+      renderizarPlatos();
+      if (platoEnModal && negocioActivo && Array.isArray(negocioActivo.catalogo)) {
+        const actualizado = negocioActivo.catalogo.find(p => p.id === platoEnModal.id);
+        if (actualizado) {
+          platoEnModal = actualizado;
+          renderizarUnidadesEnModal();
+        }
+      }
+      actualizarSeguimientoPedidoEnVivo();
+    }
+
+    function cargarCatalogoInicial() {
+      // Pre-llenar datos de cliente si vienen desde el link de WhatsApp
+      if (paramNombre) document.getElementById('chk-nombre').value = paramNombre;
+      if (paramTel) document.getElementById('chk-telefono').value = paramTel;
+
+      // 1. Intentar desde localStorage por si está en el mismo navegador
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (parsed && Array.isArray(parsed.negocios) && parsed.negocios.length > 0) {
+            aplicarNegociosEnVivo(parsed.negocios, parsed.negocioActivoId);
+          }
+        }
+      } catch (e) {}
+
+      // 2. Consultar estado en vivo al servidor Node.js (server.js) aislado para este restaurante
+      const stateQuery = paramNegocioId ? `?negocioId=${encodeURIComponent(paramNegocioId)}` : '';
+      fetch(`${API_BASE}/api/state${stateQuery}`)
+        .then(r => r.json())
+        .then(res => {
+          if (res && res.ok && res.data && Array.isArray(res.data.negocios)) {
+            aplicarNegociosEnVivo(res.data.negocios, res.data.negocioActivoId);
+          }
+        })
+        .catch(() => {});
+
+      // 3. Suscribirse a cambios en tiempo real (cuando el dueño agregue/edite un plato o cambie estado en Cocina)
+      try {
+        const evt = new EventSource(`${API_BASE}/api/stream`);
+        evt.addEventListener('sync', (e) => {
+          try {
+            const data = JSON.parse(e.data);
+            if (paramNegocioId && data.negocioId && data.negocioId !== paramNegocioId) return;
+            if (data && data.negocio) {
+              aplicarNegociosEnVivo([data.negocio], data.negocio.id);
+            } else if (data && Array.isArray(data.negocios)) {
+              aplicarNegociosEnVivo(data.negocios, data.negocioId);
+            }
+            const ind = document.getElementById('sync-indicator');
+            if (ind) {
+              ind.innerText = '⚡ Menú actualizado en vivo';
+              setTimeout(() => { ind.innerText = '🔄 Catálogo sincronizado'; }, 2500);
+            }
+          } catch (err) {}
+        });
+      } catch (e) {}
+
+      if (bcChannel) {
+        bcChannel.onmessage = (ev) => {
+          if (ev.data && Array.isArray(ev.data.negocios)) {
+            aplicarNegociosEnVivo(ev.data.negocios);
+          }
+        };
+      }
+
+      window.addEventListener('storage', (ev) => {
+        if (ev.key === STORAGE_KEY && ev.newValue) {
+          try {
+            const parsed = JSON.parse(ev.newValue);
+            if (parsed && Array.isArray(parsed.negocios)) {
+              aplicarNegociosEnVivo(parsed.negocios);
+            }
+          } catch (e) {}
+        }
+      });
+    }
+
+    function renderizarCategorias() {
+      const container = document.getElementById('menu-categories');
+      if (!container || !negocioActivo) return;
+
+      const cats = ['Todos'];
+      (negocioActivo.catalogo || []).forEach(p => {
+        if (p.categoria && !cats.includes(p.categoria)) cats.push(p.categoria);
+      });
+
+      if (!cats.includes(categoriaSeleccionada)) {
+        categoriaSeleccionada = 'Todos';
+      }
+
+      container.innerHTML = cats.map(cat => {
+        const active = cat === categoriaSeleccionada;
+        return `
+          <button onclick="seleccionarCategoria('${cat.replace(/'/g, "\\'")}')"
+            class="px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition ${
+              active
+                ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
+                : 'bg-slate-800/90 text-slate-300 hover:bg-slate-700 border border-slate-700'
+            }">
+            ${cat}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function seleccionarCategoria(cat) {
+      categoriaSeleccionada = cat;
+      renderizarCategorias();
+      renderizarPlatos();
+    }
+
+    function renderizarPlatos() {
+      const grid = document.getElementById('menu-products-grid');
+      if (!grid || !negocioActivo) return;
+
+      const platos = (negocioActivo.catalogo || []).filter(p =>
+        categoriaSeleccionada === 'Todos' || p.categoria === categoriaSeleccionada
+      );
+
+      if (platos.length === 0) {
+        grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400 text-sm">No hay platos en esta categoría.</div>`;
+        return;
+      }
+
+      grid.innerHTML = platos.map(prod => {
+        const ingredientes = obtenerIngredientesRealesDelPlato(prod);
+        const disponible = prod.disponible !== false;
+
+        return `
+          <div class="bg-slate-900 border ${disponible ? 'border-slate-800 hover:border-amber-500/50' : 'border-red-900/40 opacity-60'} rounded-2xl overflow-hidden flex flex-col justify-between transition shadow-lg">
+            <div>
+              <div class="relative h-40 bg-slate-950 overflow-hidden">
+                <img src="${prod.imagen || 'img/burger_especial.png'}" alt="${prod.nombre}" class="w-full h-full object-cover" onerror="this.src='img/burger_especial.png'" />
+                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-950/85 text-amber-400 border border-amber-500/30">
+                  ${prod.categoria}
+                </span>
+                ${!disponible ? `
+                  <div class="absolute inset-0 bg-slate-950/80 flex items-center justify-center">
+                    <span class="px-3 py-1 rounded-xl bg-red-600 text-white font-black text-xs uppercase tracking-wider">🚫 Agotado Hoy</span>
+                  </div>
+                ` : ''}
+              </div>
+
+              <div class="p-4">
+                <div class="flex items-start justify-between gap-2">
+                  <h3 class="text-sm sm:text-base font-black text-white leading-snug">${prod.nombre}</h3>
+                  <span class="text-sm sm:text-base font-mono font-black text-emerald-400 shrink-0">$${Number(prod.precio || 0).toLocaleString('es-CO')}</span>
+                </div>
+
+                ${prod.descripcion ? `<p class="text-xs text-slate-400 mt-1 line-clamp-2">${prod.descripcion}</p>` : ''}
+
+                ${ingredientes.length > 0 ? `
+                  <div class="mt-2.5 flex flex-wrap gap-1">
+                    ${ingredientes.map(ing => `
+                      <span class="px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 text-[10px] border border-slate-700">🥗 ${ing}</span>
+                    `).join('')}
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+
+            <div class="px-4 pb-4 pt-1">
+              ${disponible ? `
+                <button onclick="abrirModalPersonalizar('${prod.id}')"
+                  class="w-full py-2.5 rounded-xl bg-amber-500/15 hover:bg-amber-500 text-amber-300 hover:text-slate-950 border border-amber-500/40 font-black text-xs transition flex items-center justify-center gap-1.5">
+                  <span>⚙️ Elegir y Personalizar Ingredientes</span>
+                </button>
+              ` : `
+                <button disabled class="w-full py-2.5 rounded-xl bg-slate-800 text-slate-500 font-bold text-xs cursor-not-allowed">
+                  No Disponible
+                </button>
+              `}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function crearConfigUnidadVacia() {
+      return {
+        sinIngredientes: new Set(),
+        adiciones: new Map(),
+        nota: ''
+      };
+    }
+
+    function abrirModalPersonalizar(productoId) {
+      if (!negocioActivo) return;
+      const prod = (negocioActivo.catalogo || []).find(p => p.id === productoId);
+      if (!prod) return;
+
+      platoEnModal = prod;
+      unidadesEnModal = [crearConfigUnidadVacia()];
+
+      document.getElementById('cust-prod-img').src = prod.imagen || 'img/burger_especial.png';
+      document.getElementById('cust-prod-cat').innerText = prod.categoria || 'Plato';
+      document.getElementById('cust-prod-name').innerText = prod.nombre;
+      document.getElementById('cust-prod-price').innerText = `$${Number(prod.precio || 0).toLocaleString('es-CO')} c/u`;
+
+      renderizarUnidadesEnModal();
+
+      const modal = document.getElementById('modal-personalizar');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function cerrarModalPersonalizar() {
+      const modal = document.getElementById('modal-personalizar');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      platoEnModal = null;
+      unidadesEnModal = [];
+    }
+
+    function cambiarCantidadUnidadesModal(delta) {
+      if (!platoEnModal) return;
+      const nuevaCant = Math.max(1, Math.min(10, unidadesEnModal.length + delta));
+      while (unidadesEnModal.length < nuevaCant) {
+        unidadesEnModal.push(crearConfigUnidadVacia());
+      }
+      while (unidadesEnModal.length > nuevaCant) {
+        unidadesEnModal.pop();
+      }
+      renderizarUnidadesEnModal();
+    }
+
+    function toggleQuitarIngredienteUnidad(unitIndex, ingNombre) {
+      const u = unidadesEnModal[unitIndex];
+      if (!u) return;
+      if (u.sinIngredientes.has(ingNombre)) {
+        u.sinIngredientes.delete(ingNombre);
+      } else {
+        u.sinIngredientes.add(ingNombre);
+      }
+      renderizarUnidadesEnModal();
+    }
+
+    function toggleAdicionUnidad(unitIndex, addId) {
+      const u = unidadesEnModal[unitIndex];
+      if (!u || !platoEnModal) return;
+      const adicionesPlato = obtenerAdicionesRealesDelPlato(platoEnModal);
+      const obj = adicionesPlato.find(a => a.id === addId);
+      if (!obj) return;
+      if (u.adiciones.has(addId)) {
+        u.adiciones.delete(addId);
+      } else {
+        u.adiciones.set(addId, obj);
+      }
+      renderizarUnidadesEnModal();
+    }
+
+    function actualizarNotaUnidad(unitIndex, valor) {
+      const u = unidadesEnModal[unitIndex];
+      if (!u) return;
+      u.nota = valor;
+    }
+
+    function renderizarUnidadesEnModal() {
+      if (!platoEnModal) return;
+      document.getElementById('cust-unit-count').innerText = String(unidadesEnModal.length);
+
+      const ingredientesPlato = obtenerIngredientesRealesDelPlato(platoEnModal);
+      const adicionesCompatibles = obtenerAdicionesRealesDelPlato(platoEnModal);
+
+      const container = document.getElementById('cust-units-container');
+      let subtotalModal = 0;
+
+      container.innerHTML = unidadesEnModal.map((u, idx) => {
+        let extrasUnidad = 0;
+        u.adiciones.forEach(add => { extrasUnidad += Number(add.precioExtra || 0); });
+        const precioUnidad = Number(platoEnModal.precio || 0) + extrasUnidad;
+        subtotalModal += precioUnidad;
+
+        return `
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-3.5 space-y-3">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded-lg bg-amber-500 text-slate-950 font-black text-xs">
+                  Unidad #${idx + 1}
+                </span>
+                <span class="text-xs font-bold text-white">${platoEnModal.nombre}</span>
+              </div>
+              <span class="text-xs font-mono font-bold text-emerald-400">$${precioUnidad.toLocaleString('es-CO')}</span>
+            </div>
+
+            ${ingredientesPlato.length > 0 ? `
+              <div>
+                <span class="text-[11px] font-bold text-red-300 block mb-1.5">
+                  🚫 ¿Quitar algún ingrediente de esta Unidad #${idx + 1}? (Toca para quitar)
+                </span>
+                <div class="flex flex-wrap gap-1.5">
+                  ${ingredientesPlato.map(ing => {
+                    const quitado = u.sinIngredientes.has(ing);
+                    const safeIng = ing.replace(/'/g, "\\'");
+                    return `
+                      <button type="button" onclick="toggleQuitarIngredienteUnidad(${idx}, '${safeIng}')"
+                        class="px-2.5 py-1.5 rounded-lg text-[11px] font-bold border transition ${
+                          quitado
+                            ? 'bg-red-600 text-white border-red-400 shadow-md shadow-red-600/20'
+                            : 'bg-slate-900 text-slate-300 border-slate-700 hover:border-red-500/40'
+                        }">
+                        ${quitado ? `🚫 SIN ${ing.toUpperCase()}` : `Con ${ing}`}
+                      </button>
+                    `;
+                  }).join('')}
+                </div>
+              </div>
+            ` : ''}
+
+            ${adicionesCompatibles.length > 0 ? `
+              <div>
+                <span class="text-[11px] font-bold text-emerald-300 block mb-1.5">
+                  ➕ ¿Añadir adiciones a esta Unidad #${idx + 1}?
+                </span>
+                <div class="flex flex-wrap gap-1.5">
+                  ${adicionesCompatibles.map(add => {
+                    const activo = u.adiciones.has(add.id);
+                    const precioTxt = add.precioExtra > 0 ? ` (+$${add.precioExtra.toLocaleString('es-CO')})` : '';
+                    return `
+                      <button type="button" onclick="toggleAdicionUnidad(${idx}, '${add.id}')"
+                        class="px-2.5 py-1.5 rounded-lg text-[11px] font-bold border transition ${
+                          activo
+                            ? 'bg-emerald-600 text-white border-emerald-400 shadow-md shadow-emerald-600/20'
+                            : 'bg-slate-900 text-slate-300 border-slate-700 hover:border-emerald-500/40'
+                        }">
+                        ${add.descripcion}${precioTxt}
+                      </button>
+                    `;
+                  }).join('')}
+                </div>
+              </div>
+            ` : ''}
+
+            <div>
+              <input type="text" value="${(u.nota || '').replace(/"/g, '&quot;')}"
+                oninput="actualizarNotaUnidad(${idx}, this.value)"
+                placeholder="📝 Nota opcional para Unidad #${idx + 1} (ej. salsas aparte, pan bien tostado...)"
+                class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-1.5 text-xs text-white focus:border-amber-500 focus:outline-none" />
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('cust-modal-subtotal').innerText = `$${subtotalModal.toLocaleString('es-CO')}`;
+    }
+
+    function confirmarUnidadesAlCarrito() {
+      if (!platoEnModal) return;
+
+      unidadesEnModal.forEach(u => {
+        const modificaciones = [];
+        u.sinIngredientes.forEach(ing => {
+          modificaciones.push({
+            id: `sin_${ing.toLowerCase().replace(/\s+/g, '_')}`,
+            tipo: 'sin_ingrediente',
+            descripcion: `🚫 Sin ${ing}`,
+            costoExtra: 0,
+            precioExtra: 0,
+            icono: '🚫'
+          });
+        });
+        u.adiciones.forEach(add => {
+          const costo = Number(add.precioExtra || 0);
+          modificaciones.push({
+            id: add.id,
+            tipo: costo > 0 ? 'extra' : 'aparte',
+            descripcion: add.descripcion,
+            costoExtra: costo,
+            precioExtra: costo,
+            icono: costo > 0 ? '➕' : '📦'
+          });
+        });
+        if (u.nota && u.nota.trim() !== '') {
+          modificaciones.push({
+            id: `nota_${Date.now()}`,
+            tipo: 'aparte',
+            descripcion: `📝 ${u.nota.trim()}`,
+            costoExtra: 0,
+            precioExtra: 0,
+            icono: '📝'
+          });
+        }
+
+        carritoCliente.push({
+          lineId: `LINE-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+          productoId: platoEnModal.id,
+          nombreProducto: platoEnModal.nombre,
+          cantidad: 1,
+          precioUnitario: Number(platoEnModal.precio || 0),
+          imagen: platoEnModal.imagen || 'img/burger_especial.png',
+          modificaciones
+        });
+      });
+
+      const cantAgregada = unidadesEnModal.length;
+      cerrarModalPersonalizar();
+      actualizarResumenCarritoUI();
+      mostrarToast(`✅ ${cantAgregada} unidad(es) agregadas a tu pedido`);
+    }
+
+    function eliminarItemCarrito(lineId) {
+      carritoCliente = carritoCliente.filter(i => i.lineId !== lineId);
+      actualizarResumenCarritoUI();
+      renderizarListaModalCarrito();
+    }
+
+    function calcularTotalCarrito() {
+      return carritoCliente.reduce((acc, item) => {
+        const extras = (item.modificaciones || []).reduce((s, m) => s + Number(m.precioExtra || 0), 0);
+        return acc + (Number(item.precioUnitario || 0) + extras) * Number(item.cantidad || 1);
+      }, 0);
+    }
+
+    function actualizarResumenCarritoUI() {
+      const cant = carritoCliente.length;
+      const total = calcularTotalCarrito();
+
+      document.getElementById('header-cart-badge').innerText = String(cant);
+      document.getElementById('bottom-cart-count').innerText = `${cant} ${cant === 1 ? 'unidad personalizada' : 'unidades personalizadas'}`;
+      document.getElementById('bottom-cart-total').innerText = `$${total.toLocaleString('es-CO')}`;
+      document.getElementById('chk-total').innerText = `$${total.toLocaleString('es-CO')}`;
+
+      const bottomBar = document.getElementById('bottom-cart-bar');
+      if (cant > 0) {
+        bottomBar.classList.remove('hidden');
+      } else {
+        bottomBar.classList.add('hidden');
+      }
+    }
+
+    function abrirModalCarrito() {
+      if (carritoCliente.length === 0) {
+        mostrarToast('🛒 Primero elige al menos un plato del menú');
+        return;
+      }
+      renderizarListaModalCarrito();
+      const modal = document.getElementById('modal-carrito');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function cerrarModalCarrito() {
+      const modal = document.getElementById('modal-carrito');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function renderizarListaModalCarrito() {
+      const list = document.getElementById('cart-items-list');
+      if (!list) return;
+
+      if (carritoCliente.length === 0) {
+        list.innerHTML = `<div class="text-center py-6 text-slate-400 text-xs">Tu carrito está vacío.</div>`;
+        return;
+      }
+
+      list.innerHTML = carritoCliente.map((item, idx) => {
+        const extras = (item.modificaciones || []).reduce((s, m) => s + Number(m.precioExtra || 0), 0);
+        const subtotal = Number(item.precioUnitario || 0) + extras;
+
+        return `
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-3 flex items-start justify-between gap-3">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 font-mono font-bold text-[10px]">
+                  Plato #${idx + 1}
+                </span>
+                <span class="text-xs font-black text-white">${item.nombreProducto}</span>
+              </div>
+              ${item.modificaciones && item.modificaciones.length > 0 ? `
+                <div class="flex flex-wrap gap-1 pt-0.5">
+                  ${item.modificaciones.map(m => `
+                    <span class="px-2 py-0.5 rounded text-[10px] font-bold ${
+                      m.descripcion.includes('🚫')
+                        ? 'bg-red-500/20 text-red-300 border border-red-500/30'
+                        : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                    }">
+                      ${m.descripcion}
+                    </span>
+                  `).join('')}
+                </div>
+              ` : `<span class="text-[11px] text-slate-400 block">✅ Con todos los ingredientes estándar</span>`}
+            </div>
+
+            <div class="flex items-center gap-2 shrink-0">
+              <span class="text-xs font-mono font-black text-emerald-400">$${subtotal.toLocaleString('es-CO')}</span>
+              <button onclick="eliminarItemCarrito('${item.lineId}')" class="w-7 h-7 rounded-lg bg-red-500/15 hover:bg-red-500/30 text-red-300 text-xs font-bold">✕</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    async function enviarPedidoACocina() {
+      if (carritoCliente.length === 0) return;
+
+      const clienteNombre = document.getElementById('chk-nombre').value.trim() || 'Cliente Menú Digital';
+      const telefono = document.getElementById('chk-telefono').value.trim() || '314 888 9999';
+      const direccionDomicilio = document.getElementById('chk-direccion').value.trim();
+      const metodoPago = document.getElementById('chk-metodo-pago').value || 'Efectivo';
+
+      if (!direccionDomicilio) {
+        mostrarToast('📍 Por favor escribe tu dirección de entrega o selecciona "Recoger en el local"');
+        document.getElementById('chk-direccion').focus();
+        return;
+      }
+
+      const btn = document.getElementById('btn-enviar-pedido');
+      btn.disabled = true;
+      btn.innerText = '⏳ Enviando directo a Cocina...';
+
+      const payload = {
+        negocioId: negocioActivo ? negocioActivo.id : 'FOC-01',
+        clienteNombre,
+        telefono,
+        direccionDomicilio,
+        metodoPago,
+        remoteJid: paramJid || null,
+        items: carritoCliente
+      };
+
+      try {
+        const resp = await fetch(`${API_BASE}/api/menu-digital/order`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await resp.json();
+        if (data && data.ok && data.pedido) {
+          ultimoPedidoEnviadoId = data.pedido.id;
+          mostrarConfirmacionEnVivo(data.pedido);
+        }
+      } catch (e) {
+        // Fallback local si no hubiera red HTTP
+        const fallbackPedido = {
+          id: `#WA-${Math.floor(1000 + Math.random() * 9000)}`,
+          fechaCreacion: new Date().toISOString(),
+          canal: 'WhatsApp',
+          estado: 'Pendiente',
+          clienteNombre,
+          telefono,
+          direccionDomicilio,
+          metodoPago,
+          items: carritoCliente,
+          total: calcularTotalCarrito()
+        };
+        ultimoPedidoEnviadoId = fallbackPedido.id;
+        mostrarConfirmacionEnVivo(fallbackPedido);
+      } finally {
+        btn.disabled = false;
+        btn.innerText = '🚀 Confirmar y Enviar a Cocina';
+      }
+    }
+
+    function mostrarConfirmacionEnVivo(pedido) {
+      carritoCliente = [];
+      actualizarResumenCarritoUI();
+      cerrarModalCarrito();
+
+      const tracker = document.getElementById('live-order-tracker');
+      tracker.classList.remove('hidden');
+      document.getElementById('tracker-order-id').innerText = `${pedido.id} • ${pedido.clienteNombre}`;
+
+      const resumenHtml = (pedido.items || []).map((it, idx) => {
+        const mods = Array.isArray(it.modificaciones) && it.modificaciones.length > 0
+          ? `<span class="text-amber-300 font-semibold">(${it.modificaciones.map(m => m.descripcion).join(', ')})</span>`
+          : `<span class="text-slate-400">(Con todo)</span>`;
+        return `<div>• <strong>Unidad #${idx + 1}: ${it.nombreProducto}</strong> ${mods}</div>`;
+      }).join('');
+
+      document.getElementById('tracker-order-summary').innerHTML = `
+        ${resumenHtml}
+        <div class="pt-2 text-emerald-400 font-mono font-bold">Total: $${Number(pedido.total || 0).toLocaleString('es-CO')} COP • Entrega: ${pedido.direccionDomicilio}</div>
+      `;
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      mostrarToast(`🎉 ¡Pedido ${pedido.id} enviado directo a Cocina!`);
+    }
+
+    function actualizarSeguimientoPedidoEnVivo() {
+      if (!ultimoPedidoEnviadoId || !negocioActivo || !Array.isArray(negocioActivo.pedidos)) return;
+      const ped = negocioActivo.pedidos.find(p => p.id === ultimoPedidoEnviadoId);
+      if (!ped) return;
+
+      const badge = document.getElementById('tracker-status-badge');
+      if (!badge) return;
+
+      const estUpper = String(ped.estado || '').toUpperCase();
+      if (estUpper.includes('PREP')) {
+        badge.className = 'px-3 py-1.5 rounded-xl bg-blue-500/20 text-blue-300 border border-blue-500/40 font-bold text-xs animate-pulse';
+        badge.innerText = '🔥 El Cocinero está preparando tu pedido';
+      } else if (estUpper.includes('DESP') || estUpper.includes('LISTO') || estUpper.includes('ENTREG')) {
+        badge.className = 'px-3 py-1.5 rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold text-xs';
+        badge.innerText = '🛵 ¡Tu pedido está Listo / En camino!';
+      } else {
+        badge.className = 'px-3 py-1.5 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold text-xs';
+        badge.innerText = '⏳ Recibido en Cola de Cocina';
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', cargarCatalogoInicial);
+  </script>
+</body>
+</html>

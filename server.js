@@ -12,13 +12,15 @@ const os = require('os');
 const { spawn } = require('child_process');
 
 const PORT = process.env.PORT || 3000;
-const DB_FILE = path.join(__dirname, 'database.json');
+const PUBLIC_DIR = path.join(__dirname, 'public');
 const DB_DIR = path.join(__dirname, 'db');
 if (!fs.existsSync(DB_DIR)) {
   try { fs.mkdirSync(DB_DIR, { recursive: true }); } catch (e) {}
 }
-// Guardar la sesión de Chromium fuera de OneDrive para evitar bloqueos de archivos (rmdir Service Worker)
+const DB_FILE = path.join(DB_DIR, 'database.json');
+// Guardar la sesión y caché de Chromium fuera de OneDrive para mantener limpio el proyecto
 const WA_AUTH_DIR = path.join(os.tmpdir(), 'fast_order_cucuta_wwebjs_auth');
+const WA_CACHE_DIR = path.join(os.tmpdir(), 'fast_order_cucuta_wwebjs_cache');
 const CLOUDFLARED_BIN = path.join(os.tmpdir(), 'fast_order_cloudflared.exe');
 
 // Estado del túnel global de Cloudflare (permite abrir el Menú Digital desde cualquier ubicación o datos móviles 4G/5G)
@@ -52,12 +54,11 @@ function descargarArchivoHTTPS(url, destPath) {
 async function iniciarTunelCloudflareEstable() {
   try {
     if (!fs.existsSync(CLOUDFLARED_BIN) || fs.statSync(CLOUDFLARED_BIN).size < 5000000) {
-      console.log('☁️ [Cloudflare] Descargando conector oficial de Cloudflare Tunnel por única vez...');
+      console.log('Descargando cloudflared...');
       await descargarArchivoHTTPS(
         'https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-windows-amd64.exe',
         CLOUDFLARED_BIN
       );
-      console.log('✅ [Cloudflare] Conector descargado correctamente.');
     }
 
     const cfProc = spawn(CLOUDFLARED_BIN, [
@@ -71,7 +72,8 @@ async function iniciarTunelCloudflareEstable() {
       const match = texto.match(/https:\/\/[a-zA-Z0-9-]+\.trycloudflare\.com/);
       if (match && match[0] && cloudflarePublicUrl !== match[0]) {
         cloudflarePublicUrl = match[0];
-        console.log(`🌍 [Link Global Activo] Menú Digital accesible desde cualquier ubicación/datos móviles en: ${cloudflarePublicUrl}/menu.html`);
+        console.log(`Enlace publico: ${cloudflarePublicUrl}`);
+        console.log(`Menu virtual:   ${cloudflarePublicUrl}/menu.html`);
       }
     };
 
@@ -83,7 +85,7 @@ async function iniciarTunelCloudflareEstable() {
       setTimeout(iniciarTunelCloudflareEstable, 5000);
     });
   } catch (err) {
-    console.warn('⚠️ [Cloudflare] Usando enlace de red local como respaldo:', err.message);
+    console.warn('Error en tunel:', err.message);
   }
 }
 
@@ -150,47 +152,18 @@ function obtenerSesionWhatsApp(negocioId = 'FOC-01') {
   return waSessions.get(id);
 }
 
+const {
+  leerEstadoDesdeSQLite,
+  guardarEstadoEnSQLite,
+  inspeccionarTablasSQLite
+} = require('./db/sqlite-engine');
+
 function leerBaseDeDatos() {
-  try {
-    if (fs.existsSync(DB_FILE)) {
-      const db = JSON.parse(fs.readFileSync(DB_FILE, 'utf8'));
-      // Sincronizar archivos individuales por negocio en /db/<id>.json si existen
-      if (db && Array.isArray(db.negocios)) {
-        db.negocios = db.negocios.map(neg => {
-          const tenantFile = path.join(DB_DIR, `${neg.id}.json`);
-          if (fs.existsSync(tenantFile)) {
-            try {
-              return JSON.parse(fs.readFileSync(tenantFile, 'utf8'));
-            } catch (e) {}
-          }
-          return neg;
-        });
-      }
-      return db;
-    }
-  } catch (e) {
-    console.error('Error leyendo database.json:', e.message);
-  }
-  return null;
+  return leerEstadoDesdeSQLite();
 }
 
 function guardarBaseDeDatos(data) {
-  try {
-    if (!fs.existsSync(DB_DIR)) {
-      fs.mkdirSync(DB_DIR, { recursive: true });
-    }
-    if (data && Array.isArray(data.negocios)) {
-      data.negocios.forEach(neg => {
-        if (neg && neg.id) {
-          const tenantFile = path.join(DB_DIR, `${neg.id}.json`);
-          fs.writeFileSync(tenantFile, JSON.stringify(neg, null, 2), 'utf8');
-        }
-      });
-    }
-    fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2), 'utf8');
-  } catch (e) {
-    console.error('Error guardando database.json:', e.message);
-  }
+  guardarEstadoEnSQLite(data, true);
 }
 
 function obtenerRangoEstadoKDS(estado) {
@@ -223,7 +196,8 @@ function guardarNegocioAislado(negocioActualizado, cambiarActivo = true) {
             ...p,
             estado: ant.estado,
             fechaPreparacion: ant.fechaPreparacion || p.fechaPreparacion,
-            fechaDespacho: ant.fechaDespacho || p.fechaDespacho
+            fechaDespacho: ant.fechaDespacho || p.fechaDespacho,
+            ocultoEnKDS: Boolean(ant.ocultoEnKDS || p.ocultoEnKDS)
           };
         }
         return p;
@@ -341,6 +315,10 @@ async function iniciarConexionWhatsAppQR(forzarNuevoQR = false, negocioId = 'FOC
 
     const client = new Client({
       authStrategy: new LocalAuth(authOpts),
+      webVersionCache: {
+        type: 'local',
+        path: WA_CACHE_DIR
+      },
       puppeteer: {
         headless: true,
         ...(rutaBrowser ? { executablePath: rutaBrowser } : {}),
@@ -362,7 +340,7 @@ async function iniciarConexionWhatsAppQR(forzarNuevoQR = false, negocioId = 'FOC
           mode: 'qr'
         };
         emitirEventoTiempoReal('wa_status', sesion.status);
-        console.log(`📲 [WhatsApp ${idNegocio}] Código QR generado.`);
+        console.log(`[WhatsApp ${idNegocio}] QR generado`);
       } catch (e) {}
     });
 
@@ -378,7 +356,7 @@ async function iniciarConexionWhatsAppQR(forzarNuevoQR = false, negocioId = 'FOC
         mode: 'connected'
       };
       emitirEventoTiempoReal('wa_status', sesion.status);
-      console.log(`✅ [WhatsApp ${idNegocio}] Vinculado exitosamente al número +${numero}`);
+      console.log(`[WhatsApp ${idNegocio}] Conectado (+${numero})`);
     });
 
     client.on('disconnected', (reason) => {
@@ -424,7 +402,7 @@ async function iniciarConexionWhatsAppQR(forzarNuevoQR = false, negocioId = 'FOC
           }
         } catch (e) {}
 
-        console.log(`📩 [WhatsApp ${idNegocio}] Mensaje recibido de ${nombreCliente} (${telefonoCliente}): ${textoMensaje}`);
+        console.log(`[WhatsApp ${idNegocio}] ${nombreCliente} (${telefonoCliente}): ${textoMensaje}`);
 
         await procesarFlujoHibridoWhatsApp({
           negocioId: idNegocio,
@@ -1101,6 +1079,19 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // 2.18 Inspector Visual de Tablas SQLite (/api/admin/sqlite-tables)
+  if (pathname === '/api/admin/sqlite-tables' && req.method === 'GET') {
+    try {
+      const info = inspeccionarTablasSQLite();
+      res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({ ok: true, ...info }));
+    } catch (err) {
+      res.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({ ok: false, error: err.message }));
+    }
+    return;
+  }
+
   // 2.2 Redirección limpia de links cortos clicables de WhatsApp (/m/1234 -> /menu.html?...)
   if (pathname.startsWith('/m/') && req.method === 'GET') {
     const code = pathname.replace('/m/', '').trim();
@@ -1328,11 +1319,14 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // 7. Servir archivos estáticos de la PWA (index.html, app.js, imágenes)
+  // 7. Servir archivos estáticos de la PWA desde /public (o raíz como respaldo)
   let safePath = pathname === '/' ? '/index.html' : pathname;
-  const filePath = path.join(__dirname, safePath);
+  let filePath = path.join(PUBLIC_DIR, safePath);
+  if (!fs.existsSync(filePath)) {
+    filePath = path.join(__dirname, safePath);
+  }
 
-  if (!filePath.startsWith(__dirname)) {
+  if (!filePath.startsWith(PUBLIC_DIR) && !filePath.startsWith(__dirname)) {
     res.writeHead(403);
     res.end('Forbidden');
     return;
@@ -1356,16 +1350,7 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, '0.0.0.0', () => {
-  console.log('====================================================================');
-  console.log(`🚀 FAST ORDER CÚCUTA - SERVIDOR EN TIEMPO REAL + WHATSAPP QR ACTIVO`);
-  console.log(`👉 Abre en este computador: http://localhost:${PORT}`);
-  console.log(`📱 En celulares/tablets del mismo Wi-Fi usa la IP local en el puerto ${PORT}`);
-  console.log(`🔗 Link clicable directo para WhatsApp: ${obtenerDominioClicableDirecto()}/menu.html`);
-  console.log('====================================================================');
-
-  // Iniciar túnel global estable de Cloudflare (para abrir el Menú Digital desde cualquier ubicación / datos móviles)
+  console.log(`Servidor activo en http://localhost:${PORT}`);
   iniciarTunelCloudflareEstable();
-
-  // Iniciar automáticamente el motor de WhatsApp para tener el QR real listo para escanear
   iniciarConexionWhatsAppQR(false);
 });

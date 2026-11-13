@@ -17,6 +17,7 @@ Proyecto universitario de Ingeniería de Sistemas · Asignatura: Proyecto final 
 - [Roles de usuario](#roles-de-usuario)
 - [Tecnologías](#tecnologías)
 - [Equipo y responsabilidades](#equipo-y-responsabilidades)
+- [Organización por Sprints en el grupo](#organización-por-sprints-en-el-grupo)
 - [Estado de seguridad y pruebas](#estado-de-seguridad-y-pruebas)
 - [Documentación](#documentación)
 - [Asistencia de IA](#asistencia-de-ia)
@@ -59,23 +60,24 @@ El servidor queda en **http://localhost:3000**:
 | `http://localhost:3000/` | Aplicación principal (caja, cocina, inventario, WhatsApp, métricas) |
 | `http://localhost:3000/menu.html` | Menú digital que ve el cliente |
 | `http://localhost:3000/admin.html` | Consola de administración de negocios |
+| `http://localhost:3000/db.html` | Visor de tablas de la base de datos relacional SQLite |
 
-Desde un celular o tablet en el mismo Wi-Fi, usa la IP del computador en el puerto 3000. La terminal la muestra al arrancar.
+Desde un celular o tablet en el mismo Wi-Fi, usa la IP del computador en el puerto 3000 o el enlace público generado en la terminal.
 
 ## Estructura del repositorio
 
 | Archivo / carpeta | Qué contiene |
 |-------------------|--------------|
 | [`server.js`](server.js) | Servidor Node.js sin frameworks: API REST, eventos en tiempo real (SSE), conector de WhatsApp, túnel público y archivos estáticos |
-| [`index.html`](index.html) | Pantalla principal con las pestañas Caja, Cocina, Inventario, WhatsApp y Métricas |
-| [`app.js`](app.js) | Lógica del cliente: pedidos, KDS, inventario, recetas, sincronización y cola offline |
-| [`menu.html`](menu.html) | Menú digital interactivo para el cliente final |
-| [`admin.html`](admin.html) | Consola central para administrar los negocios (multi-tenant) |
-| [`data.js`](data.js) | Catálogo y datos maestros iniciales |
-| [`styles.css`](styles.css) | Estilos propios (se combinan con Tailwind por CDN) |
-| [`database.json`](database.json) | Base de datos de demostración: negocios, catálogos, insumos, pedidos |
-| [`db/`](db) | Un archivo JSON por negocio (`FOC-01.json`, `FOC-02.json`, …) |
-| [`IMAGENES PARA PEDIR/`](IMAGENES%20PARA%20PEDIR) | Fotos de los productos del menú |
+| [`public/index.html`](public/index.html) | Pantalla principal con las pestañas Caja, Cocina, Inventario, WhatsApp y Métricas (adaptada a móvil y escritorio) |
+| [`public/app.js`](public/app.js) | Lógica del cliente: modelo de clases POO, pedidos, KDS, inventario, recetas, sincronización y cola offline |
+| [`public/menu.html`](public/menu.html) | Menú digital interactivo para el cliente final |
+| [`public/admin.html`](public/admin.html) | Consola central para administrar los negocios (multi-tenant) y sus claves por rol |
+| [`public/db.html`](public/db.html) | Visor web en tiempo real de las tablas de la base de datos SQLite |
+| [`public/IMAGENES PARA PEDIR/`](public/IMAGENES%20PARA%20PEDIR) | Fotos de los productos del menú |
+| [`db/sqlite-engine.js`](db/sqlite-engine.js) | Motor de base de datos relacional SQLite 3 (`node:sqlite`) con transacciones ACID, modo WAL y respaldo atómico |
+| [`db/fastorder.sqlite`](db/fastorder.sqlite) | Base de datos relacional SQLite (`negocios`, `productos`, `insumos`, `pedidos`, `movimientos_inventario`, `config_sistema`) |
+| [`db/`](db) | Respaldos JSON aislados por negocio (`database.json`, `FOC-01.json`, `FOC-02.json`, …) |
 | [`INICIAR_SERVIDOR.bat`](INICIAR_SERVIDOR.bat) | Arranque con doble clic en Windows |
 | [`package.json`](package.json) | Dependencias y script de inicio |
 | [`docs/`](docs) | Documentación técnica y del equipo |
@@ -102,8 +104,8 @@ Las credenciales de demostración están en `database.json` y `db/`. **Cámbiala
 | Tiempo real | Server-Sent Events (SSE) |
 | WhatsApp | [`whatsapp-web.js`](https://github.com/pedroslopez/whatsapp-web.js) con sesión por código QR |
 | Códigos QR | [`qrcode`](https://www.npmjs.com/package/qrcode) |
-| Acceso externo | Túnel de Cloudflare (`cloudflared`) para abrir el menú digital desde datos móviles |
-| Persistencia | Archivos JSON (`database.json` y `db/`) |
+| Acceso externo | Túnel de Cloudflare (`cloudflared`) para abrir el sistema y el menú digital desde datos móviles |
+| Persistencia | Base de datos relacional **SQLite 3** (`db/fastorder.sqlite` vía `node:sqlite`) con modo WAL, transacciones ACID y respaldo atómico en `db/` |
 | Modo sin internet | `localStorage` + cola de sincronización |
 
 ## Equipo y responsabilidades
@@ -114,8 +116,24 @@ Detalle por archivo en [docs/EQUIPO.md](docs/EQUIPO.md).
 |------------|-----|--------------------|
 | **Javier Alejandro Serrano Ruiz** | Desarrollador backend e integración (líder técnico) | [`server.js`](server.js): API REST, eventos en tiempo real, conexión con WhatsApp, persistencia multi-negocio, enlaces cortos y túnel público |
 | **Josue David Ojeda Vivas** | Desarrollador frontend de caja y cocina | Caja (POS), comanda, tablero Kanban, ticket térmico, modo sin internet y permisos por rol en [`index.html`](index.html) y [`app.js`](app.js) |
-| **Johan Humberto Villegas** | Desarrollador de inventario y reportes | Recetas, insumos, umbrales, entradas y mermas, cierre de caja y reportes; datos maestros en [`data.js`](data.js) |
-| **Kevin Eduardo Garcia Moreno** | Desarrollador de menú digital, consola admin y documentación | [`menu.html`](menu.html), [`admin.html`](admin.html), [`styles.css`](styles.css), imágenes del menú, pruebas manuales y esta documentación |
+| **Johan Humberto Villegas** | Desarrollador de inventario y reportes | Recetas, insumos, umbrales, entradas y mermas, cierre de caja y reportes; base de datos y datos maestros en [`db/`](db) |
+| **Kevin Eduardo Garcia Moreno** | Desarrollador de menú digital, consola admin y documentación | [`public/menu.html`](public/menu.html), [`public/admin.html`](public/admin.html), imágenes del menú, pruebas manuales y esta documentación |
+
+## Organización por Sprints en el grupo (`S1` – `S7`)
+
+El trabajo del equipo está organizado en **7 Sprints (Hitos `S1` a `S7`)** y **36 tareas (`T01` a `T36`)** distribuidas en 3 fases:
+
+| Sprint / Hito | Fase | Descripción | Tareas (*Issues*) | Responsables | Estado |
+|---------------|------|-------------|-------------------|--------------|--------|
+| **S1 – Requisitos y diseño** | Fase 1 | Levantamiento de requisitos, documento del Sprint 1 y diseño inicial. | `T01`, `T02`, `T03` | Kevin (`T01`), Josue (`T02`), Javier (`T03`) | Completado (`3/3`) |
+| **S2 – Caja y cocina (MVP)** | Fase 1 | Servidor base, caja con comanda, tablero Kanban de cocina y tiempo real. | `T04`, `T05`, `T06`, `T07`, `T08`, `T09` | Javier (`T04`, `T09`), Josue (`T05`–`T08`) | Completado (`6/6`) |
+| **S3 – Inventario y reportes** | Fase 2 | Recetas, inventario, gestión del menú, cierre de caja y datos de demostración. | `T10`, `T11`, `T12`, `T13`, `T14`, `T15` | Johan (`T10`–`T15`) | Completado (`6/6`) |
+| **S4 – WhatsApp y menú digital** | Fase 2 | Conexión por QR, bot de opciones, enlaces cortos y menú digital del cliente. | `T16`, `T17`, `T18`, `T19`, `T20`, `T21` | Javier (`T16`–`T19`), Kevin (`T20`), Josue (`T21`) | Completado (`6/6`) |
+| **S5 – Multi-negocio y modo sin internet** | Fase 2 | Aislamiento por negocio, roles, consola de administración y cola offline. | `T22`, `T23`, `T24`, `T25`, `T26` | Javier (`T22`, `T23`), Kevin (`T24`), Josue (`T25`, `T26`) | Completado (`5/5`) |
+| **S6 – Documentación y entrega** | Fase 2 | README, carpeta `docs` y publicación del repositorio. | `T27`, `T28` | Kevin (`T27`, `T28`) | Completado (`2/2`) |
+| **S7 – Seguridad y pruebas** | Fase 3 | Pendientes de endurecimiento, pruebas y piloto. | `T29`–`T36` | Kevin (`T29`, `T32`, `T34`, `T36`), Javier (`T30`, `T31`, `T35`), Johan (`T33`) | En curso / Fase 3 |
+
+El desglose completo de las 36 tareas (`T01`–`T36`) está en [docs/EQUIPO.md](docs/EQUIPO.md) y en [docs/sprints-github.json](docs/sprints-github.json).
 
 ## Estado de seguridad y pruebas
 
@@ -128,7 +146,7 @@ Detalle por archivo en [docs/EQUIPO.md](docs/EQUIPO.md).
 | Protección de rutas de datos y de administración | **Pendiente:** las rutas `/api/...` no exigen token |
 | HTTPS | Disponible al exponer el servidor con el túnel de Cloudflare; en local es HTTP |
 | Pruebas automatizadas | **Pendiente:** no hay suite de pruebas |
-| Base de datos relacional (PostgreSQL) | Propuesta en el diseño; el prototipo usa archivos JSON |
+| Base de datos relacional (SQLite 3) | **Implementado:** motor relacional SQLite (`db/fastorder.sqlite`) con tablas normalizadas, sentencias preparadas contra inyección SQL, transacciones ACID y respaldo automático |
 
 Lo implementado frente a lo propuesto en el diseño está en [docs/ARQUITECTURA.md](docs/ARQUITECTURA.md#implementado-frente-a-lo-propuesto).
 
