@@ -1,0 +1,117 @@
+name: Cargar Sprints e Issues (S1 - S7)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  cargar-sprints:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Crear Sprints (Milestones), Etiquetas e Issues (T01-T36)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          node - << 'EOF'
+          const fs = require('fs');
+          const OWNER = 'josuedavidojeda2020-afk';
+          const REPO = 'fast-order-cucuta';
+          const TOKEN = process.env.GITHUB_TOKEN;
+          const datos = JSON.parse(fs.readFileSync('docs/sprints-github.json', 'utf8'));
+
+          async function ghRequest(method, endpoint, body = null) {
+            const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}${endpoint}`, {
+              method,
+              headers: {
+                'Authorization': `Bearer ${TOKEN}`,
+                'Accept': 'application/vnd.github+json',
+                'Content-Type': 'application/json',
+                'X-GitHub-Api-Version': '2022-11-28',
+                'User-Agent': 'FastOrderCucuta-Actions'
+              },
+              body: body ? JSON.stringify(body) : undefined
+            });
+            const text = await res.text();
+            let data = null;
+            try { data = text ? JSON.parse(text) : null; } catch (_) { data = text; }
+            if (!res.ok) {
+              throw new Error(`HTTP ${res.status} en ${method} ${endpoint}: ${typeof data === 'object' ? JSON.stringify(data) : data}`);
+            }
+            return data;
+          }
+
+          const esperar = (ms) => new Promise(r => setTimeout(r, ms));
+
+          async function main() {
+            console.log('1. Creando etiquetas...');
+            const etiquetasExistentes = await ghRequest('GET', '/labels?per_page=100');
+            const mapaEtiquetas = new Set(etiquetasExistentes.map(l => l.name.toLowerCase()));
+            for (const etq of datos.etiquetas) {
+              if (mapaEtiquetas.has(etq.nombre.toLowerCase())) {
+                await ghRequest('PATCH', `/labels/${encodeURIComponent(etq.nombre)}`, {
+                  new_name: etq.nombre, color: etq.color, description: etq.descripcion
+                });
+              } else {
+                await ghRequest('POST', '/labels', {
+                  name: etq.nombre, color: etq.color, description: etq.descripcion
+                });
+              }
+            }
+
+            console.log('2. Creando Sprints (Milestones S1-S7)...');
+            const hitosExistentes = await ghRequest('GET', '/milestones?state=all&per_page=100');
+            const mapaHitos = new Map(hitosExistentes.map(m => [m.title, m.number]));
+            for (const hito of datos.hitos) {
+              if (!mapaHitos.has(hito.titulo)) {
+                const creado = await ghRequest('POST', '/milestones', {
+                  title: hito.titulo, description: hito.descripcion
+                });
+                mapaHitos.set(hito.titulo, creado.number);
+                console.log(`  Creado Sprint: ${hito.titulo}`);
+              }
+            }
+
+            console.log('3. Creando Issues (T01-T36)...');
+            const issuesExistentes = await ghRequest('GET', '/issues?state=all&per_page=100');
+            const titulosExistentes = new Map();
+            for (const iss of issuesExistentes) {
+              if (!iss.pull_request) titulosExistentes.set(iss.title, iss);
+            }
+
+            for (const item of datos.issues) {
+              const milestoneNumber = mapaHitos.get(item.hito) || null;
+              let issueObj = titulosExistentes.get(item.titulo);
+              if (!issueObj) {
+                issueObj = await ghRequest('POST', '/issues', {
+                  title: item.titulo,
+                  body: item.cuerpo,
+                  milestone: milestoneNumber,
+                  labels: item.etiquetas
+                });
+                console.log(`  Creada: ${item.titulo}`);
+                await esperar(500);
+              }
+              if (item.cerrada && issueObj.state !== 'closed') {
+                if (item.comentario_cierre) {
+                  await ghRequest('POST', `/issues/${issueObj.number}/comments`, {
+                    body: item.comentario_cierre
+                  });
+                }
+                await ghRequest('PATCH', `/issues/${issueObj.number}`, { state: 'closed' });
+                console.log(`  Cerrada: ${item.titulo}`);
+                await esperar(300);
+              }
+            }
+            console.log('¡Todos los Sprints e Issues fueron creados con éxito!');
+          }
+
+          main().catch(err => { console.error(err); process.exit(1); });
+          EOF
